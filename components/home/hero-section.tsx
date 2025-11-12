@@ -19,6 +19,10 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
   // Use props if provided, otherwise use config
   const displayTitle = title ?? HERO_COPY.title
   const displaySubtitle = subtitle ?? HERO_COPY.subtitle
+  // Split title into two lines: "Search smarter," and "shop China."
+  const titleParts = displayTitle.includes(',') 
+    ? displayTitle.split(',').map(part => part.trim())
+    : [displayTitle]
   const headingWords = displayTitle.split(' ')
 
   const headingContainer = {
@@ -105,28 +109,87 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
           variants={headingContainer}
           initial="hidden"
           animate="visible"
-          className="mx-auto max-w-4xl"
+          className="mx-auto max-w-6xl"
         >
-          <h1 className="mb-4 text-balance text-3xl font-semibold text-white sm:mb-5 sm:text-4xl md:mb-6 md:text-5xl lg:text-6xl">
-            {headingWords.map((word, index) => (
-              <span
-                key={`${word}-${index}`}
-                className="bg-gradient-to-r from-sky-300 via-blue-400 to-violet-400 bg-clip-text text-transparent inline-block"
-                style={{
-                  WebkitTextFillColor: 'transparent',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                }}
-              >
-                <motion.span
-                  variants={wordVariant}
-                  className="inline-block"
+          <h1 className="mb-4 text-4xl tracking-wider sm:mb-5 sm:text-5xl sm:tracking-[0.1em] md:mb-6 md:text-6xl md:tracking-[0.12em] lg:text-7xl lg:tracking-[0.15em] font-impact leading-tight relative" style={{ fontFamily: 'Impact, "Arial Black", Arial, sans-serif', fontWeight: 'normal' }}>
+            {/* Glow effect background */}
+            <div className="absolute inset-0 blur-2xl opacity-40 bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500" />
+            
+            {titleParts.length > 1 ? (
+              <>
+                <div className="block relative">
+                  {titleParts[0].split(' ').map((word, index) => (
+                    <span
+                      key={`line1-${word}-${index}`}
+                      className="inline-block font-impact relative"
+                      style={{
+                        fontFamily: 'Impact, "Arial Black", Arial, sans-serif',
+                        fontWeight: 'normal',
+                        textShadow: '0 0 15px rgba(34,211,238,0.6), 0 0 30px rgba(59,130,246,0.5), 0 0 45px rgba(139,92,246,0.4)',
+                        WebkitTextStroke: '1px rgba(34,211,238,0.2)',
+                      }}
+                    >
+                      <motion.span
+                        variants={wordVariant}
+                        className="inline-block text-white drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      >
+                        {word}
+                      </motion.span>
+                      {index < titleParts[0].split(' ').length - 1 ? ' ' : <span className="text-white drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]">,</span>}
+                    </span>
+                  ))}
+                </div>
+                <div className="block relative mt-2">
+                  {titleParts[1].split(' ').map((word, index) => (
+                    <span
+                      key={`line2-${word}-${index}`}
+                      className="inline-block font-impact relative"
+                      style={{
+                        fontFamily: 'Impact, "Arial Black", Arial, sans-serif',
+                        fontWeight: 'normal',
+                        textShadow: '0 0 15px rgba(34,211,238,0.6), 0 0 30px rgba(59,130,246,0.5), 0 0 45px rgba(139,92,246,0.4)',
+                        WebkitTextStroke: '1px rgba(34,211,238,0.2)',
+                      }}
+                    >
+                      <motion.span
+                        variants={wordVariant}
+                        className="inline-block text-white drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      >
+                        {word}
+                      </motion.span>
+                      {index < titleParts[1].split(' ').length - 1 ? ' ' : ''}
+                    </span>
+                  ))}
+                </div>
+              </>
+            ) : (
+              headingWords.map((word, index) => (
+                <span
+                  key={`${word}-${index}`}
+                  className="inline-block font-impact relative"
+                  style={{
+                    fontFamily: 'Impact, "Arial Black", Arial, sans-serif',
+                    fontWeight: 'normal',
+                    textShadow: '0 0 15px rgba(34,211,238,0.6), 0 0 30px rgba(59,130,246,0.5), 0 0 45px rgba(139,92,246,0.4)',
+                    WebkitTextStroke: '1px rgba(34,211,238,0.2)',
+                  }}
                 >
-                  {word}
-                </motion.span>
-                {index < headingWords.length - 1 ? ' ' : ''}
-              </span>
-            ))}
+                  <motion.span
+                    variants={wordVariant}
+                    className="inline-block text-white drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    {word}
+                  </motion.span>
+                  {index < headingWords.length - 1 ? ' ' : ''}
+                </span>
+              ))
+            )}
           </h1>
           <motion.p
             variants={wordVariant}

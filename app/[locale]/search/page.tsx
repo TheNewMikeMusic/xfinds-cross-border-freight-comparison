@@ -63,7 +63,7 @@ async function SearchContent({ params, searchParams }: SearchPageProps) {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="flex-1 container mx-auto px-3 py-6 sm:px-4 sm:py-8">
+      <main className="flex-1 container mx-auto px-2 py-6 sm:px-4 sm:py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
           {/* Filters Sidebar - Desktop */}
           <aside className="hidden lg:block lg:col-span-1">
@@ -109,7 +109,7 @@ export default function SearchPage(props: SearchPageProps) {
       fallback={
         <div className="flex min-h-screen flex-col">
           <Navbar />
-          <main className="flex-1 container mx-auto px-3 py-6 sm:px-4 sm:py-8">
+          <main className="flex-1 container mx-auto px-2 py-6 sm:px-4 sm:py-8">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
               <aside className="hidden lg:block lg:col-span-1">
                 <Skeleton className="h-96 w-full" />

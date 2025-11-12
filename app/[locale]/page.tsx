@@ -71,7 +71,7 @@ export default async function LandingPage({ params }: LandingPageProps) {
 
         {/* Featured Products Section */}
         {featuredProducts.length > 0 && (
-          <section className="py-8 px-4 sm:py-12 md:py-16">
+          <section className="py-8 px-2 sm:px-4 sm:py-12 md:py-16">
             <div className="container mx-auto">
               <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 md:mb-12">{t('featuredProducts')}</h2>
               <ProductCarousel 

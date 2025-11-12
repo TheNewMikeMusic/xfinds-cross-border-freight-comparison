@@ -91,7 +91,7 @@ export function SearchResults({
         />
       ) : (
         <>
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3 mt-6">
+          <div className="grid grid-cols-2 gap-2 sm:gap-4 md:grid-cols-2 xl:grid-cols-3 mt-6">
             {products.map((product, index) => (
               <ProductCard 
                 key={product.id} 

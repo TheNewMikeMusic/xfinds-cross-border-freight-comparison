@@ -66,8 +66,8 @@ export function ProductCard({ product, locale, agents = [], priority = false }: 
       className="pt-2 sm:pt-0"
     >
       <Link href={`/${currentLocale}/product/${product.slug}`} className="group block rounded-3xl focus-ring touch-manipulation active:scale-[0.98]">
-        <Card className="glass-card overflow-hidden rounded-3xl border-blue-600/20 p-0 focus-ring">
-          <div className="relative aspect-square overflow-hidden rounded-[1.8rem] bg-gray-800">
+        <Card className="glass-card overflow-hidden rounded-3xl border-blue-600/20 !p-0 focus-ring relative">
+          <div className="relative aspect-square overflow-hidden rounded-t-3xl bg-gray-800 -mt-[1px] -ml-[1px] -mr-[1px] w-[calc(100%+2px)]">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-950/70 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             {product.cover && !imageError ? (
               <Image

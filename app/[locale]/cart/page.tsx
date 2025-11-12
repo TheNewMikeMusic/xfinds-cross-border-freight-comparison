@@ -5,10 +5,10 @@ import { Footer } from '@/components/shared/footer'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { EmptyState } from '@/components/shared/empty-state'
-import { useCartStore } from '@/store/cart-store'
+import { useCartStore, CartItem } from '@/store/cart-store'
 import { PriceDisplay } from '@/components/shared/price-display'
 import { formatPrice } from '@/lib/currency'
-import { ExternalLink, X, ShoppingBag, LinkIcon, Info } from 'lucide-react'
+import { ExternalLink, X } from 'lucide-react'
 import { useState, useEffect, useMemo } from 'react'
 import { useParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
@@ -20,27 +20,27 @@ import { groupCartItemsByAgent, calculateCartTotal, AgentGroup } from '@/lib/car
 import { AgentSwitcher } from '@/components/cart/agent-switcher'
 import { RedirectDisclaimer, hasSeenRedirectDisclaimer } from '@/components/shared/redirect-disclaimer'
 import { ShippingDetailDialog } from '@/components/shared/shipping-detail-dialog'
-import { AssistantSuggestions } from '@/components/cart/assistant-suggestions'
-import { generateSuggestions, Suggestion } from '@/lib/assistant'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
-import { Sparkles } from 'lucide-react'
+import { Zap } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
+import { optimizeCartItems } from '@/lib/optimization'
+import { OptimizingOverlay } from '@/components/cart/optimizing-overlay'
 
 export default function CartPage() {
   const params = useParams()
   const locale = (params?.locale as string) || 'en'
   const t = useTranslations('cart')
-  const tAssistant = useTranslations('assistant')
   const { items, removeItem, clear, updateItemAgent } = useCartStore()
   const [agents, setAgents] = useState<Agent[]>([])
   const [products, setProducts] = useState<Product[]>([])
   const [redirectDialogOpen, setRedirectDialogOpen] = useState(false)
   const [pendingGroupCheckout, setPendingGroupCheckout] = useState<AgentGroup | null>(null)
-  const [showAssistant, setShowAssistant] = useState(false)
-  const [suggestions, setSuggestions] = useState<Suggestion[]>([])
   const [isHydrated, setIsHydrated] = useState(false)
   const [shippingDetailOpen, setShippingDetailOpen] = useState(false)
   const [selectedShippingGroup, setSelectedShippingGroup] = useState<AgentGroup | null>(null)
+  const [isOptimizing, setIsOptimizing] = useState(false)
+  const [isOptimized, setIsOptimized] = useState(false)
+  const [originalItems, setOriginalItems] = useState<CartItem[]>([])
   const { toast } = useToast()
   const shouldReduceMotion = useReducedMotion()
 
@@ -91,55 +91,13 @@ export default function CartPage() {
     return calculateCartTotal(groups)
   }, [groups])
 
-  // Generate suggestions when assistant is shown
+  // Reset optimization state when cart is cleared
   useEffect(() => {
-    if (showAssistant && items.length > 0 && agents.length > 0 && products.length > 0) {
-      const newSuggestions = generateSuggestions(items, agents, products)
-      setSuggestions(newSuggestions)
+    if (items.length === 0) {
+      setIsOptimized(false)
+      setOriginalItems([])
     }
-  }, [showAssistant, items, agents, products])
-
-  // Handle apply suggestion
-  const handleApplySuggestion = (suggestion: Suggestion) => {
-    suggestion.affectedItems.forEach((offerId) => {
-      const item = items.find((i) => i.offerId === offerId)
-      if (!item) return
-
-      const product = getProduct(item.productId)
-      if (!product) return
-
-      const newOffer = product.offers.find((o) => o.agentId === suggestion.after.agentId)
-      if (!newOffer) return
-
-      updateItemAgent(
-        offerId,
-        suggestion.after.agentId,
-        newOffer.price,
-        newOffer.shipFee,
-        newOffer.link
-      )
-    })
-
-    toast({
-      title: 'Success',
-      description: tAssistant('savingsApplied', {
-        amount: formatPrice(suggestion.savings, 'CNY'), // Keep using formatPrice for toast messages
-      }),
-    })
-
-    // Refresh suggestions
-    const updatedItems = items.map((i) =>
-      suggestion.affectedItems.includes(i.offerId)
-        ? { ...i, agentId: suggestion.after.agentId }
-        : i
-    )
-    const newSuggestions = generateSuggestions(updatedItems, agents, products)
-    setSuggestions(newSuggestions.filter((s) => s.id !== suggestion.id))
-  }
-
-  const handleDismissSuggestion = (suggestionId: string) => {
-    setSuggestions(suggestions.filter((s) => s.id !== suggestionId))
-  }
+  }, [items.length])
 
   // Get product info for display
   const getProduct = (productId: string): Product | null => {
@@ -218,6 +176,103 @@ export default function CartPage() {
     setPendingGroupCheckout(null)
   }
 
+  // Handle one-click optimization
+  const handleOptimizeCart = async () => {
+    if (items.length === 0 || agents.length === 0 || products.length === 0) {
+      return
+    }
+
+    // Save original items before optimization
+    if (!isOptimized) {
+      setOriginalItems([...items])
+    }
+
+    setIsOptimizing(true)
+
+    // Simulate analysis delay (2.5 seconds)
+    await new Promise((resolve) => setTimeout(resolve, 2500))
+
+    try {
+      // Calculate optimal assignment
+      const result = optimizeCartItems(items, agents, products)
+
+      if (result.changes.length === 0) {
+        toast({
+          title: t('optimizationComplete'),
+          description: t('noChangesNeeded'),
+        })
+        setIsOptimizing(false)
+        return
+      }
+
+      // Apply optimizations
+      result.optimizedItems.forEach((optimizedItem) => {
+        const originalItem = items.find((i) => i.offerId === optimizedItem.offerId)
+        if (!originalItem) return
+
+        // Only update if agent changed
+        if (originalItem.agentId !== optimizedItem.agentId) {
+          updateItemAgent(
+            optimizedItem.offerId,
+            optimizedItem.agentId,
+            optimizedItem.price,
+            optimizedItem.shipFee,
+            optimizedItem.link
+          )
+        }
+      })
+
+      // Show success message
+      toast({
+        title: t('optimizationComplete'),
+        description: t('optimizationCompleteDesc', {
+          amount: formatPrice(result.savings, 'CNY'),
+        }),
+      })
+
+      setIsOptimized(true)
+    } catch (error) {
+      console.error('Optimization failed:', error)
+      toast({
+        title: 'Error',
+        description: t('optimizationFailed'),
+        variant: 'destructive',
+      })
+    } finally {
+      setIsOptimizing(false)
+    }
+  }
+
+  // Handle cancel optimization
+  const handleCancelOptimization = () => {
+    if (originalItems.length === 0) return
+
+    // Restore original items
+    originalItems.forEach((originalItem) => {
+      const currentItem = items.find((i) => i.offerId === originalItem.offerId)
+      if (!currentItem) return
+
+      // Restore if agent changed
+      if (currentItem.agentId !== originalItem.agentId) {
+        updateItemAgent(
+          originalItem.offerId,
+          originalItem.agentId,
+          originalItem.price,
+          originalItem.shipFee,
+          originalItem.link
+        )
+      }
+    })
+
+    setIsOptimized(false)
+    setOriginalItems([])
+
+    toast({
+      title: t('optimizationCancelled'),
+      description: t('optimizationCancelledDesc'),
+    })
+  }
+
   // Show loading state during hydration to prevent SSR mismatch
   if (!isHydrated) {
     return (
@@ -261,7 +316,6 @@ export default function CartPage() {
         <main className="flex-1 container mx-auto px-4 py-8">
           <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-slate-500">{t('note')}</p>
               <h1 className="bg-gradient-to-r from-sky-200 via-blue-300 to-violet-400 bg-clip-text text-4xl font-semibold text-transparent">
                 {t('title')}
               </h1>
@@ -271,11 +325,12 @@ export default function CartPage() {
             </div>
             <div className="flex gap-2">
               <Button
-                onClick={() => setShowAssistant(!showAssistant)}
-                className="btn-ripple rounded-2xl border border-blue-600/30 bg-blue-600/20 px-4 py-2 text-sm text-blue-300 hover:bg-blue-600/30"
+                onClick={isOptimized ? handleCancelOptimization : handleOptimizeCart}
+                disabled={isOptimizing || items.length === 0}
+                className="btn-ripple rounded-2xl border-2 border-green-500 bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-3 text-base font-bold text-white shadow-xl shadow-green-500/30 hover:from-green-500 hover:to-emerald-500 hover:shadow-green-500/40 disabled:opacity-50 disabled:cursor-not-allowed transition-all backdrop-blur-sm"
               >
-                <Sparkles className="mr-2 h-4 w-4" />
-                {showAssistant ? t('hideAssistant') : t('optimizeWithAssistant')}
+                <Zap className="mr-2 h-5 w-5" />
+                {isOptimized ? t('cancelAI') : t('aiHelpSaveMoney')}
               </Button>
               <Button
                 onClick={clear}
@@ -288,14 +343,6 @@ export default function CartPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="space-y-6 lg:col-span-2">
-              {/* Assistant Suggestions */}
-              {showAssistant && (
-                <AssistantSuggestions
-                  suggestions={suggestions}
-                  onApply={handleApplySuggestion}
-                  onDismiss={handleDismissSuggestion}
-                />
-              )}
               <AnimatePresence>
                 {groups.map((group) => {
                   const agent = group.agent
@@ -347,8 +394,11 @@ export default function CartPage() {
                               return (
                                 <motion.div
                                   key={item.offerId}
+                                  layoutId={`item-${item.offerId}`}
+                                  layout={!shouldReduceMotion}
                                   initial={shouldReduceMotion ? undefined : { opacity: 0, x: -10 }}
                                   animate={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
+                                  transition={shouldReduceMotion ? undefined : { duration: 0.3 }}
                                   className="flex items-start gap-4 p-3 rounded-xl border border-white/10 bg-white/5"
                                 >
                                   {product?.cover && (
@@ -481,11 +531,11 @@ export default function CartPage() {
 
             {/* Summary sidebar */}
             <div className="lg:col-span-1">
-              <Card className="glass sticky top-24 border-white/10 bg-gradient-to-br from-[rgba(7,11,20,0.95)] via-[rgba(5,8,15,0.92)] to-[rgba(2,4,8,0.95)]">
-                <CardHeader>
+              <Card className="glass sticky top-24 max-h-[calc(100vh-8rem)] border-white/10 bg-gradient-to-br from-[rgba(7,11,20,0.95)] via-[rgba(5,8,15,0.92)] to-[rgba(2,4,8,0.95)] overflow-hidden flex flex-col">
+                <CardHeader className="flex-shrink-0">
                   <CardTitle className="text-2xl text-white">{t('summary')}</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 pb-6 flex-1 overflow-y-auto">
                   <div className="flex justify-between text-sm text-slate-300">
                     <span>{t('itemCount')}</span>
                     <span className="font-semibold text-white">{items.length}</span>
@@ -500,12 +550,6 @@ export default function CartPage() {
                       <div className="bg-gradient-to-r from-sky-200 to-violet-300 bg-clip-text text-transparent">
                         <PriceDisplay amount={total} originalCurrency="CNY" size="lg" />
                       </div>
-                    </div>
-                  </div>
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-3 text-sm text-slate-300">
-                    <div className="flex items-center gap-2">
-                      <LinkIcon className="h-4 w-4 text-sky-200" />
-                      <span>{t('note')}</span>
                     </div>
                   </div>
                 </CardContent>
@@ -527,6 +571,7 @@ export default function CartPage() {
           cartItems={selectedShippingGroup?.items}
           estimatedShipping={selectedShippingGroup?.estimatedShipping}
         />
+        <OptimizingOverlay isVisible={isOptimizing} />
       </>
     )
   }

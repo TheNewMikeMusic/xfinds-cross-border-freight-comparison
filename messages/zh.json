@@ -191,7 +191,18 @@
     "totalWeight": "总重量",
     "weightUnknown": "重量未知",
     "shippingEstimate": "运费估算",
-    "shippingInquiry": "运费待询"
+    "shippingInquiry": "运费待询",
+    "optimizeOneClick": "AI一键省钱",
+    "aiHelpSaveMoney": "AI帮你省钱",
+    "cancelAI": "取消AI",
+    "optimizing": "分析中...",
+    "analyzing": "正在分析最优货代组合...",
+    "optimizationComplete": "优化完成",
+    "optimizationCompleteDesc": "已为您节省 {amount}",
+    "optimizationCancelled": "已取消优化",
+    "optimizationCancelledDesc": "已恢复原始分配",
+    "noChangesNeeded": "当前分配已是最优，无需调整",
+    "optimizationFailed": "优化失败，请稍后重试"
   },
   "compare": {
     "title": "产品比较",

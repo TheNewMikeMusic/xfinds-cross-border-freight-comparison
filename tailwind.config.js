@@ -21,6 +21,9 @@ module.exports = {
   		}
   	},
   	extend: {
+  		fontFamily: {
+  			impact: ['Impact', 'Arial Black', 'Arial', 'sans-serif'],
+  		},
   		colors: {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',

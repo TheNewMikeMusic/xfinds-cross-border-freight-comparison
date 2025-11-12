@@ -192,7 +192,18 @@
     "totalWeight": "Total Weight",
     "weightUnknown": "Weight Unknown",
     "shippingEstimate": "Shipping Estimate",
-    "shippingInquiry": "Shipping TBD"
+    "shippingInquiry": "Shipping TBD",
+    "optimizeOneClick": "AI One-Click Optimize",
+    "aiHelpSaveMoney": "AI Help Save Money",
+    "cancelAI": "Cancel AI",
+    "optimizing": "Analyzing...",
+    "analyzing": "Analyzing optimal agent combinations...",
+    "optimizationComplete": "Optimization Complete",
+    "optimizationCompleteDesc": "Saved {amount} for you",
+    "optimizationCancelled": "Optimization Cancelled",
+    "optimizationCancelledDesc": "Restored original assignment",
+    "noChangesNeeded": "Current assignment is already optimal, no changes needed",
+    "optimizationFailed": "Optimization failed, please try again later"
   },
   "compare": {
     "title": "Product Comparison",

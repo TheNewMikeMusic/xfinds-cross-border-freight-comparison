@@ -70,12 +70,19 @@ export function AgentCard({ agent }: AgentCardProps) {
               </div>
               <div className="min-w-0 flex-1">
                 <CardTitle className="mb-0.5 sm:mb-1 truncate text-sm sm:text-lg text-white">{agent.name}</CardTitle>
-                <div className="flex items-center gap-1.5 sm:gap-2">
-                  <Star className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0 text-amber-300" aria-hidden="true" />
-                  <span className="text-xs sm:text-sm font-semibold text-amber-200">{agent.rating}</span>
-                  <span className="sr-only">
-                    {t('rating')} {agent.rating}
-                  </span>
+                <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <Star className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0 text-amber-300" aria-hidden="true" />
+                    <span className="text-xs sm:text-sm font-semibold text-amber-200">{agent.rating}</span>
+                    <span className="sr-only">
+                      {t('rating')} {agent.rating}
+                    </span>
+                  </div>
+                  {agent.promoText && (
+                    <Badge className="rounded-full border-blue-500/30 bg-blue-500/10 text-[10px] sm:text-xs text-blue-200 px-1.5 py-0.5 whitespace-nowrap">
+                      {agent.promoText}
+                    </Badge>
+                  )}
                 </div>
               </div>
             </div>
@@ -83,18 +90,6 @@ export function AgentCard({ agent }: AgentCardProps) {
         </CardHeader>
 
         <CardContent className="relative flex flex-col space-y-3 p-3 sm:p-6 flex-1 min-h-0">
-          <div className="h-[64px] sm:h-auto">
-            {agent.promoText ? (
-              <motion.div
-                initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8 }}
-                animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-                className="rounded-xl sm:rounded-2xl border border-blue-500/30 bg-blue-600/10 p-2 sm:p-3 text-xs sm:text-sm text-blue-100 shadow-[0_10px_30px_rgba(37,99,235,0.25)] line-clamp-3 sm:line-clamp-2 h-full flex items-center"
-              >
-                {agent.promoText}
-              </motion.div>
-            ) : null}
-          </div>
-
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 h-[28px] sm:h-auto">
             {/* Mobile: Show speedTag as badge, Desktop: Show speedTag + all badges */}
             <div className="flex flex-wrap gap-1 items-center">

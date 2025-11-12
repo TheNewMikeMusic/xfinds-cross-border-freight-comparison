@@ -10,15 +10,15 @@ export type HeroCopy = {
 };
 
 export const HERO_COPY: HeroCopy = {
-  title: "Search. Compare. Ship.",
+  title: "Search smarter, shop China.",
   subtitle:
-    "One platform to discover products and compare China forwarding agents.",
+    "The Ai Search Engine for China's Best.",
   variants: [
     {
       key: "A",
-      title: "Search. Compare. Ship.",
+      title: "Search smarter, shop China.",
       subtitle:
-        "One platform to discover products and compare China forwarding agents.",
+        "The Ai Search Engine for China's Best.",
     },
     {
       key: "B",
