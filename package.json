@@ -14,7 +14,8 @@
     "test:e2e:ui": "playwright test --ui",
     "fix-images": "node fix-images-locally.js",
     "fix-images-new-folder": "node fix-images-to-new-folder.js",
-    "process-images": "tsx scripts/process-images.ts"
+    "process-images": "tsx scripts/process-images.ts",
+    "deploy": "git push origin main && echo. && echo ✅ 代码已推送到 GitHub && echo. && echo 📋 请在 FinalShell 中执行以下命令更新服务器: && echo    cd /var/www/xfinds && echo    git pull origin main && echo    chmod +x scripts/deploy/quick-update.sh && echo    ./scripts/deploy/quick-update.sh"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.3.3",

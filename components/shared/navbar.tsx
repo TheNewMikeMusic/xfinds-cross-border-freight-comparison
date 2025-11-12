@@ -127,32 +127,41 @@ export function Navbar() {
           : 'bg-transparent backdrop-blur-xl'
       )}
     >
-      <div className="container mx-auto flex h-14 items-center justify-between px-4 sm:h-16">
+      <div className="container mx-auto flex h-14 items-center justify-between px-3 sm:px-4 sm:h-16">
         {/* Back Button & Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3 min-w-0 flex-1 overflow-hidden">
           {!isHomePage && (
             <Button
               variant="ghost"
               size="icon"
               onClick={() => router.push(`/${locale}`)}
-              className="focus-ring touch-manipulation min-h-[44px] min-w-[44px] sm:min-h-[40px] sm:min-w-[40px]"
+              className="focus-ring touch-manipulation h-9 w-9 sm:min-h-[40px] sm:min-w-[40px] flex-shrink-0 p-0"
               aria-label="Go back to home"
             >
-              <ArrowLeft className="h-5 w-5 text-sky-200" aria-hidden="true" />
+              <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 text-sky-200" aria-hidden="true" />
             </Button>
           )}
           <Link
             href={`/${locale}`}
             aria-label="Xfinds home"
-            className="focus-ring flex items-center transition-all duration-300 hover:opacity-80 active:scale-95 touch-manipulation"
+            className={cn(
+              "focus-ring flex items-center transition-all duration-300 hover:opacity-80 active:scale-95 touch-manipulation flex-shrink-0",
+              !isHomePage && "max-w-[70px] sm:max-w-none"
+            )}
           >
-            <div className="relative h-8 w-auto flex-shrink-0">
+            <div className={cn(
+              "relative w-auto flex-shrink-0",
+              !isHomePage ? "h-5 sm:h-8" : "h-8"
+            )}>
               <Image
                 src="/Xfinds logo.png"
                 alt="Xfinds logo"
                 width={96}
                 height={32}
-                className="object-contain h-8 w-auto"
+                className={cn(
+                  "object-contain w-auto",
+                  !isHomePage ? "h-5 sm:h-8" : "h-8"
+                )}
                 priority
               />
             </div>
@@ -186,7 +195,7 @@ export function Navbar() {
         </form>
 
         {/* Right Actions */}
-        <div className="flex items-center space-x-2 md:space-x-4">
+        <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-4 flex-shrink-0">
           {/* Currency Selector - Desktop */}
           <div className="hidden sm:block">
             <CurrencySelector variant="compact" />
@@ -194,7 +203,7 @@ export function Navbar() {
           
           {/* Currency Selector - Mobile */}
           <div className="sm:hidden">
-            <CurrencySelector variant="compact" />
+            <CurrencySelector variant="icon" />
           </div>
           
           {/* Mobile Search */}

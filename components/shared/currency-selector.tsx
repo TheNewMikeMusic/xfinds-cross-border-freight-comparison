@@ -14,7 +14,7 @@ import { useTranslations } from 'next-intl'
 
 interface CurrencySelectorProps {
   className?: string
-  variant?: 'default' | 'compact'
+  variant?: 'default' | 'compact' | 'icon'
 }
 
 export function CurrencySelector({ className, variant = 'default' }: CurrencySelectorProps) {
@@ -42,20 +42,46 @@ export function CurrencySelector({ className, variant = 'default' }: CurrencySel
 
   const currentCurrency = SUPPORTED_CURRENCIES.find(c => c.code === selectedCurrency) || SUPPORTED_CURRENCIES[0]
 
-  if (variant === 'compact') {
+  if (variant === 'icon') {
     return (
       <Select value={selectedCurrency} onValueChange={(value) => setCurrency(value as CurrencyCode)}>
-        <SelectTrigger className={`h-8 w-16 sm:w-20 glass border-blue-600/30 bg-gray-800/50 text-[10px] sm:text-xs ${className || ''}`}>
-          <SelectValue>
-            <span className="font-semibold text-[10px] sm:text-xs">{selectedCurrency}</span>
+        <SelectTrigger className={`h-8 w-8 min-w-[32px] p-0 rounded-full border-0 bg-transparent hover:bg-white/5 transition-colors focus-ring !justify-center [&>svg]:hidden ${className || ''}`}>
+          <SelectValue className="flex items-center justify-center w-full h-full">
+            <span className="font-semibold text-sm leading-none text-center text-slate-200">{currentCurrency.symbol}</span>
           </SelectValue>
         </SelectTrigger>
-        <SelectContent className="glass border-blue-600/30 bg-gray-900/95 backdrop-blur-xl max-h-[300px]">
+        <SelectContent className="glass border-white/10 bg-[#0b1024]/95 backdrop-blur-2xl max-h-[300px]">
           {SUPPORTED_CURRENCIES.map((currency) => (
             <SelectItem key={currency.code} value={currency.code}>
               <div className="flex items-center gap-2">
-                <span className="font-semibold">{currency.code}</span>
-                <span className="text-xs text-gray-400">{currency.symbol}</span>
+                <span className="font-semibold">{currency.symbol}</span>
+                <span className="text-xs text-gray-400">{currency.code}</span>
+              </div>
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    )
+  }
+
+  if (variant === 'compact') {
+    // Extract width and text size from className if provided
+    const hasSmallWidth = className?.includes('w-12')
+    const hasSmallText = className?.includes('text-[9px]')
+    
+    return (
+      <Select value={selectedCurrency} onValueChange={(value) => setCurrency(value as CurrencyCode)}>
+        <SelectTrigger className={`h-8 ${hasSmallWidth ? 'w-12' : 'w-16'} sm:w-20 border-0 bg-transparent hover:bg-white/5 transition-colors ${hasSmallText ? 'text-[9px]' : 'text-[10px]'} sm:text-xs ${className || ''}`}>
+          <SelectValue>
+            <span className={`font-semibold text-slate-200 ${hasSmallText ? 'text-[9px]' : 'text-[10px]'} sm:text-xs`}>{currentCurrency.symbol}</span>
+          </SelectValue>
+        </SelectTrigger>
+        <SelectContent className="glass border-white/10 bg-[#0b1024]/95 backdrop-blur-2xl max-h-[300px]">
+          {SUPPORTED_CURRENCIES.map((currency) => (
+            <SelectItem key={currency.code} value={currency.code}>
+              <div className="flex items-center gap-2">
+                <span className="font-semibold">{currency.symbol}</span>
+                <span className="text-xs text-gray-400">{currency.code}</span>
               </div>
             </SelectItem>
           ))}
