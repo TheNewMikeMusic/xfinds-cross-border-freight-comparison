@@ -218,18 +218,15 @@ npm install
 #### 5. 配置环境变量
 ```bash
 cd /var/www/xfinds
-cat > .env.local << 'EOF'
-NODE_ENV=production
 JWT_SECRET=$(openssl rand -base64 32)
+cat > .env.local << EOF
+NODE_ENV=production
+JWT_SECRET=${JWT_SECRET}
 AUTH_MODE=stub
-APP_URL=http://154.21.200.177
-NEXT_PUBLIC_APP_URL=http://154.21.200.177
+APP_URL=https://xfinds.cc
+NEXT_PUBLIC_APP_URL=https://xfinds.cc
 EXCHANGE_RATE_API=https://api.exchangerate-api.com/v4/latest/CNY
 EOF
-
-# 生成 JWT_SECRET
-JWT_SECRET=$(openssl rand -base64 32)
-sed -i "s|\$(openssl rand -base64 32)|$JWT_SECRET|" .env.local
 ```
 
 #### 6. 构建项目
@@ -249,10 +246,14 @@ pm2 startup
 #### 8. 配置防火墙（如果需要）
 ```bash
 # UFW
-ufw allow 3000/tcp
+ufw allow 8000/tcp
+ufw allow 80/tcp
+ufw allow 443/tcp
 
 # 或 firewalld
-firewall-cmd --permanent --add-port=3000/tcp
+firewall-cmd --permanent --add-port=8000/tcp
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --permanent --add-port=443/tcp
 firewall-cmd --reload
 ```
 
