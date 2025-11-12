@@ -178,9 +178,9 @@ export function AgentOfferList({
             </div>
           </CardHeader>
           <CardContent className="space-y-3 sm:space-y-4">
-            <div className="glass border border-blue-600/30 bg-gray-800/30 backdrop-blur-xl p-3 sm:p-4 md:p-6 rounded-xl space-y-2 sm:space-y-3 md:space-y-4 relative">
+            <div className="glass border border-blue-600/30 bg-gray-800/30 backdrop-blur-xl p-3 sm:p-4 md:p-6 rounded-xl space-y-2 sm:space-y-3 md:space-y-4 relative overflow-visible">
               {agent?.recommended && (
-                <div className="absolute top-1 right-1 sm:top-2 sm:right-2">
+                <div className="absolute top-0 right-0 sm:top-1 sm:right-1 z-20 overflow-visible">
                   <RecommendRibbon />
                 </div>
               )}
@@ -383,10 +383,10 @@ export function AgentOfferList({
             <motion.div
               initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
               animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              className="glass border border-blue-600/30 bg-gray-800/30 backdrop-blur-xl p-3 sm:p-4 md:p-6 rounded-xl space-y-2 sm:space-y-3 md:space-y-4 relative"
+              className="glass border border-blue-600/30 bg-gray-800/30 backdrop-blur-xl p-3 sm:p-4 md:p-6 rounded-xl space-y-2 sm:space-y-3 md:space-y-4 relative overflow-visible"
             >
               {selectedAgent.recommended && (
-                <div className="absolute top-1 right-1 sm:top-2 sm:right-2">
+                <div className="absolute top-0 right-0 sm:top-1 sm:right-1 z-20 overflow-visible">
                   <RecommendRibbon />
                 </div>
               )}

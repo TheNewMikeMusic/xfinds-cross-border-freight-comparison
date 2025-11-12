@@ -39,9 +39,9 @@ export function AgentCard({ agent }: AgentCardProps) {
       }
       className="group"
     >
-      <Card className="glass-card relative overflow-hidden border-blue-600/30 bg-gray-900/75 flex flex-col h-full min-h-[200px] sm:min-h-[240px]">
+      <Card className={`glass-card relative ${agent.recommended ? 'overflow-visible' : 'overflow-hidden'} border-blue-600/30 bg-gray-900/75 flex flex-col h-full min-h-[200px] sm:min-h-[240px]`}>
         {agent.recommended && (
-          <div className="absolute top-1 right-1 sm:top-2 sm:right-2 z-10">
+          <div className="absolute top-0 right-0 sm:top-1 sm:right-1 z-20 overflow-visible">
             <RecommendRibbon />
           </div>
         )}
