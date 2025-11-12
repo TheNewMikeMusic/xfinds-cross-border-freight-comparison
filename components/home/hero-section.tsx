@@ -118,7 +118,7 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
                   {titleParts[0].split(' ').map((word, index) => (
                     <span
                       key={`line1-${word}-${index}`}
-                      className="inline-block font-impact relative"
+                      className="inline-block font-impact relative mr-2 sm:mr-3 md:mr-4"
                       style={{
                         fontFamily: 'Impact, "Arial Black", Arial, sans-serif',
                         fontWeight: 'normal',
@@ -134,7 +134,7 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
                       >
                         {word}
                       </motion.span>
-                      {index < titleParts[0].split(' ').length - 1 ? ' ' : <span className="text-white drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]">,</span>}
+                      {index < titleParts[0].split(' ').length - 1 ? '' : <span className="text-white drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]">,</span>}
                     </span>
                   ))}
                 </div>
@@ -142,7 +142,7 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
                   {titleParts[1].split(' ').map((word, index) => (
                     <span
                       key={`line2-${word}-${index}`}
-                      className="inline-block font-impact relative"
+                      className="inline-block font-impact relative mr-2 sm:mr-3 md:mr-4"
                       style={{
                         fontFamily: 'Impact, "Arial Black", Arial, sans-serif',
                         fontWeight: 'normal',
@@ -158,7 +158,6 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
                       >
                         {word}
                       </motion.span>
-                      {index < titleParts[1].split(' ').length - 1 ? ' ' : ''}
                     </span>
                   ))}
                 </div>
@@ -167,7 +166,7 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
               headingWords.map((word, index) => (
                 <span
                   key={`${word}-${index}`}
-                  className="inline-block font-impact relative"
+                  className="inline-block font-impact relative mr-2 sm:mr-3 md:mr-4"
                   style={{
                     fontFamily: 'Impact, "Arial Black", Arial, sans-serif',
                     fontWeight: 'normal',
@@ -183,7 +182,6 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
                   >
                     {word}
                   </motion.span>
-                  {index < headingWords.length - 1 ? ' ' : ''}
                 </span>
               ))
             )}
