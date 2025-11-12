@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
-import { locales, defaultLocale } from '@/i18n'
+import { defaultLocale } from '@/i18n'
 import { useTranslations } from 'next-intl'
 
 export function Footer() {
@@ -29,9 +29,9 @@ export function Footer() {
   return (
     <footer className="mt-auto w-full border-t border-blue-600/30 bg-gray-900/80 backdrop-blur-xl">
       <div className="container mx-auto px-4 py-6 sm:py-8">
-        <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-5">
           {/* Brand */}
-          <div className="space-y-3 sm:space-y-4 lg:col-span-2">
+          <div className="col-span-2 space-y-3 sm:space-y-4 lg:col-span-2">
             <div className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
               Xfinds
             </div>
@@ -44,9 +44,9 @@ export function Footer() {
           </div>
 
           {/* Company */}
-          <div className="space-y-3 sm:space-y-4">
+          <div className="space-y-2 sm:space-y-3 md:space-y-4">
             <h3 className="font-semibold text-xs sm:text-sm text-white">{t('company')}</h3>
-            <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
+            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-400">
               <li>
                 <Link href={`/${currentLocale}/about`} className="hover:text-blue-400 transition-colors">
                   {t('aboutUs')}
@@ -61,9 +61,9 @@ export function Footer() {
           </div>
 
           {/* Legal */}
-          <div className="space-y-3 sm:space-y-4">
+          <div className="space-y-2 sm:space-y-3 md:space-y-4">
             <h3 className="font-semibold text-xs sm:text-sm text-white">{t('legal')}</h3>
-            <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
+            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-400">
               <li>
                 <Link href={`/${currentLocale}/legal/terms`} className="hover:text-blue-400 transition-colors">
                   {t('terms')}
@@ -77,10 +77,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Links & Language */}
-          <div className="space-y-3 sm:space-y-4">
+          {/* Links */}
+          <div className="col-span-2 md:col-span-1 space-y-2 sm:space-y-3 md:space-y-4">
             <h3 className="font-semibold text-xs sm:text-sm text-white">{t('quickLinks')}</h3>
-            <ul className="space-y-2 text-xs sm:text-sm text-gray-400 mb-4">
+            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-400">
               <li>
                 <Link href={`/${currentLocale}/agents`} className="hover:text-blue-400 transition-colors">
                   {t('agentDirectory')}
@@ -92,25 +92,26 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-            <div>
-              <h3 className="font-semibold text-xs sm:text-sm text-white mb-2">{t('language')}</h3>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="sm" className="glass border-blue-600/30 touch-manipulation w-full sm:w-auto">
-                    <Globe className="h-4 w-4 mr-2" />
-                    {currentLocale === 'en' ? 'English' : '中文'}
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="glass border-blue-600/30 bg-gray-800/95 backdrop-blur-xl">
-                  <DropdownMenuItem onClick={() => handleLocaleChange('zh')}>
-                    中文
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => handleLocaleChange('en')}>
-                    English
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+          </div>
+
+          {/* Language */}
+          <div className="col-span-2 md:col-span-1 flex items-start">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm" className="glass border-blue-600/30 touch-manipulation w-full sm:w-auto">
+                  <Globe className="h-4 w-4 mr-2 flex-shrink-0" />
+                  <span>{currentLocale === 'en' ? 'English' : '中文'}</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="glass border-blue-600/30 bg-gray-800/95 backdrop-blur-xl">
+                <DropdownMenuItem onClick={() => handleLocaleChange('zh')}>
+                  中文
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleLocaleChange('en')}>
+                  English
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
 

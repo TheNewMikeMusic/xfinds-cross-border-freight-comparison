@@ -154,34 +154,61 @@ export function AgentOfferList({
     return (
       <>
         <Card className="glass border-blue-600/30 bg-gray-900/75">
-          <CardHeader>
-            <CardTitle>{t('offers')}</CardTitle>
+          <CardHeader className="pb-3 sm:pb-4">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
+              <CardTitle className="text-base sm:text-lg">{t('offers')}</CardTitle>
+              <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-400">
+                <span>{t('offerCount', { count: 1 })}</span>
+                {offer.inStock && (
+                  <>
+                    <span className="text-gray-600">•</span>
+                    <span className="flex items-center gap-1 text-green-400">
+                      <CheckCircle className="h-3 w-3" />
+                      {t('inStock')}
+                    </span>
+                  </>
+                )}
+                {agent?.recommended && (
+                  <>
+                    <span className="text-gray-600">•</span>
+                    <span className="text-blue-400">{t('recommended')}</span>
+                  </>
+                )}
+              </div>
+            </div>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="glass border border-blue-600/30 bg-gray-800/30 backdrop-blur-xl p-6 rounded-xl space-y-4">
+          <CardContent className="space-y-3 sm:space-y-4">
+            <div className="glass border border-blue-600/30 bg-gray-800/30 backdrop-blur-xl p-3 sm:p-4 md:p-6 rounded-xl space-y-2 sm:space-y-3 md:space-y-4 relative">
               {agent?.recommended && (
-                <div className="relative">
+                <div className="absolute top-1 right-1 sm:top-2 sm:right-2">
                   <RecommendRibbon />
                 </div>
               )}
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-4 flex-1 min-w-0">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-2 sm:gap-3 md:gap-4 flex-1 min-w-0">
                   {agent?.logo && (
-                    <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 flex-shrink-0">
+                    <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 flex-shrink-0">
                       <Image
                         src={agent.logo}
                         alt={agent.name}
                         fill
-                        className="object-contain p-2"
-                        sizes="64px"
+                        className="object-contain p-1 sm:p-1.5 md:p-2"
+                        sizes="(max-width: 640px) 40px, (max-width: 768px) 48px, 64px"
                       />
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
-                    <h4 className="font-semibold text-lg mb-1">{agent?.name || offer.agentId}</h4>
+                    <div className="flex items-center gap-1 sm:gap-2 mb-0.5 sm:mb-1 flex-wrap">
+                      <h4 className="font-semibold text-sm sm:text-base md:text-lg">{agent?.name || offer.agentId}</h4>
+                      {agent?.recommended && (
+                        <Badge className="bg-blue-600/20 text-blue-300 border-blue-600/30 text-xs">
+                          {t('recommended')}
+                        </Badge>
+                      )}
+                    </div>
                     {agent?.badges && agent.badges.length > 0 && (
-                      <div className="flex gap-2 flex-wrap">
-                        {agent.badges.map((badge) => (
+                      <div className="flex gap-1 sm:gap-2 flex-wrap mt-1 sm:mt-2">
+                        {agent.badges.slice(0, 2).map((badge) => (
                           <Badge
                             key={badge}
                             className="text-xs bg-blue-600/20 text-blue-300 border-blue-600/30"
@@ -194,22 +221,22 @@ export function AgentOfferList({
                   </div>
                 </div>
                 {offer.inStock ? (
-                  <span className="flex items-center gap-1 text-sm text-green-400">
-                    <CheckCircle className="h-4 w-4" />
-                    {t('inStock')}
+                  <span className="flex items-center gap-1 text-xs sm:text-sm text-green-400 flex-shrink-0">
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="hidden sm:inline">{t('inStock')}</span>
                   </span>
                 ) : (
-                  <span className="flex items-center gap-1 text-sm text-red-400">
-                    <XCircle className="h-4 w-4" />
-                    {t('outOfStock')}
+                  <span className="flex items-center gap-1 text-xs sm:text-sm text-red-400 flex-shrink-0">
+                    <XCircle className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="hidden sm:inline">{t('outOfStock')}</span>
                   </span>
                 )}
               </div>
 
-              <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm">
                 <div>
                   <span className="text-gray-400">{t('price')}:</span>
-                  <span className="ml-2">
+                  <span className="ml-1 sm:ml-2">
                     <PriceDisplay amount={offer.price} originalCurrency={offer.currency as any} />
                   </span>
                 </div>
@@ -220,32 +247,32 @@ export function AgentOfferList({
                       setSelectedShippingOffer(offer)
                       setShippingDetailOpen(true)
                     }}
-                    className="ml-2 text-blue-400 hover:text-blue-300 underline cursor-pointer transition-colors"
+                    className="ml-1 sm:ml-2 text-blue-400 hover:text-blue-300 underline cursor-pointer transition-colors"
                     aria-label={t('viewShippingDetails')}
                   >
                     <PriceDisplay amount={offer.shipFee} originalCurrency={offer.currency as any} />
                   </button>
                 </div>
-                <div>
+                <div className="hidden sm:block">
                   <span className="text-gray-400">{t('estimatedDays')}:</span>
-                  <span className="ml-2">{offer.estDays} {t('days')}</span>
+                  <span className="ml-1 sm:ml-2">{offer.estDays} {t('days')}</span>
                 </div>
                 <div>
                   <span className="text-gray-400">{t('total')}:</span>
-                  <span className="ml-2">
+                  <span className="ml-1 sm:ml-2">
                     <PriceDisplay amount={total} originalCurrency={offer.currency as any} size="lg" />
                   </span>
                 </div>
               </div>
 
               {agent?.promoText && (
-                <div className="bg-blue-600/20 border border-blue-600/30 rounded-lg p-3">
-                  <p className="text-sm text-blue-300">{agent.promoText}</p>
+                <div className="bg-blue-600/20 border border-blue-600/30 rounded-lg p-2 sm:p-3">
+                  <p className="text-xs sm:text-sm text-blue-300">{agent.promoText}</p>
                 </div>
               )}
 
               {product?.skuOptions && product.skuOptions.length > 0 && (
-                <div className="pt-2">
+                <div className="pt-1 sm:pt-2">
                   <SKUSelector
                     options={product.skuOptions}
                     value={selectedSKU}
@@ -254,14 +281,14 @@ export function AgentOfferList({
                 </div>
               )}
 
-              <div className="flex gap-2 pt-2">
+              <div className="flex flex-col sm:flex-row gap-2 pt-1 sm:pt-2">
                 <Button
                   size="sm"
                   onClick={() => handleRedirect(trackingUrl)}
                   disabled={!offer.inStock}
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400"
+                  className="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-xs sm:text-sm py-2 sm:py-1.5"
                 >
-                  {t('buyOnAgent', { agent: agent?.name || offer.agentId })}
+                  <span className="truncate">{t('buyOnAgent', { agent: agent?.name || offer.agentId })}</span>
                 </Button>
                 <Button
                   size="sm"
@@ -272,7 +299,7 @@ export function AgentOfferList({
                      !product.skuOptions.every((option) => selectedSKU[option.name]))
                   }
                   variant="outline"
-                  className="flex-1 glass border-blue-600/30 bg-gray-800/50 backdrop-blur-xl"
+                  className="flex-1 glass border-blue-600/30 bg-gray-800/50 backdrop-blur-xl text-xs sm:text-sm py-2 sm:py-1.5"
                 >
                   {t('addToList')}
                 </Button>
@@ -295,74 +322,108 @@ export function AgentOfferList({
     ? getAgentTrackingUrl(selectedAgent, selectedOffer.link)
     : selectedOffer?.link || ''
 
+  // Calculate statistics
+  const inStockCount = rankedOffers.filter(o => o.inStock).length
+  const recommendedCount = rankedOffers.filter(o => {
+    const agent = agents.find(a => a.id === o.agentId)
+    return agent?.recommended
+  }).length
+
   return (
     <>
       <Card className="glass border-blue-600/30 bg-gray-900/75">
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <CardTitle>{t('offers')}</CardTitle>
+        <CardHeader className="pb-3 sm:pb-4">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
+              <CardTitle className="text-base sm:text-lg">{t('offers')}</CardTitle>
+              <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-400">
+                <span>{t('offerCount', { count: rankedOffers.length })}</span>
+                {inStockCount > 0 && (
+                  <>
+                    <span className="text-gray-600">•</span>
+                    <span className="flex items-center gap-1 text-green-400">
+                      <CheckCircle className="h-3 w-3" />
+                      {inStockCount} {t('inStock')}
+                    </span>
+                  </>
+                )}
+                {recommendedCount > 0 && (
+                  <>
+                    <span className="text-gray-600">•</span>
+                    <span className="text-blue-400">{recommendedCount} {t('recommended')}</span>
+                  </>
+                )}
+              </div>
+            </div>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsComparisonExpanded(!isComparisonExpanded)}
-              className="text-blue-300 hover:text-blue-200"
+              className="text-blue-300 hover:text-blue-200 text-xs sm:text-sm self-start sm:self-auto"
             >
               {isComparisonExpanded ? (
                 <>
-                  {t('collapseComparison')}
-                  <ChevronUp className="ml-2 h-4 w-4" />
+                  <span className="hidden sm:inline">{t('collapseComparison')}</span>
+                  <span className="sm:hidden">{t('collapseComparison')}</span>
+                  <ChevronUp className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                 </>
               ) : (
                 <>
-                  {t('compareAgents')}
-                  <ChevronDown className="ml-2 h-4 w-4" />
+                  <span className="hidden sm:inline">{t('compareAgents')}</span>
+                  <span className="sm:hidden">{t('compareAgents')}</span>
+                  <ChevronDown className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                 </>
               )}
             </Button>
           </div>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-3 sm:space-y-4">
           {/* Default selected agent */}
           {selectedOffer && selectedAgent && (
             <motion.div
               initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
               animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              className="glass border border-blue-600/30 bg-gray-800/30 backdrop-blur-xl p-6 rounded-xl space-y-4 relative"
+              className="glass border border-blue-600/30 bg-gray-800/30 backdrop-blur-xl p-3 sm:p-4 md:p-6 rounded-xl space-y-2 sm:space-y-3 md:space-y-4 relative"
             >
               {selectedAgent.recommended && (
-                <div className="absolute top-0 right-0">
+                <div className="absolute top-1 right-1 sm:top-2 sm:right-2">
                   <RecommendRibbon />
                 </div>
               )}
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-4 flex-1 min-w-0">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-2 sm:gap-3 md:gap-4 flex-1 min-w-0">
                   {selectedAgent.logo && (
-                    <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 flex-shrink-0">
+                    <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 flex-shrink-0">
                       <Image
                         src={selectedAgent.logo}
                         alt={selectedAgent.name}
                         fill
-                        className="object-contain p-2"
-                        sizes="64px"
+                        className="object-contain p-1 sm:p-1.5 md:p-2"
+                        sizes="(max-width: 640px) 40px, (max-width: 768px) 48px, 64px"
                       />
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-semibold text-lg">{selectedAgent.name}</h4>
-                      <Badge className="bg-blue-600/20 text-blue-300 border-blue-600/30">
+                    <div className="flex items-center gap-1 sm:gap-2 mb-0.5 sm:mb-1 flex-wrap">
+                      <h4 className="font-semibold text-sm sm:text-base md:text-lg">{selectedAgent.name}</h4>
+                      {selectedAgent.recommended && (
+                        <Badge className="bg-blue-600/20 text-blue-300 border-blue-600/30 text-xs">
+                          {t('recommended')}
+                        </Badge>
+                      )}
+                      <Badge className="bg-blue-600/20 text-blue-300 border-blue-600/30 text-xs hidden sm:inline-flex">
                         #{selectedOffer.rank}
                       </Badge>
-                      <Badge className="bg-green-600/20 text-green-300 border-green-600/30">
+                      <Badge className="bg-green-600/20 text-green-300 border-green-600/30 text-xs hidden md:inline-flex">
                         {selectedOffer.score}/100
                       </Badge>
                     </div>
-                    <Badge variant="outline" className="text-xs border-blue-600/30 text-blue-300">
+                    <Badge variant="outline" className="text-xs border-blue-600/30 text-blue-300 hidden sm:inline-flex">
                       {t(`scoreReasons.${selectedOffer.scoreReason}`)}
                     </Badge>
                     {selectedAgent.badges && selectedAgent.badges.length > 0 && (
-                      <div className="flex gap-2 flex-wrap mt-2">
-                        {selectedAgent.badges.map((badge) => (
+                      <div className="flex gap-1 sm:gap-2 flex-wrap mt-1 sm:mt-2">
+                        {selectedAgent.badges.slice(0, 2).map((badge) => (
                           <Badge
                             key={badge}
                             className="text-xs bg-blue-600/20 text-blue-300 border-blue-600/30"
@@ -375,58 +436,59 @@ export function AgentOfferList({
                   </div>
                 </div>
                 {selectedOffer.inStock ? (
-                  <span className="flex items-center gap-1 text-sm text-green-400">
-                    <CheckCircle className="h-4 w-4" />
-                    {t('inStock')}
+                  <span className="flex items-center gap-1 text-xs sm:text-sm text-green-400 flex-shrink-0">
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="hidden sm:inline">{t('inStock')}</span>
                   </span>
                 ) : (
-                  <span className="flex items-center gap-1 text-sm text-red-400">
-                    <XCircle className="h-4 w-4" />
-                    {t('outOfStock')}
+                  <span className="flex items-center gap-1 text-xs sm:text-sm text-red-400 flex-shrink-0">
+                    <XCircle className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="hidden sm:inline">{t('outOfStock')}</span>
                   </span>
                 )}
               </div>
 
-              <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm">
                 <div>
                   <span className="text-gray-400">{t('price')}:</span>
-                  <span className="ml-2">
+                  <span className="ml-1 sm:ml-2">
                     <PriceDisplay amount={selectedOffer.price} originalCurrency={selectedOffer.currency as any} />
                   </span>
                 </div>
                 <div>
                   <span className="text-gray-400">{t('shipping')}:</span>
                   <button
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.stopPropagation()
                       setSelectedShippingOffer(selectedOffer)
                       setShippingDetailOpen(true)
                     }}
-                    className="ml-2 text-blue-400 hover:text-blue-300 underline cursor-pointer transition-colors"
+                    className="ml-1 sm:ml-2 text-blue-400 hover:text-blue-300 underline cursor-pointer transition-colors"
                     aria-label={t('viewShippingDetails')}
                   >
                     <PriceDisplay amount={selectedOffer.shipFee} originalCurrency={selectedOffer.currency as any} />
                   </button>
                 </div>
-                <div>
+                <div className="hidden sm:block">
                   <span className="text-gray-400">{t('estimatedDays')}:</span>
-                  <span className="ml-2">{selectedOffer.estDays} {t('days')}</span>
+                  <span className="ml-1 sm:ml-2">{selectedOffer.estDays} {t('days')}</span>
                 </div>
                 <div>
                   <span className="text-gray-400">{t('total')}:</span>
-                  <span className="ml-2">
+                  <span className="ml-1 sm:ml-2">
                     <PriceDisplay amount={total} originalCurrency={selectedOffer.currency as any} size="lg" />
                   </span>
                 </div>
               </div>
 
               {selectedAgent.promoText && (
-                <div className="bg-blue-600/20 border border-blue-600/30 rounded-lg p-3">
-                  <p className="text-sm text-blue-300">{selectedAgent.promoText}</p>
+                <div className="bg-blue-600/20 border border-blue-600/30 rounded-lg p-2 sm:p-3">
+                  <p className="text-xs sm:text-sm text-blue-300">{selectedAgent.promoText}</p>
                 </div>
               )}
 
               {product?.skuOptions && product.skuOptions.length > 0 && (
-                <div className="pt-2">
+                <div className="pt-1 sm:pt-2">
                   <SKUSelector
                     options={product.skuOptions}
                     value={selectedSKU}
@@ -435,14 +497,14 @@ export function AgentOfferList({
                 </div>
               )}
 
-              <div className="flex gap-2 pt-2">
+              <div className="flex flex-col sm:flex-row gap-2 pt-1 sm:pt-2">
                 <Button
                   size="sm"
                   onClick={() => handleRedirect(trackingUrl)}
                   disabled={!selectedOffer.inStock}
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400"
+                  className="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-xs sm:text-sm py-2 sm:py-1.5"
                 >
-                  {t('buyOnAgent', { agent: selectedAgent.name })}
+                  <span className="truncate">{t('buyOnAgent', { agent: selectedAgent.name })}</span>
                 </Button>
                 <Button
                   size="sm"
@@ -453,7 +515,7 @@ export function AgentOfferList({
                      !product.skuOptions.every((option) => selectedSKU[option.name]))
                   }
                   variant="outline"
-                  className="flex-1 glass border-blue-600/30 bg-gray-800/50 backdrop-blur-xl"
+                  className="flex-1 glass border-blue-600/30 bg-gray-800/50 backdrop-blur-xl text-xs sm:text-sm py-2 sm:py-1.5"
                 >
                   {t('addToList')}
                 </Button>

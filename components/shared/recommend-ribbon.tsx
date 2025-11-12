@@ -16,12 +16,12 @@ export function RecommendRibbon({ className }: RecommendRibbonProps) {
       initial={shouldReduceMotion ? {} : { scale: 0 }}
       animate={shouldReduceMotion ? {} : { scale: 1 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
-      className={`absolute top-0 right-0 z-10 ${className || ''}`}
+      className={`relative ${className || ''}`}
       aria-label={t('recommended')}
     >
       <div className="relative">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-600/20 blur-sm" />
-        <div className="relative bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-bl-lg shadow-lg">
+        <div className="relative bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-semibold px-3 py-1.5 rounded-bl-lg shadow-lg">
           <span className="relative z-10">{t('recommended')}</span>
         </div>
       </div>

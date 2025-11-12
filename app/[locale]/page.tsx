@@ -88,9 +88,11 @@ export default async function LandingPage({ params }: LandingPageProps) {
         <section className="py-8 px-4 sm:py-12 md:py-16 bg-gray-900/50">
           <div className="container mx-auto">
             <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 md:mb-12">{t('featuredAgents')}</h2>
-            <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {featuredAgents.map((agent) => (
-                <AgentCard key={agent.id} agent={agent} />
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-6 items-stretch">
+              {featuredAgents.map((agent, index) => (
+                <div key={agent.id} className={`${index >= 4 ? 'hidden md:block' : ''} h-full`}>
+                  <AgentCard agent={agent} />
+                </div>
               ))}
             </div>
           </div>

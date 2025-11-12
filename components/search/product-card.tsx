@@ -63,6 +63,7 @@ export function ProductCard({ product, locale, agents = [], priority = false }: 
               transition: { duration: 0.35, ease: 'easeOut' },
             }
       }
+      className="pt-2 sm:pt-0"
     >
       <Link href={`/${currentLocale}/product/${product.slug}`} className="group block rounded-3xl focus-ring touch-manipulation active:scale-[0.98]">
         <Card className="glass-card overflow-hidden rounded-3xl border-blue-600/20 p-0 focus-ring">
@@ -87,13 +88,13 @@ export function ProductCard({ product, locale, agents = [], priority = false }: 
               </div>
             )}
           </div>
-          <CardContent className="p-4 sm:p-6">
-            <h3 className="mb-1 line-clamp-2 text-base font-semibold text-white transition-colors group-hover:text-blue-200 sm:text-lg">
+          <CardContent className="p-3 sm:p-6">
+            <h3 className="mb-1 line-clamp-2 text-sm font-semibold text-white transition-colors group-hover:text-blue-200 sm:text-lg">
               {product.title}
             </h3>
-            <p className="mb-3 text-xs text-gray-400 sm:text-sm">{product.brand}</p>
+            <p className="mb-2 text-xs text-gray-400 sm:text-sm">{product.brand}</p>
             <div className="flex items-center justify-between mb-2">
-              <div className={cn('text-blue-300 text-lg sm:text-xl', isDeal && 'animate-[priceFlash_1.8s_ease-in-out_infinite]')}>
+              <div className={cn('text-blue-300 text-base sm:text-xl', isDeal && 'animate-[priceFlash_1.8s_ease-in-out_infinite]')}>
                 <PriceDisplay amount={minPrice} originalCurrency={currency as any} size="lg" />
               </div>
               <span className="text-xs text-gray-500">
@@ -101,7 +102,7 @@ export function ProductCard({ product, locale, agents = [], priority = false }: 
               </span>
             </div>
             {bestAgent && bestOffer && (
-              <div className="flex items-center gap-2 mb-3 p-2 rounded-lg bg-gray-800/50 border border-blue-600/20">
+              <div className="flex items-center gap-1.5 mb-2 p-1.5 sm:p-2 rounded-lg bg-gray-800/50 border border-blue-600/20">
                 {bestAgent.logo && (
                   <div className="relative w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
                     <Image
@@ -141,11 +142,11 @@ export function ProductCard({ product, locale, agents = [], priority = false }: 
               </div>
             )}
             {product.tags.length > 0 && (
-              <div className="mt-3 flex flex-wrap gap-2">
+              <div className="hidden sm:flex mt-2 flex-wrap gap-1.5">
                 {product.tags.slice(0, 3).map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-blue-500/30 px-3 py-1 text-xs text-blue-200"
+                    className="rounded-full border border-blue-500/30 px-2 py-0.5 text-xs text-blue-200"
                   >
                     {tag}
                   </span>

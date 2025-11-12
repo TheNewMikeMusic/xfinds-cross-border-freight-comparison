@@ -41,7 +41,7 @@ export function CategoryGrid({ categories, locale }: CategoryGridProps) {
 
   return (
     <motion.div
-      className="flex flex-wrap justify-center gap-3 max-w-6xl mx-auto sm:gap-4 md:gap-5"
+      className="grid grid-cols-2 gap-2 max-w-6xl mx-auto sm:gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 lg:gap-5"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
@@ -51,7 +51,7 @@ export function CategoryGrid({ categories, locale }: CategoryGridProps) {
         <motion.div
           key={category.id}
           variants={cardVariants}
-          className="w-full sm:w-[calc(50%-0.75rem)] md:w-[220px] lg:w-[240px]"
+          className="w-full"
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
         >

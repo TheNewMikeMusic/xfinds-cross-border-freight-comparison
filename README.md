@@ -48,7 +48,7 @@ npm run dev
 ## 项目结构
 
 ```
-Xfinds-1/
+Xfinds/
 ├── app/                    # Next.js App Router 页面
 ├── components/             # React 组件
 │   ├── ui/                # shadcn/ui 基础组件
@@ -59,7 +59,16 @@ Xfinds-1/
 ├── lib/                    # 工具函数和库
 ├── store/                  # Zustand 状态管理
 ├── data/                   # JSON 数据文件
-└── public/                 # 静态资源
+├── docs/                   # 项目文档
+│   ├── deployment/        # 部署相关文档
+│   └── troubleshooting/   # 故障排查文档
+├── scripts/                # 脚本文件
+│   ├── deploy/            # 部署脚本
+│   └── process-images.ts  # 图片处理脚本
+├── public/                 # 静态资源
+├── DEPLOY.md              # 部署指南（快速参考）
+├── setup-https.sh         # HTTPS 配置脚本
+└── nginx.conf             # Nginx 配置文件
 
 ```
 
@@ -70,6 +79,14 @@ Xfinds-1/
 - `npm run start` - 启动生产服务器
 - `npm run lint` - 运行 ESLint
 - `npm run type-check` - 类型检查
+
+## 部署
+
+详细的部署指南请查看 [`DEPLOY.md`](./DEPLOY.md) 文件。
+
+快速部署：
+1. 查看 [`DEPLOY.md`](./DEPLOY.md) 获取一键部署命令
+2. 遇到问题请查看 [`docs/troubleshooting/`](./docs/troubleshooting/) 目录
 
 ## 环境变量
 

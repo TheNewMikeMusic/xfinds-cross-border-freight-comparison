@@ -48,7 +48,7 @@ export function ProductCarousel({ products, locale, agents, itemsPerPage = 6 }: 
 
   return (
     <div className="relative">
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-visible">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={currentPage}
@@ -56,7 +56,7 @@ export function ProductCarousel({ products, locale, agents, itemsPerPage = 6 }: 
             animate={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
             exit={shouldReduceMotion ? undefined : { opacity: 0, x: -100 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 xl:grid-cols-3"
+            className="grid grid-cols-2 gap-2 sm:gap-4 sm:grid-cols-2 xl:grid-cols-3"
           >
             {currentProducts.map((product, index) => (
               <ProductCard 

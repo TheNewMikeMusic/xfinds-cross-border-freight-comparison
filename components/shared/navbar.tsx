@@ -128,7 +128,7 @@ export function Navbar() {
           href={`/${locale}`}
           className="focus-ring flex items-center space-x-2 rounded-full px-3 py-1 transition-transform duration-500 hover:scale-105 active:scale-95 touch-manipulation min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0"
         >
-          <div className="font-hacker text-xs uppercase tracking-[0.6em] text-sky-200 sm:text-sm">
+          <div className="font-hacker text-xs tracking-[0.6em] text-sky-200 sm:text-sm">
             Xfinds
           </div>
         </Link>

@@ -3,7 +3,6 @@ import { Navbar } from '@/components/shared/navbar'
 import { Footer } from '@/components/shared/footer'
 import { MediaGallery } from '@/components/product/media-gallery'
 import { Specs } from '@/components/product/specs'
-import { AgentOfferList } from '@/components/product/agent-offer-list'
 import {
   getProductBySlug,
   getAgents,
@@ -44,16 +43,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <ProductSummary product={product} category={category} locale={locale} agents={agents} />
             <Specs specs={product.specs} />
           </div>
-        </div>
-
-        {/* Agent Offers - Full width below */}
-        <div className="mt-8">
-          <AgentOfferList
-            offers={product.offers}
-            agents={agents}
-            productId={product.id}
-            product={product}
-          />
         </div>
       </main>
       <Footer />

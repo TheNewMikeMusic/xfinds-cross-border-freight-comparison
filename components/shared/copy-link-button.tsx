@@ -13,6 +13,7 @@ interface CopyLinkButtonProps {
   size?: 'default' | 'sm' | 'lg' | 'icon'
   className?: string
   ariaLabel?: string
+  title?: string
 }
 
 export function CopyLinkButton({
@@ -21,6 +22,7 @@ export function CopyLinkButton({
   size = 'default',
   className = '',
   ariaLabel,
+  title,
 }: CopyLinkButtonProps) {
   const t = useTranslations('agent')
   const [copied, setCopied] = useState(false)
@@ -50,6 +52,7 @@ export function CopyLinkButton({
       onClick={handleCopy}
       className={className}
       aria-label={ariaLabel || t('copyLink')}
+      title={title || t('copyLink')}
     >
       {copied ? (
         <>

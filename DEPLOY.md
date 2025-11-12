@@ -1,5 +1,9 @@
 # Xfinds 部署指南
 
+> 📚 更多文档请查看 [`docs/`](./docs/) 目录
+> - 部署相关文档: [`docs/deployment/`](./docs/deployment/)
+> - 故障排查文档: [`docs/troubleshooting/`](./docs/troubleshooting/)
+
 ## 服务器信息
 - **IP 地址**: 154.21.200.177
 - **域名**: xfinds.cc
