@@ -14,7 +14,7 @@ import { Category, Agent } from '@/lib/data'
 import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
 import { FloatingInput } from '@/components/ui/floating-input'
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 import { Filter } from 'lucide-react'
 
@@ -41,10 +41,8 @@ export function FiltersPanel({
   const [minPrice, setMinPrice] = useState<string>('')
   const [maxPrice, setMaxPrice] = useState<string>('')
   const [priceTouched, setPriceTouched] = useState({ min: false, max: false })
-  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    setIsMounted(true)
     if (searchParams) {
       const cat = searchParams.get('cat') || 'all'
       const agent = searchParams.get('agent') || 'all'
@@ -80,9 +78,9 @@ export function FiltersPanel({
   const priceHint = priceError ? undefined : t('priceRangeHint')
 
   const filtersContent = (
-    <div className="space-y-4">
+    <div className="space-y-4 text-white">
         <div className="space-y-2">
-          <p className="text-sm text-gray-400">{t('category')}</p>
+          <p className="text-sm text-gray-300">{t('category')}</p>
           <Select
             value={categoryId || 'all'}
             onValueChange={(value) => {
@@ -94,14 +92,14 @@ export function FiltersPanel({
             <SelectTrigger
               id="category"
               aria-label={t('category')}
-              className="glass w-full rounded-2xl border-blue-600/30 bg-gray-900/70 text-left"
+              className="glass w-full rounded-2xl border-blue-600/30 bg-gray-900/70 text-left text-white"
             >
-              <SelectValue placeholder={t('selectCategory')} />
+              <SelectValue placeholder={t('selectCategory')} className="text-white" />
             </SelectTrigger>
-            <SelectContent className="glass border-blue-600/40 bg-gray-900/95">
-              <SelectItem value="all">{t('all')}</SelectItem>
+            <SelectContent className="glass border-blue-600/40 bg-gray-900/95 text-white">
+              <SelectItem value="all" className="text-white">{t('all')}</SelectItem>
               {categories.map((cat) => (
-                <SelectItem key={cat.id} value={cat.id} className="capitalize">
+                <SelectItem key={cat.id} value={cat.id} className="capitalize text-white">
                   {cat.icon} {cat.name}
                 </SelectItem>
               ))}
@@ -110,7 +108,7 @@ export function FiltersPanel({
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm text-gray-400">{t('agent')}</p>
+          <p className="text-sm text-gray-300">{t('agent')}</p>
           <Select
             value={agentId || 'all'}
             onValueChange={(value) => {
@@ -122,14 +120,14 @@ export function FiltersPanel({
             <SelectTrigger
               id="agent"
               aria-label={t('agent')}
-              className="glass w-full rounded-2xl border-blue-600/30 bg-gray-900/70 text-left"
+              className="glass w-full rounded-2xl border-blue-600/30 bg-gray-900/70 text-left text-white"
             >
-              <SelectValue placeholder={t('selectAgent')} />
+              <SelectValue placeholder={t('selectAgent')} className="text-white" />
             </SelectTrigger>
-            <SelectContent className="glass border-blue-600/40 bg-gray-900/95">
-              <SelectItem value="all">{t('all')}</SelectItem>
+            <SelectContent className="glass border-blue-600/40 bg-gray-900/95 text-white">
+              <SelectItem value="all" className="text-white">{t('all')}</SelectItem>
               {agents.map((agent) => (
-                <SelectItem key={agent.id} value={agent.id}>
+                <SelectItem key={agent.id} value={agent.id} className="text-white">
                   {agent.name}
                 </SelectItem>
               ))}
@@ -138,7 +136,7 @@ export function FiltersPanel({
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm text-gray-400">{t('priceRange')}</p>
+          <p className="text-sm text-gray-300">{t('priceRange')}</p>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <FloatingInput
               id="minPrice"
@@ -204,11 +202,17 @@ export function FiltersPanel({
             {t('filters')}
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="glass border-white/10 bg-[#0b1024]/95 backdrop-blur-2xl w-[85vw] sm:w-[400px] overflow-y-auto">
-          <SheetHeader>
+        <SheetContent 
+          side="left" 
+          className="!bg-[#0b1024] border-white/10 backdrop-blur-2xl w-[85vw] sm:w-[400px] overflow-y-auto"
+        >
+          <SheetHeader className="relative z-10 mb-6">
             <SheetTitle className="text-white">{t('filters')}</SheetTitle>
+            <SheetDescription className="text-gray-400">
+              Filter products by category, agent, and price range
+            </SheetDescription>
           </SheetHeader>
-          <div className="mt-6">
+          <div className="relative z-10">
             {filtersContent}
           </div>
         </SheetContent>

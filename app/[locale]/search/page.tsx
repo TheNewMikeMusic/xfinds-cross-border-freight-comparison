@@ -64,6 +64,15 @@ async function SearchContent({ params, searchParams }: SearchPageProps) {
     <div className="flex min-h-screen flex-col">
       <Navbar />
       <main className="flex-1 container mx-auto px-2 py-6 sm:px-4 sm:py-8">
+        {/* Mobile Filters Button - Moved to top */}
+        <div className="lg:hidden mb-4">
+          <FiltersPanel
+            categories={categories}
+            agents={agents}
+            mobile
+          />
+        </div>
+        
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
           {/* Filters Sidebar - Desktop */}
           <aside className="hidden lg:block lg:col-span-1">
@@ -75,14 +84,6 @@ async function SearchContent({ params, searchParams }: SearchPageProps) {
 
           {/* Results */}
           <div className="lg:col-span-3">
-            {/* Mobile Filters Button */}
-            <div className="lg:hidden mb-4">
-              <FiltersPanel
-                categories={categories}
-                agents={agents}
-                mobile
-              />
-            </div>
             <SearchResults
               products={paginatedProducts}
               categories={categories}
