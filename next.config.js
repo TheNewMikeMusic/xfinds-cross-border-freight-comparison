@@ -37,6 +37,9 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
 
+  // Output configuration
+  output: 'standalone',
+
   // ESLint configuration
   eslint: {
     // Allow production builds even with ESLint warnings
