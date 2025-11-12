@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Search, ShoppingCart, User, LogOut, ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -142,10 +143,18 @@ export function Navbar() {
           )}
           <Link
             href={`/${locale}`}
-            className="focus-ring flex items-center space-x-2 rounded-full px-3 py-1 transition-transform duration-500 hover:scale-105 active:scale-95 touch-manipulation min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0"
+            aria-label="Xfinds home"
+            className="focus-ring flex items-center transition-all duration-300 hover:opacity-80 active:scale-95 touch-manipulation"
           >
-            <div className="font-hacker text-xs tracking-[0.6em] text-sky-200 sm:text-sm">
-              Xfinds
+            <div className="relative h-8 w-auto flex-shrink-0">
+              <Image
+                src="/Xfinds logo.png"
+                alt="Xfinds logo"
+                width={96}
+                height={32}
+                className="object-contain h-8 w-auto"
+                priority
+              />
             </div>
           </Link>
         </div>

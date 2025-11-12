@@ -29,7 +29,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
                 <section>
                   <h2 className="text-2xl font-semibold text-white mb-4 mt-8">1. Introduction</h2>
                   <p className="mb-4">
-                    Xfinds ("we", "us", "our", or "the Service") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website, mobile applications, and related services (collectively, the "Service").
+                    Xfinds (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;, or &quot;the Service&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website, mobile applications, and related services (collectively, the &quot;Service&quot;).
                   </p>
                   <p className="mb-4">
                     Please read this Privacy Policy carefully. By accessing or using our Service, you agree to the collection and use of information in accordance with this policy. If you do not agree with our policies and practices, do not use our Service.
@@ -272,7 +272,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-semibold text-white mb-4 mt-8">9. Children's Privacy</h2>
+                  <h2 className="text-2xl font-semibold text-white mb-4 mt-8">9. Children&apos;s Privacy</h2>
                   <p className="mb-4">
                     Our Service is not intended for children under the age of 18 (or the age of majority in your jurisdiction). We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately. If we become aware that we have collected personal information from a child without parental consent, we will take steps to delete such information.
                   </p>
@@ -312,7 +312,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
                   <ul className="list-disc pl-6 mb-4 space-y-2">
                     <li>The right to access your personal data</li>
                     <li>The right to rectification of inaccurate data</li>
-                    <li>The right to erasure ("right to be forgotten")</li>
+                    <li>The right to erasure (&quot;right to be forgotten&quot;)</li>
                     <li>The right to restrict processing</li>
                     <li>The right to data portability</li>
                     <li>The right to object to processing</li>
@@ -330,7 +330,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
                   </p>
                   <ul className="list-disc pl-6 mb-4 space-y-2">
                     <li>Posting the updated Privacy Policy on this page</li>
-                    <li>Updating the "Last Updated" date at the top of this page</li>
+                    <li>Updating the &quot;Last Updated&quot; date at the top of this page</li>
                     <li>Sending an email notification to registered users (if applicable)</li>
                     <li>Displaying a prominent notice on our Service</li>
                   </ul>

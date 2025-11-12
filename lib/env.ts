@@ -4,6 +4,7 @@
  */
 
 const isProduction = process.env.NODE_ENV === 'production'
+const isBuildTime = process.env.NEXT_PHASE === 'phase-production-build' || process.env.NEXT_PHASE === 'phase-development-build'
 
 function getEnvVar(name: string, defaultValue?: string, required = true): string {
   const value = process.env[name] || defaultValue
@@ -12,7 +13,8 @@ function getEnvVar(name: string, defaultValue?: string, required = true): string
     throw new Error(`Missing required environment variable: ${name}`)
   }
 
-  if (isProduction && name === 'JWT_SECRET' && value === 'dev-secret-key-change-in-production') {
+  // Only validate JWT_SECRET at runtime, not during build
+  if (isProduction && !isBuildTime && name === 'JWT_SECRET' && value === 'dev-secret-key-change-in-production') {
     throw new Error('JWT_SECRET must be changed from default value in production')
   }
 
@@ -35,8 +37,8 @@ export const env = {
   exchangeRateApi: getEnvVar('EXCHANGE_RATE_API', 'https://api.exchangerate-api.com/v4/latest/CNY', false),
 } as const
 
-// Validate environment on module load
-if (isProduction) {
+// Validate environment on module load (only at runtime, not during build)
+if (isProduction && !isBuildTime) {
   // Additional production checks
   if (!env.jwtSecret || env.jwtSecret.length < 32) {
     throw new Error('JWT_SECRET must be at least 32 characters in production')
