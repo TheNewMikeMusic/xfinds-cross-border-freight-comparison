@@ -88,18 +88,70 @@ EOF
 fi
 
 echo ""
+echo "=== 清理构建和缓存（预防 Sharp 错误） ==="
+rm -rf .next
+rm -rf node_modules/.cache
+
+echo ""
 echo "=== 安装依赖 ==="
 npm install
+
+echo ""
+echo "=== 确保 Sharp 正确安装（预防图片优化错误） ==="
+npm install sharp@latest --force || echo "Sharp 安装警告，继续..."
 
 echo ""
 echo "=== 构建项目 ==="
 npm run build
 
+# 验证构建是否成功
+if [ ! -d ".next" ]; then
+    echo "❌ 错误: 构建失败，.next 目录不存在"
+    exit 1
+fi
+
 echo ""
-echo "=== 启动应用（8000 端口） ==="
-pm2 start npm --name "xfinds" -- start
+echo "=== 使用 PM2 生态系统配置启动应用 ==="
+# 如果存在 ecosystem.config.js，使用它；否则使用传统方式
+if [ -f "ecosystem.config.js" ]; then
+    echo "使用 ecosystem.config.js 配置启动..."
+    pm2 start ecosystem.config.js
+else
+    echo "使用传统方式启动..."
+    pm2 start npm --name "xfinds" -- start
+fi
+
 pm2 save
 pm2 startup | tail -1 | bash || true
+
+echo ""
+echo "=== 等待应用启动并验证 ==="
+sleep 5
+
+# 检查应用状态
+if pm2 list | grep -q "xfinds.*online"; then
+    echo "✅ 应用已启动"
+else
+    echo "⚠️  应用可能未正常启动，检查日志..."
+    pm2 logs xfinds --lines 20 --nostream
+    exit 1
+fi
+
+# 检查端口监听
+if netstat -tulpn 2>/dev/null | grep -q ":8000" || ss -tulpn 2>/dev/null | grep -q ":8000"; then
+    echo "✅ 端口 8000 正在监听"
+else
+    echo "⚠️  端口 8000 未监听，检查应用日志..."
+    pm2 logs xfinds --lines 30 --nostream
+    exit 1
+fi
+
+# 测试本地连接
+if curl -f -s -o /dev/null -w "%{http_code}" http://localhost:8000 | grep -q "200\|301\|302\|307"; then
+    echo "✅ 本地连接测试成功"
+else
+    echo "⚠️  本地连接测试失败，但继续..."
+fi
 
 echo ""
 echo "=== 配置防火墙 ==="
@@ -124,15 +176,31 @@ echo "测试 Nginx 配置..."
 nginx -t && systemctl reload nginx || echo "Nginx 配置测试失败，请检查配置"
 
 echo ""
+echo ""
+echo "=== 最终验证 ==="
+pm2 status
+echo ""
+echo "应用日志（最后 10 行）："
+pm2 logs xfinds --lines 10 --nostream || true
+
+echo ""
 echo "=========================================="
-echo "部署完成！"
+echo "✅ 部署完成！"
+echo "=========================================="
 echo "访问地址: https://xfinds.cc"
 echo "备份位置: $BACKUP_DIR"
 echo ""
-echo "注意：如果尚未配置 HTTPS，请运行："
-echo "  chmod +x setup-https.sh && ./setup-https.sh"
+echo "应用状态:"
+pm2 list | grep xfinds || echo "未找到 xfinds 进程"
+echo ""
+echo "如果遇到问题，请检查："
+echo "  - pm2 logs xfinds"
+echo "  - tail -50 /var/log/nginx/xfinds-error.log"
+echo ""
+echo "运行验证脚本："
+echo "  chmod +x scripts/deploy/verify-deployment.sh"
+echo "  ./scripts/deploy/verify-deployment.sh"
 echo "=========================================="
-pm2 status
 SCRIPT_END
 
 chmod +x /root/deploy-from-github.sh
