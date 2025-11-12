@@ -220,7 +220,44 @@ chmod +x /root/deploy-from-github.sh
 
 **部署状态**：✅ 已验证成功
 
-### 方法二：使用本地部署脚本
+### 方法二：快速更新（推荐用于日常更新 ⚡）
+
+如果项目已经部署过，只需要更新代码，可以使用快速更新脚本：
+
+**在服务器上执行**：
+
+```bash
+cd /var/www/xfinds
+
+# 如果脚本不存在，先拉取最新代码
+git pull origin main
+
+# 运行快速更新脚本
+chmod +x scripts/deploy/quick-update.sh
+./scripts/deploy/quick-update.sh
+```
+
+**或者一键执行**：
+
+```bash
+cd /var/www/xfinds && git pull origin main && chmod +x scripts/deploy/quick-update.sh && ./scripts/deploy/quick-update.sh
+```
+
+**快速更新脚本功能**：
+- ✅ 拉取最新代码
+- ✅ 清理构建缓存（预防 Sharp 错误）
+- ✅ 安装依赖更新
+- ✅ 重新构建项目
+- ✅ 重启 PM2 应用
+- ✅ 验证部署状态
+
+**适用场景**：
+- 日常代码更新
+- 功能更新
+- Bug 修复
+- 不需要重新配置环境的情况
+
+### 方法三：使用本地部署脚本
 
 适用于已有项目目录的情况，不会完全替换项目。
 
@@ -247,7 +284,7 @@ chmod +x /root/server-deploy.sh
 /root/server-deploy.sh
 ```
 
-### 方法三：手动部署步骤
+### 方法四：手动部署步骤
 
 如果脚本执行失败，可以按照以下步骤手动部署：
 
