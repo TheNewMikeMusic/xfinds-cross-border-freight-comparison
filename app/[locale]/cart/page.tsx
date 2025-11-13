@@ -316,7 +316,7 @@ export default function CartPage() {
         <main className="flex-1 container mx-auto px-4 py-8">
           <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="bg-gradient-to-r from-sky-200 via-blue-300 to-violet-400 bg-clip-text text-4xl font-semibold text-transparent">
+              <h1 className="bg-gradient-to-r from-blue-600 via-blue-500 to-violet-600 dark:from-sky-200 dark:via-blue-300 dark:to-violet-400 bg-clip-text text-4xl font-semibold text-transparent">
                 {t('title')}
               </h1>
               <p className="mt-2 text-sm text-muted-foreground dark:text-slate-400">
@@ -359,8 +359,8 @@ export default function CartPage() {
                     >
                       <Card className="glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:bg-gray-900/75">
                         <CardHeader>
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-4">
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                            <div className="flex items-center gap-4 min-w-0 flex-1">
                               {agent?.logo && (
                                 <div className="relative w-12 h-12 rounded-full overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 flex-shrink-0">
                                   <Image
@@ -372,16 +372,16 @@ export default function CartPage() {
                                   />
                                 </div>
                               )}
-                              <div>
-                                <CardTitle className="text-xl text-foreground dark:text-white">{agent?.name || group.agentId}</CardTitle>
+                              <div className="min-w-0 flex-1">
+                                <CardTitle className="text-xl text-foreground dark:text-white truncate">{agent?.name || group.agentId}</CardTitle>
                                 <p className="text-sm text-muted-foreground dark:text-slate-400 mt-1">
                                   {t('itemsInGroup', { count: group.items.length })}
                                 </p>
                               </div>
                             </div>
                             {agent?.promoText && (
-                              <div className="bg-blue-600/20 border border-blue-600/30 rounded-lg px-3 py-1">
-                                <p className="text-xs sm:text-sm text-blue-300 break-words">{agent.promoText}</p>
+                              <div className="bg-blue-50 dark:bg-blue-600/20 border border-blue-300 dark:border-blue-600/30 rounded-lg px-3 py-1 flex-shrink-0 self-start sm:self-auto">
+                                <p className="text-xs sm:text-sm text-blue-700 dark:text-blue-300 break-words">{agent.promoText}</p>
                               </div>
                             )}
                           </div>
@@ -421,9 +421,9 @@ export default function CartPage() {
                                         {Object.entries(item.sku).map(([key, value]) => (
                                           <span
                                             key={key}
-                                            className="inline-flex items-center gap-1 rounded-full border border-blue-600/30 bg-blue-600/10 px-2 py-0.5 text-xs text-blue-300"
+                                            className="inline-flex items-center gap-1 rounded-full border border-blue-300 dark:border-blue-600/30 bg-blue-50 dark:bg-blue-600/10 px-2 py-0.5 text-xs text-blue-700 dark:text-blue-300"
                                           >
-                                            <span className="text-blue-400">{key}:</span>
+                                            <span className="text-blue-600 dark:text-blue-400">{key}:</span>
                                             <span>{value}</span>
                                           </span>
                                         ))}
@@ -483,7 +483,7 @@ export default function CartPage() {
                                   setSelectedShippingGroup(group)
                                   setShippingDetailOpen(true)
                                 }}
-                                className="text-lg font-semibold text-blue-300 hover:text-blue-200 underline cursor-pointer transition-colors text-left"
+                                className="text-lg font-semibold text-blue-600 dark:text-blue-300 hover:text-blue-700 dark:hover:text-blue-200 underline cursor-pointer transition-colors text-left"
                                 aria-label={t('viewShippingDetails')}
                               >
                                 {group.estimatedShipping.min === group.estimatedShipping.max ? (
@@ -506,7 +506,7 @@ export default function CartPage() {
                             <div className="col-span-2 pt-2 border-t border-white/10 dark:border-white/10 border-gray-200/50">
                               <div className="flex items-center justify-between">
                                 <p className="text-sm font-semibold text-foreground dark:text-white">{t('groupTotal')}</p>
-                                <div className="text-xl font-bold bg-gradient-to-r from-sky-200 to-violet-300 bg-clip-text text-transparent">
+                                <div className="text-xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 dark:from-sky-200 dark:to-violet-300 bg-clip-text text-transparent">
                                   <PriceDisplay amount={group.total} originalCurrency="CNY" size="lg" />
                                 </div>
                               </div>
@@ -547,7 +547,7 @@ export default function CartPage() {
                   <div className="border-t border-white/10 dark:border-white/10 border-gray-200/50 pt-4">
                     <div className="flex justify-between text-lg font-bold text-foreground dark:text-white">
                       <span>{t('total')}</span>
-                      <div className="bg-gradient-to-r from-sky-200 to-violet-300 bg-clip-text text-transparent">
+                      <div className="bg-gradient-to-r from-blue-600 to-violet-600 dark:from-sky-200 dark:to-violet-300 bg-clip-text text-transparent">
                         <PriceDisplay amount={total} originalCurrency="CNY" size="lg" />
                       </div>
                     </div>

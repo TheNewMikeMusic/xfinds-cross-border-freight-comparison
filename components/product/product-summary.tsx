@@ -626,7 +626,7 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
               <Button
               onClick={() => handleRedirect(trackingUrl)}
               variant="ghost"
-              className="btn-ripple group flex items-center justify-center gap-3 rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-sm text-cyan-100 hover:bg-white/5 touch-manipulation"
+              className="btn-ripple group flex items-center justify-center gap-3 rounded-2xl border border-gray-300 dark:border-white/15 bg-transparent px-4 py-3 text-sm text-gray-700 dark:text-cyan-100 hover:bg-gray-100 dark:hover:bg-white/5 touch-manipulation"
               >
               <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 {t('viewSource')}
@@ -636,7 +636,7 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
             <Button
               asChild
               variant="ghost"
-              className="btn-ripple group flex items-center justify-center gap-3 rounded-2xl border border-white/15 bg-transparent px-4 py-3 text-sm text-cyan-100 hover:bg-white/5 touch-manipulation"
+              className="btn-ripple group flex items-center justify-center gap-3 rounded-2xl border border-gray-300 dark:border-white/15 bg-transparent px-4 py-3 text-sm text-gray-700 dark:text-cyan-100 hover:bg-gray-100 dark:hover:bg-white/5 touch-manipulation"
             >
               <Link href={`/${locale}/search?cat=${category.id}`}>
                 {t('viewCategory')}

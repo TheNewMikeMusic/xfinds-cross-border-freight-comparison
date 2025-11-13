@@ -44,12 +44,12 @@ export function RedirectDisclaimer({
 
   return (
     <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onCancel()}>
-      <DialogContent className="glass border-blue-600/30 bg-gray-900/95 backdrop-blur-xl">
+      <DialogContent className="glass border-gray-300 dark:border-blue-600/30 bg-white dark:bg-gray-900/95 backdrop-blur-xl">
         <DialogHeader>
-          <DialogTitle className="text-lg sm:text-xl text-white">
+          <DialogTitle className="text-lg sm:text-xl text-gray-900 dark:text-white">
             {t('title')}
           </DialogTitle>
-          <DialogDescription className="text-sm sm:text-base text-gray-300 pt-2">
+          <DialogDescription className="text-sm sm:text-base text-gray-700 dark:text-gray-300 pt-2">
             {t('description')}
           </DialogDescription>
         </DialogHeader>
@@ -58,11 +58,11 @@ export function RedirectDisclaimer({
             id="dont-show-again"
             checked={dontShowAgain}
             onCheckedChange={(checked) => setDontShowAgain(checked === true)}
-            className="border-blue-600/30"
+            className="border-gray-400 dark:border-blue-600/30"
           />
           <label
             htmlFor="dont-show-again"
-            className="text-xs sm:text-sm text-gray-300 cursor-pointer"
+            className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 cursor-pointer"
           >
             {t('dontShowAgain')}
           </label>
@@ -71,13 +71,13 @@ export function RedirectDisclaimer({
           <Button
             variant="outline"
             onClick={onCancel}
-            className="w-full sm:w-auto border-white/10 bg-white/5 text-white hover:bg-white/10"
+            className="w-full sm:w-auto border-gray-300 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10"
           >
             {t('cancel')}
           </Button>
           <Button
             onClick={handleContinue}
-            className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400"
+            className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white"
           >
             {t('continue')}
           </Button>
