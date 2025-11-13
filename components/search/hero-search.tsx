@@ -47,9 +47,9 @@ export function HeroSearch() {
     <form onSubmit={handleSearch} className="mx-auto w-full max-w-2xl">
       <motion.div
         className={cn(
-          'group relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-1',
-          'shadow-[0_35px_120px_rgba(6,9,25,0.65)] backdrop-blur-xl transition-all duration-500 will-change-transform',
-          isFocused && 'border-white/40 shadow-[0_0_55px_rgba(125,211,252,0.45)] bg-white/15'
+          'group relative overflow-hidden rounded-3xl border border-white/20 dark:border-white/20 border-gray-300/50 bg-white/80 dark:bg-white/10 p-1',
+          'shadow-[0_35px_120px_rgba(0,0,0,0.1)] dark:shadow-[0_35px_120px_rgba(6,9,25,0.65)] backdrop-blur-xl transition-all duration-500 will-change-transform',
+          isFocused && 'border-blue-500/60 dark:border-white/40 shadow-[0_0_55px_rgba(59,130,246,0.3)] dark:shadow-[0_0_55px_rgba(125,211,252,0.45)] bg-white dark:bg-white/15'
         )}
         style={!shouldReduceMotion ? { x: springX, y: springY } : undefined}
         onPointerMove={handlePointerMove}
@@ -76,7 +76,7 @@ export function HeroSearch() {
             onBlur={() => setIsFocused(false)}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t('searchPlaceholder')}
-            className="relative z-10 w-full rounded-2xl border-transparent bg-transparent pl-12 sm:pl-14 pr-4 py-4 sm:py-5 md:py-6 text-base sm:text-lg text-white placeholder:text-slate-400 focus-visible:ring-0 caret-sky-300 touch-manipulation"
+            className="relative z-10 w-full rounded-2xl border-transparent bg-transparent pl-12 sm:pl-14 pr-4 py-4 sm:py-5 md:py-6 text-base sm:text-lg text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-slate-400 focus-visible:ring-0 caret-blue-600 dark:caret-sky-300 touch-manipulation"
           />
           <Button
             type="submit"
@@ -87,7 +87,7 @@ export function HeroSearch() {
         </div>
         <Search
           aria-hidden="true"
-          className="pointer-events-none absolute left-4 sm:left-6 top-5 sm:top-7 z-20 h-4 w-4 sm:h-5 sm:w-5 text-slate-300 transition-colors group-focus-within:text-cyan-200 sm:top-1/2 sm:-translate-y-1/2"
+          className="pointer-events-none absolute left-4 sm:left-6 top-5 sm:top-7 z-20 h-4 w-4 sm:h-5 sm:w-5 text-gray-600 dark:text-slate-300 transition-colors group-focus-within:text-blue-600 dark:group-focus-within:text-cyan-200 sm:top-1/2 sm:-translate-y-1/2"
         />
       </motion.div>
     </form>

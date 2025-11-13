@@ -19,10 +19,10 @@ export function SortDropdown({ value, onValueChange }: SortDropdownProps) {
 
   return (
     <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger className="w-[180px] glass border-blue-600/30 bg-gray-800/50 backdrop-blur-xl">
+      <SelectTrigger className="w-[180px] glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:bg-gray-800/50 backdrop-blur-xl">
         <SelectValue />
       </SelectTrigger>
-      <SelectContent className="glass border-blue-600/30 bg-gray-800/95 backdrop-blur-xl">
+      <SelectContent className="glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:bg-gray-800/95 backdrop-blur-xl">
         <SelectItem value="relevance">{t('sortRelevance')}</SelectItem>
         <SelectItem value="price">{t('sortPrice')}</SelectItem>
         <SelectItem value="new">{t('sortNew')}</SelectItem>

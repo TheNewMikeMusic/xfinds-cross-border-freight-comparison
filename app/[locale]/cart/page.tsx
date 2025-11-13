@@ -280,7 +280,7 @@ export default function CartPage() {
         <Navbar />
         <main className="flex-1 container mx-auto px-4 py-8">
           <div className="flex items-center justify-center min-h-[400px]">
-            <div className="text-gray-400">Loading...</div>
+            <div className="text-muted-foreground dark:text-gray-400">Loading...</div>
           </div>
         </main>
         <Footer />
@@ -319,7 +319,7 @@ export default function CartPage() {
               <h1 className="bg-gradient-to-r from-sky-200 via-blue-300 to-violet-400 bg-clip-text text-4xl font-semibold text-transparent">
                 {t('title')}
               </h1>
-              <p className="mt-2 text-sm text-slate-400">
+              <p className="mt-2 text-sm text-muted-foreground dark:text-slate-400">
                 {t('itemCount')}: {items.length} · {t('estimatedTotal')}: <PriceDisplay amount={total} originalCurrency="CNY" size="sm" />
               </p>
             </div>
@@ -334,7 +334,7 @@ export default function CartPage() {
               </Button>
               <Button
                 onClick={clear}
-                className="btn-ripple rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white hover:bg-white/10"
+                className="btn-ripple rounded-2xl border border-white/10 dark:border-white/10 border-gray-200/50 bg-gray-100 dark:bg-white/5 px-4 py-2 text-sm text-foreground dark:text-white hover:bg-gray-200 dark:hover:bg-white/10"
               >
                 {t('clear')}
               </Button>
@@ -357,7 +357,7 @@ export default function CartPage() {
                       exit={shouldReduceMotion ? undefined : { opacity: 0, y: -20 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <Card className="glass border-blue-600/30 bg-gray-900/75">
+                      <Card className="glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:bg-gray-900/75">
                         <CardHeader>
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
@@ -373,8 +373,8 @@ export default function CartPage() {
                                 </div>
                               )}
                               <div>
-                                <CardTitle className="text-xl text-white">{agent?.name || group.agentId}</CardTitle>
-                                <p className="text-sm text-slate-400 mt-1">
+                                <CardTitle className="text-xl text-foreground dark:text-white">{agent?.name || group.agentId}</CardTitle>
+                                <p className="text-sm text-muted-foreground dark:text-slate-400 mt-1">
                                   {t('itemsInGroup', { count: group.items.length })}
                                 </p>
                               </div>
@@ -399,7 +399,7 @@ export default function CartPage() {
                                   initial={shouldReduceMotion ? undefined : { opacity: 0, x: -10 }}
                                   animate={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
                                   transition={shouldReduceMotion ? undefined : { duration: 0.3 }}
-                                  className="flex items-start gap-4 p-3 rounded-xl border border-white/10 bg-white/5"
+                                  className="flex items-start gap-4 p-3 rounded-xl border border-white/10 dark:border-white/10 border-gray-200/50 bg-gray-50 dark:bg-white/5"
                                 >
                                   {product?.cover && (
                                     <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
@@ -413,7 +413,7 @@ export default function CartPage() {
                                     </div>
                                   )}
                                   <div className="flex-1 min-w-0">
-                                    <h4 className="font-semibold text-white mb-1 truncate">
+                                    <h4 className="font-semibold text-foreground dark:text-white mb-1 truncate">
                                       {product?.title || item.productId}
                                     </h4>
                                     {item.sku && Object.keys(item.sku).length > 0 && (
@@ -429,12 +429,12 @@ export default function CartPage() {
                                         ))}
                                       </div>
                                     )}
-                                    <div className="flex items-center gap-4 text-sm text-slate-400 mb-2">
+                                    <div className="flex items-center gap-4 text-sm text-muted-foreground dark:text-slate-400 mb-2">
                                       <span>{t('price')}: <PriceDisplay amount={item.price} originalCurrency="CNY" size="sm" /></span>
                                       <span>{t('shipping')}: <PriceDisplay amount={item.shipFee} originalCurrency="CNY" size="sm" /></span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                      <span className="text-xs text-slate-500">{t('switchAgent')}:</span>
+                                      <span className="text-xs text-muted-foreground/80 dark:text-slate-500">{t('switchAgent')}:</span>
                                       <div className="flex-1 max-w-xs">
                                         {(() => {
                                           const product = getProduct(item.productId)
@@ -458,7 +458,7 @@ export default function CartPage() {
                                     variant="ghost"
                                     size="icon"
                                     onClick={() => removeItem(item.offerId)}
-                                    className="text-slate-400 hover:text-red-400"
+                                    className="text-muted-foreground dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400"
                                     aria-label={t('remove')}
                                   >
                                     <X className="h-4 w-4" />
@@ -469,15 +469,15 @@ export default function CartPage() {
                           </div>
 
                           {/* Group summary */}
-                          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10">
+                          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10 dark:border-white/10 border-gray-200/50">
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">{t('subtotal')}</p>
-                              <div className="text-lg font-semibold text-white">
+                              <p className="text-xs text-muted-foreground dark:text-slate-400 mb-1">{t('subtotal')}</p>
+                              <div className="text-lg font-semibold text-foreground dark:text-white">
                                 <PriceDisplay amount={group.subtotal} originalCurrency="CNY" />
                               </div>
                             </div>
                             <div>
-                              <p className="text-xs text-slate-400 mb-1">{t('groupShipping')}</p>
+                              <p className="text-xs text-muted-foreground dark:text-slate-400 mb-1">{t('groupShipping')}</p>
                               <button
                                 onClick={() => {
                                   setSelectedShippingGroup(group)
@@ -497,15 +497,15 @@ export default function CartPage() {
                             </div>
                             {hasWeight && (
                               <div className="col-span-2">
-                                <p className="text-xs text-slate-400 mb-1">{t('totalWeight')}</p>
-                                <p className="text-sm text-slate-300">
+                                <p className="text-xs text-muted-foreground dark:text-slate-400 mb-1">{t('totalWeight')}</p>
+                                <p className="text-sm text-muted-foreground dark:text-slate-300">
                                   {totalWeight > 0 ? `${totalWeight.toFixed(2)} kg` : t('weightUnknown')}
                                 </p>
                               </div>
                             )}
-                            <div className="col-span-2 pt-2 border-t border-white/10">
+                            <div className="col-span-2 pt-2 border-t border-white/10 dark:border-white/10 border-gray-200/50">
                               <div className="flex items-center justify-between">
-                                <p className="text-sm font-semibold text-white">{t('groupTotal')}</p>
+                                <p className="text-sm font-semibold text-foreground dark:text-white">{t('groupTotal')}</p>
                                 <div className="text-xl font-bold bg-gradient-to-r from-sky-200 to-violet-300 bg-clip-text text-transparent">
                                   <PriceDisplay amount={group.total} originalCurrency="CNY" size="lg" />
                                 </div>
@@ -531,21 +531,21 @@ export default function CartPage() {
 
             {/* Summary sidebar */}
             <div className="lg:col-span-1">
-              <Card className="glass sticky top-24 max-h-[calc(100vh-8rem)] border-white/10 bg-gradient-to-br from-[rgba(7,11,20,0.95)] via-[rgba(5,8,15,0.92)] to-[rgba(2,4,8,0.95)] overflow-hidden flex flex-col">
+              <Card className="glass sticky top-24 max-h-[calc(100vh-8rem)] border-white/10 dark:border-white/10 border-gray-200/50 bg-white dark:bg-gradient-to-br dark:from-[rgba(7,11,20,0.95)] dark:via-[rgba(5,8,15,0.92)] dark:to-[rgba(2,4,8,0.95)] overflow-hidden flex flex-col">
                 <CardHeader className="flex-shrink-0">
-                  <CardTitle className="text-2xl text-white">{t('summary')}</CardTitle>
+                  <CardTitle className="text-2xl text-foreground dark:text-white">{t('summary')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4 pb-6 flex-1 overflow-y-auto">
-                  <div className="flex justify-between text-sm text-slate-300">
+                  <div className="flex justify-between text-sm text-muted-foreground dark:text-slate-300">
                     <span>{t('itemCount')}</span>
-                    <span className="font-semibold text-white">{items.length}</span>
+                    <span className="font-semibold text-foreground dark:text-white">{items.length}</span>
                   </div>
-                  <div className="flex justify-between text-sm text-slate-300">
+                  <div className="flex justify-between text-sm text-muted-foreground dark:text-slate-300">
                     <span>{t('estimatedTotal')}</span>
-                    <span className="font-semibold text-white"><PriceDisplay amount={total} originalCurrency="CNY" /></span>
+                    <span className="font-semibold text-foreground dark:text-white"><PriceDisplay amount={total} originalCurrency="CNY" /></span>
                   </div>
-                  <div className="border-t border-white/10 pt-4">
-                    <div className="flex justify-between text-lg font-bold text-white">
+                  <div className="border-t border-white/10 dark:border-white/10 border-gray-200/50 pt-4">
+                    <div className="flex justify-between text-lg font-bold text-foreground dark:text-white">
                       <span>{t('total')}</span>
                       <div className="bg-gradient-to-r from-sky-200 to-violet-300 bg-clip-text text-transparent">
                         <PriceDisplay amount={total} originalCurrency="CNY" size="lg" />

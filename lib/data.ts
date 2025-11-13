@@ -197,9 +197,28 @@ export function getCategoriesWithProducts(): Array<Category & { productCount: nu
   return categories
     .map((category) => {
       const categoryProducts = validProducts.filter((p) => p.categoryId === category.id)
-      // Prefer products with clean backgrounds (prioritize newer products, but try to get variety)
-      const sortedProducts = categoryProducts
-        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+      
+      let sortedProducts: Product[]
+      
+      // Special handling for Electronics category: ensure earbuds (prod-25) is on the right (second position)
+      if (category.id === 'cat-5') {
+        const earbudsProduct = categoryProducts.find((p) => p.id === 'prod-25')
+        const otherProducts = categoryProducts.filter((p) => p.id !== 'prod-25')
+          .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+        
+        if (earbudsProduct && otherProducts.length > 0) {
+          // Put earbuds in second position (right side)
+          sortedProducts = [otherProducts[0], earbudsProduct]
+        } else {
+          // Fallback to default sorting
+          sortedProducts = categoryProducts
+            .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+        }
+      } else {
+        // Prefer products with clean backgrounds (prioritize newer products, but try to get variety)
+        sortedProducts = categoryProducts
+          .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+      }
       
       return {
         ...category,

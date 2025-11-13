@@ -49,10 +49,10 @@ export const FloatingInput = React.forwardRef<HTMLInputElement, FloatingInputPro
             aria-describedby={messageId}
             aria-labelledby={labelId}
             className={cn(
-              'h-14 rounded-2xl border-blue-600/30 bg-gray-900/60 px-4 py-3 text-base text-white transition-all placeholder-transparent',
+              'h-14 rounded-2xl border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 bg-white dark:bg-gray-900/60 px-4 py-3 text-base text-gray-900 dark:text-white transition-all placeholder-transparent',
               state === 'error'
-                ? 'border-red-400/60 focus-visible:ring-red-400/40'
-                : 'focus-visible:ring-blue-400/40',
+                ? 'border-red-500/60 dark:border-red-400/60 focus-visible:ring-red-500/40 dark:focus-visible:ring-red-400/40'
+                : 'focus-visible:ring-blue-500/40 dark:focus-visible:ring-blue-400/40',
               className
             )}
             {...props}
@@ -60,13 +60,13 @@ export const FloatingInput = React.forwardRef<HTMLInputElement, FloatingInputPro
           {state === 'success' && (
             <CheckCircle
               aria-hidden="true"
-              className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-emerald-400"
+              className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-green-600 dark:text-emerald-400"
             />
           )}
           {state === 'error' && (
             <AlertCircle
               aria-hidden="true"
-              className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-red-400"
+              className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-red-600 dark:text-red-400"
             />
           )}
         </div>
@@ -75,7 +75,7 @@ export const FloatingInput = React.forwardRef<HTMLInputElement, FloatingInputPro
             <motion.p
               key="error"
               id={messageId}
-              className="mt-2 flex items-center gap-2 text-sm text-red-400"
+              className="mt-2 flex items-center gap-2 text-sm text-red-600 dark:text-red-400"
               initial={{ opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
@@ -87,7 +87,7 @@ export const FloatingInput = React.forwardRef<HTMLInputElement, FloatingInputPro
             <motion.p
               key="hint"
               id={messageId}
-              className="mt-2 text-sm text-gray-400"
+              className="mt-2 text-sm text-muted-foreground dark:text-gray-400"
               initial={{ opacity: 0, y: -4 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}

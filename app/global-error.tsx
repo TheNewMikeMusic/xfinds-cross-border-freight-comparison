@@ -8,7 +8,7 @@ export default function GlobalError({
   reset: () => void
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body>
         <div className="flex min-h-screen flex-col items-center justify-center px-4">
           <h1 className="text-4xl font-bold mb-4 text-red-400">An Error Occurred</h1>

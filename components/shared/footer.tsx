@@ -27,7 +27,7 @@ export function Footer() {
   const currentLocale = pathname?.split('/')[1] || defaultLocale
 
   return (
-    <footer className="mt-auto w-full border-t border-blue-600/30 bg-gray-900/80 backdrop-blur-xl">
+    <footer className="mt-auto w-full border-t border-blue-600/30 dark:border-blue-600/30 border-blue-500/20 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl">
       <div className="container mx-auto px-4 py-6 sm:py-8">
         <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-5">
           {/* Brand */}
@@ -35,18 +35,18 @@ export function Footer() {
             <div className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
               Xfinds
             </div>
-            <p className="text-xs sm:text-sm text-gray-400 max-w-xs">
+            <p className="text-xs sm:text-sm text-muted-foreground max-w-xs">
               {t('description')}
             </p>
-            <p className="text-xs sm:text-sm text-gray-500">
+            <p className="text-xs sm:text-sm text-muted-foreground/80">
               {t('copyright', { year: new Date().getFullYear() })}
             </p>
           </div>
 
           {/* Company */}
           <div className="space-y-2 sm:space-y-3 md:space-y-4">
-            <h3 className="font-semibold text-xs sm:text-sm text-white">{t('company')}</h3>
-            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-400">
+            <h3 className="font-semibold text-xs sm:text-sm text-foreground">{t('company')}</h3>
+            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li>
                 <Link href={`/${currentLocale}/about`} className="hover:text-blue-400 transition-colors">
                   {t('aboutUs')}
@@ -62,8 +62,8 @@ export function Footer() {
 
           {/* Legal */}
           <div className="space-y-2 sm:space-y-3 md:space-y-4">
-            <h3 className="font-semibold text-xs sm:text-sm text-white">{t('legal')}</h3>
-            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-400">
+            <h3 className="font-semibold text-xs sm:text-sm text-foreground">{t('legal')}</h3>
+            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li>
                 <Link href={`/${currentLocale}/legal/terms`} className="hover:text-blue-400 transition-colors">
                   {t('terms')}
@@ -79,8 +79,8 @@ export function Footer() {
 
           {/* Links */}
           <div className="col-span-2 md:col-span-1 space-y-2 sm:space-y-3 md:space-y-4">
-            <h3 className="font-semibold text-xs sm:text-sm text-white">{t('quickLinks')}</h3>
-            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-400">
+            <h3 className="font-semibold text-xs sm:text-sm text-foreground">{t('quickLinks')}</h3>
+            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li>
                 <Link href={`/${currentLocale}/agents`} className="hover:text-blue-400 transition-colors">
                   {t('agentDirectory')}
@@ -115,7 +115,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-6 pt-6 sm:mt-8 sm:pt-8 border-t border-blue-600/30 text-center text-xs sm:text-sm text-gray-400">
+        <div className="mt-6 pt-6 sm:mt-8 sm:pt-8 border-t border-blue-600/30 dark:border-blue-600/30 border-blue-500/20 text-center text-xs sm:text-sm text-muted-foreground">
           <p>{t('copyright', { year: new Date().getFullYear() })}</p>
         </div>
       </div>

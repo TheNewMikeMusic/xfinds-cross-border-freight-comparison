@@ -85,7 +85,7 @@ export default async function LandingPage({ params }: LandingPageProps) {
         )}
 
         {/* Featured Agents Section */}
-        <section className="py-8 px-4 sm:py-12 md:py-16 bg-gray-900/50">
+        <section className="py-8 px-4 sm:py-12 md:py-16 bg-gray-100 dark:bg-gray-900/50">
           <div className="container mx-auto">
             <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-12">
               <h2 className="text-2xl sm:text-3xl font-bold">{t('featuredAgents')}</h2>
@@ -96,7 +96,7 @@ export default async function LandingPage({ params }: LandingPageProps) {
                 {locale === 'zh' ? '更多' : 'More'} →
               </a>
             </div>
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-6 items-stretch">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-6 items-stretch">
               {featuredAgents.map((agent, index) => (
                 <div key={agent.id} className={`${index >= 4 ? 'hidden md:block' : ''} h-full`}>
                   <AgentCard agent={agent} />

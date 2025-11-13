@@ -136,11 +136,11 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
       initial={shouldReduceMotion ? undefined : { opacity: 0, y: 24 }}
       animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="glass relative overflow-hidden rounded-3xl border-white/10 bg-gradient-to-br from-[rgba(8,13,28,0.95)] via-[rgba(7,11,24,0.9)] to-[rgba(4,6,12,0.95)] p-4 sm:p-6"
+      className="glass relative overflow-hidden rounded-3xl border-white/10 dark:border-white/10 border-gray-200/50 bg-white/95 dark:bg-gradient-to-br dark:from-[rgba(8,13,28,0.95)] dark:via-[rgba(7,11,24,0.9)] dark:to-[rgba(4,6,12,0.95)] p-4 sm:p-6"
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-60"
+        className="pointer-events-none absolute inset-0 opacity-60 rounded-3xl"
         style={{
           background:
             'radial-gradient(circle at 20% 20%, rgba(125,211,252,0.35), transparent 50%), radial-gradient(circle at 80% 0%, rgba(236,72,153,0.25), transparent 55%)',
@@ -150,7 +150,7 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
         {category && (
           <Link
             href={`/${locale}/search?cat=${category.id}`}
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-cyan-100 transition-colors hover:border-white/40"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 dark:border-white/15 border-blue-500/30 bg-blue-50 dark:bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-600 dark:text-cyan-100 transition-colors hover:border-blue-600/50 dark:hover:border-white/40"
           >
             {category.name}
           </Link>
@@ -158,7 +158,7 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
 
         <div>
           <motion.h1
-            className="mb-2 text-xl font-semibold text-white sm:text-2xl md:text-3xl line-clamp-2 leading-tight"
+            className="mb-2 text-xl font-semibold text-foreground dark:text-white sm:text-2xl md:text-3xl line-clamp-2 leading-tight"
             initial={shouldReduceMotion ? undefined : { y: 20, opacity: 0 }}
             animate={shouldReduceMotion ? undefined : { y: 0, opacity: 1 }}
             transition={{ delay: 0.05, duration: 0.4, ease: 'easeOut' }}
@@ -166,10 +166,10 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
           >
             {product.title}
           </motion.h1>
-          <p className="text-sm sm:text-base md:text-lg text-gray-400 mb-4">{product.brand}</p>
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground dark:text-gray-400 mb-4">{product.brand}</p>
           {product.description && (
             <motion.p
-              className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6"
+              className="text-sm sm:text-base text-foreground/80 dark:text-gray-300 leading-relaxed mb-6"
               initial={shouldReduceMotion ? undefined : { y: 20, opacity: 0 }}
               animate={shouldReduceMotion ? undefined : { y: 0, opacity: 1 }}
               transition={{ delay: 0.1, duration: 0.4, ease: 'easeOut' }}
@@ -181,21 +181,21 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
 
         {/* Agent Offers Section */}
         {product.offers.length === 0 ? (
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center">
-            <p className="text-gray-400">{t('noAgentsAvailable')}</p>
-            <p className="text-sm text-gray-500 mt-2">{t('noAgentsDesc')}</p>
+          <div className="rounded-2xl border border-white/10 dark:border-white/10 border-gray-200/50 bg-gray-50 dark:bg-white/5 p-8 text-center">
+            <p className="text-muted-foreground dark:text-gray-400">{t('noAgentsAvailable')}</p>
+            <p className="text-sm text-muted-foreground/80 dark:text-gray-500 mt-2">{t('noAgentsDesc')}</p>
           </div>
         ) : (
-        <div className="space-y-4">
+        <div className="space-y-4 overflow-visible">
             {/* Header with stats */}
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
               <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
-                <h2 className="text-lg sm:text-xl font-semibold text-white">{t('offers')}</h2>
-                <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-400">
+                <h2 className="text-lg sm:text-xl font-semibold text-foreground dark:text-white">{t('offers')}</h2>
+                <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-muted-foreground dark:text-gray-400">
                   <span>{t('offerCount', { count: rankedOffers.length })}</span>
                   {inStockCount > 0 && (
                     <>
-                      <span className="text-gray-600">•</span>
+                      <span className="text-muted-foreground/50 dark:text-gray-600">•</span>
                       <span className="flex items-center gap-1 text-green-400">
                         <CheckCircle className="h-3 w-3" />
                         {inStockCount} {t('inStock')}
@@ -204,8 +204,8 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                   )}
                   {recommendedCount > 0 && (
                     <>
-                      <span className="text-gray-600">•</span>
-                      <span className="text-blue-400">{recommendedCount} {t('recommended')}</span>
+                      <span className="text-muted-foreground/50 dark:text-gray-600">•</span>
+                      <span className="text-blue-600 dark:text-blue-400 font-medium">{recommendedCount} {t('recommended')}</span>
                     </>
                   )}
               </div>
@@ -217,10 +217,11 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
               <motion.div
                 initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
                 animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-                className="rounded-2xl border border-white/10 bg-gradient-to-r from-cyan-400/15 via-transparent to-fuchsia-400/15 p-3 sm:p-4 md:p-6 space-y-3 sm:space-y-4 relative"
+                className="rounded-2xl border border-white/10 dark:border-white/10 border-gray-200/50 bg-blue-50/50 dark:bg-transparent p-3 sm:p-4 md:p-6 space-y-3 sm:space-y-4 relative overflow-visible"
+                style={{ '--panel': 'transparent', background: 'transparent', backdropFilter: 'none' } as React.CSSProperties & { '--panel': string }}
               >
                 {selectedAgent.recommended && (
-                  <div className="absolute top-1 right-1 sm:top-2 sm:right-2 z-10">
+                  <div className="absolute -top-2 -right-2 z-30 overflow-visible">
                     <RecommendRibbon />
                   </div>
                 )}
@@ -255,7 +256,7 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                               animate={{ rotate: isComparisonExpanded ? 45 : 0 }}
                               transition={{ duration: 0.2, ease: 'easeOut' }}
                             >
-                              <Plus className="h-3 w-3 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4 text-white stroke-[2.5]" />
+                              <Plus className="h-3 w-3 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4 text-foreground dark:text-white stroke-[2.5]" />
                             </motion.div>
                           </div>
                         )}
@@ -263,7 +264,7 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                     )}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                        <h3 className="font-semibold text-sm sm:text-base md:text-lg text-white leading-tight">{selectedAgent.name}</h3>
+                        <h3 className="font-semibold text-sm sm:text-base md:text-lg text-foreground dark:text-white leading-tight">{selectedAgent.name}</h3>
                         {selectedOffer.inStock ? (
                           <span className="flex items-center gap-1 text-xs sm:text-sm text-green-400">
                             <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -275,7 +276,7 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                             <span className="hidden sm:inline">{t('outOfStock')}</span>
                           </span>
                         )}
-                        <Badge className="bg-blue-600/20 text-blue-300 border-blue-600/30 text-xs hidden sm:inline-flex">
+                        <Badge className="bg-blue-600/20 dark:bg-blue-600/20 bg-blue-100 text-blue-700 dark:text-blue-300 border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 text-xs hidden sm:inline-flex">
                           #{selectedOffer.rank}
                         </Badge>
                       </div>
@@ -284,7 +285,7 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                           {selectedAgent.badges.slice(0, 2).map((badge) => (
                             <Badge
                               key={badge}
-                              className="text-xs bg-blue-600/20 text-blue-300 border-blue-600/30 px-2 py-0.5"
+                              className="text-xs bg-blue-600/20 dark:bg-blue-600/20 bg-blue-100 text-blue-700 dark:text-blue-300 border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 px-2 py-0.5"
                             >
                               {badge}
                             </Badge>
@@ -298,32 +299,32 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                 {/* Price Info */}
                 <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm">
                   <div>
-                    <span className="text-gray-400">{t('price')}:</span>
-                    <span className="ml-1 sm:ml-2 text-white">
+                    <span className="text-muted-foreground dark:text-gray-400">{t('price')}:</span>
+                    <span className="ml-1 sm:ml-2 text-foreground dark:text-white">
                       <PriceDisplay amount={selectedOffer.price} originalCurrency={selectedOffer.currency as any} />
                     </span>
                   </div>
                   <div>
-                    <span className="text-gray-400">{t('shipping')}:</span>
+                    <span className="text-muted-foreground dark:text-gray-400">{t('shipping')}:</span>
                     <button
                       onClick={(e) => {
                         e.stopPropagation()
                         setSelectedShippingOffer(selectedOffer)
                         setShippingDetailOpen(true)
                       }}
-                      className="ml-1 sm:ml-2 text-blue-400 hover:text-blue-300 underline cursor-pointer transition-colors"
+                      className="ml-1 sm:ml-2 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline cursor-pointer transition-colors"
                       aria-label={t('viewShippingDetails')}
                     >
                       <PriceDisplay amount={selectedOffer.shipFee} originalCurrency={selectedOffer.currency as any} />
                     </button>
                   </div>
                   <div className="hidden sm:block">
-                    <span className="text-gray-400">{t('estimatedDays')}:</span>
-                    <span className="ml-1 sm:ml-2 text-white">{selectedOffer.estDays} {t('days')}</span>
+                    <span className="text-muted-foreground dark:text-gray-400">{t('estimatedDays')}:</span>
+                    <span className="ml-1 sm:ml-2 text-foreground dark:text-white">{selectedOffer.estDays} {t('days')}</span>
                   </div>
                   <div>
-                    <span className="text-gray-400">{t('total')}:</span>
-                    <span className="ml-1 sm:ml-2 text-white">
+                    <span className="text-muted-foreground dark:text-gray-400">{t('total')}:</span>
+                    <span className="ml-1 sm:ml-2 text-foreground dark:text-white">
                       <PriceDisplay amount={total} originalCurrency={selectedOffer.currency as any} size="lg" />
                     </span>
                   </div>
@@ -331,8 +332,8 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
 
                 {/* Promo Text */}
                 {selectedAgent.promoText && (
-                  <div className="bg-blue-600/20 border border-blue-600/30 rounded-lg p-2 sm:p-3">
-                    <p className="text-xs sm:text-sm text-blue-300 break-words">{selectedAgent.promoText}</p>
+                  <div className="bg-blue-600/20 dark:bg-blue-600/20 bg-blue-50 border border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 rounded-lg p-2 sm:p-3">
+                    <p className="text-xs sm:text-sm text-blue-700 dark:text-blue-300 break-words">{selectedAgent.promoText}</p>
                   </div>
                 )}
 
@@ -366,7 +367,8 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                        !product.skuOptions.every((option) => selectedSKU[option.name]))
                     }
                     variant="outline"
-                    className="flex-1 glass border-blue-600/30 bg-gray-800/50 backdrop-blur-xl text-xs sm:text-sm py-2 sm:py-1.5"
+                    className="flex-1 glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-gray-100 dark:bg-transparent text-xs sm:text-sm py-2 sm:py-1.5"
+                    style={{ backdropFilter: 'none', '--panel': 'transparent' } as React.CSSProperties & { '--panel': string }}
                   >
                     {t('addToList')}
                   </Button>
@@ -387,7 +389,7 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                     whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
                     transition={{ duration: 0.3, ease: 'easeOut' }}
                     onClick={() => setIsComparisonExpanded(true)}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl border border-blue-600/30 bg-blue-600/10 px-4 py-3 text-sm text-blue-300 transition-colors hover:bg-blue-600/20 hover:border-blue-600/50"
+                    className="w-full flex items-center justify-center gap-2 rounded-xl border border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 bg-blue-50 dark:bg-blue-600/10 px-4 py-3 text-sm text-blue-700 dark:text-blue-300 transition-colors hover:bg-blue-100 dark:hover:bg-blue-600/20 hover:border-blue-600/50 dark:hover:border-blue-600/50"
                     aria-label={t('compareMorePrices')}
                   >
                     <span>{t('compareMorePrices')}</span>
@@ -408,7 +410,7 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                     whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
                     transition={{ duration: 0.3, ease: 'easeOut' }}
                     onClick={() => setIsComparisonExpanded(false)}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl border border-blue-600/30 bg-blue-600/10 px-4 py-3 text-sm text-blue-300 transition-colors hover:bg-blue-600/20 hover:border-blue-600/50"
+                    className="w-full flex items-center justify-center gap-2 rounded-xl border border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 bg-blue-50 dark:bg-blue-600/10 px-4 py-3 text-sm text-blue-700 dark:text-blue-300 transition-colors hover:bg-blue-100 dark:hover:bg-blue-600/20 hover:border-blue-600/50 dark:hover:border-blue-600/50"
                     aria-label={t('collapseComparison')}
                   >
                     <span>{t('collapseComparison')}</span>
@@ -436,13 +438,13 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                       ease: [0.4, 0, 0.2, 1],
                       height: { duration: 0.3 }
                     }}
-                    className="space-y-3 overflow-hidden"
+                    className="space-y-3 overflow-visible"
                   >
                     <motion.h3 
                       initial={shouldReduceMotion ? undefined : { opacity: 0, y: -10 }}
                       animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
                       transition={{ delay: 0.1, duration: 0.3 }}
-                      className="text-lg font-semibold text-white mb-4"
+                      className="text-lg font-semibold text-foreground dark:text-white mb-4"
                     >
                       {t('compareAgents')}
                     </motion.h3>
@@ -463,11 +465,12 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                             ease: 'easeOut'
                           }}
                           whileHover={shouldReduceMotion ? undefined : { scale: 1.02, x: 4 }}
-                          className={`relative rounded-xl border-2 backdrop-blur-xl p-4 pl-12 space-y-3 cursor-pointer transition-all ${
+                          className={`relative rounded-xl border-2 p-4 pl-12 space-y-3 cursor-pointer transition-all overflow-visible ${
                             isSelected
-                              ? 'border-blue-400/70 bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-transparent hover:border-blue-400'
-                              : 'border-white/10 bg-white/5 hover:border-blue-500/50 hover:bg-white/10'
+                              ? 'border-blue-400/70 dark:bg-blue-500/10 hover:border-blue-400'
+                              : 'border-white/10 dark:bg-transparent hover:border-blue-500/50'
                           }`}
+                          style={!isSelected ? { backdropFilter: 'none', background: 'transparent' } : undefined}
                           onClick={() => setSelectedAgentId(offer.agentId)}
                         >
                           {/* Checkbox in top-left corner */}
@@ -495,7 +498,7 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                                   exit={{ opacity: 0, scale: 0 }}
                                   transition={{ duration: 0.2, ease: 'easeOut' }}
                                 >
-                                  <Check className="h-4 w-4 sm:h-5 sm:w-5 text-white stroke-[3]" />
+                                  <Check className="h-4 w-4 sm:h-5 sm:w-5 text-foreground dark:text-white stroke-[3]" />
                                 </motion.div>
                               )}
                             </AnimatePresence>
@@ -516,7 +519,7 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                               )}
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                                  <h4 className="font-semibold text-white leading-tight">{agent?.name || offer.agentId}</h4>
+                                  <h4 className="font-semibold text-foreground dark:text-white leading-tight">{agent?.name || offer.agentId}</h4>
                                   {offer.inStock ? (
                                     <span className="flex items-center gap-1 text-xs text-green-400">
                                       <CheckCircle className="h-3 w-3" />
@@ -528,14 +531,14 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                                       <span className="hidden sm:inline">{t('outOfStock')}</span>
                                     </span>
                                   )}
-                                  <Badge className="bg-blue-600/20 text-blue-300 border-blue-600/30 text-xs">
+                                  <Badge className="bg-blue-600/20 dark:bg-blue-600/20 bg-blue-100 text-blue-700 dark:text-blue-300 border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 text-xs">
                                     #{offer.rank}
                                   </Badge>
                                   <Badge className="bg-green-600/20 text-green-300 border-green-600/30 text-xs">
                                     {offer.score}/100
                                   </Badge>
               </div>
-                                <Badge variant="outline" className="text-xs border-blue-600/30 text-blue-300 mb-1">
+                                <Badge variant="outline" className="text-xs border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 bg-blue-50 dark:bg-transparent text-blue-700 dark:text-blue-300 mb-1">
                                   {t(`scoreReasons.${offer.scoreReason}`)}
                                 </Badge>
                                 {agent?.badges && agent.badges.length > 0 && (
@@ -543,7 +546,7 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                                     {agent.badges.slice(0, 2).map((badge) => (
                                       <Badge
                                         key={badge}
-                                        className="text-xs bg-blue-600/20 text-blue-300 border-blue-600/30 px-2 py-0.5"
+                                        className="text-xs bg-blue-600/20 dark:bg-blue-600/20 bg-blue-100 text-blue-700 dark:text-blue-300 border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 px-2 py-0.5"
                                       >
                                         {badge}
                                       </Badge>
@@ -556,13 +559,13 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
 
                           <div className="grid grid-cols-2 gap-3 text-sm">
                             <div>
-                              <span className="text-gray-400">{t('price')}:</span>
-                              <span className="ml-2 text-white">
+                              <span className="text-muted-foreground dark:text-gray-400">{t('price')}:</span>
+                              <span className="ml-2 text-foreground dark:text-white">
                                 <PriceDisplay amount={offer.price} originalCurrency={offer.currency as any} />
                               </span>
                             </div>
                             <div>
-                              <span className="text-gray-400">{t('shipping')}:</span>
+                              <span className="text-muted-foreground dark:text-gray-400">{t('shipping')}:</span>
                               <button
                                 onClick={(e) => {
                                   e.stopPropagation()
@@ -576,20 +579,20 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
                               </button>
                             </div>
                             <div>
-                              <span className="text-gray-400">{t('estimatedDays')}:</span>
-                              <span className="ml-2 text-white">{offer.estDays} {t('days')}</span>
+                              <span className="text-muted-foreground dark:text-gray-400">{t('estimatedDays')}:</span>
+                              <span className="ml-2 text-foreground dark:text-white">{offer.estDays} {t('days')}</span>
                             </div>
                             <div>
-                              <span className="text-gray-400">{t('total')}:</span>
-                              <span className="ml-2 text-white">
+                              <span className="text-muted-foreground dark:text-gray-400">{t('total')}:</span>
+                              <span className="ml-2 text-foreground dark:text-white">
                                 <PriceDisplay amount={offerTotal} originalCurrency={offer.currency as any} />
                               </span>
           </div>
         </div>
 
                           {agent?.promoText && (
-                            <div className="bg-blue-600/20 border border-blue-600/30 rounded-lg p-2">
-                              <p className="text-xs text-blue-300 break-words">{agent.promoText}</p>
+                            <div className="bg-blue-600/20 dark:bg-blue-600/20 bg-blue-50 border border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 rounded-lg p-2">
+                              <p className="text-xs text-blue-700 dark:text-blue-300 break-words">{agent.promoText}</p>
                             </div>
                           )}
                         </motion.div>
@@ -604,12 +607,12 @@ export function ProductSummary({ product, category, locale, agents = [] }: Produ
 
         {product.tags.length > 0 && (
           <div className="space-y-2">
-            <p className="text-xs text-gray-500">{t('tagsTitle')}</p>
+            <p className="text-xs text-muted-foreground dark:text-gray-500">{t('tagsTitle')}</p>
             <div className="flex flex-wrap gap-1.5">
               {product.tags.map((tag) => (
                 <Badge
                   key={tag}
-                  className="rounded-full border border-white/5 bg-white/5 px-2.5 py-0.5 text-xs text-gray-400 transition-colors hover:bg-white/10 hover:text-gray-300"
+                  className="rounded-full border border-white/5 dark:border-white/5 border-gray-200/50 bg-gray-100 dark:bg-white/5 px-2.5 py-0.5 text-xs text-muted-foreground dark:text-gray-400 transition-colors hover:bg-gray-200 dark:hover:bg-white/10 hover:text-foreground dark:hover:text-gray-300"
                 >
                   {tag}
                 </Badge>

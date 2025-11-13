@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Space_Grotesk, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 import dynamic from 'next/dynamic'
+import { ThemeProvider } from '@/components/shared/theme-provider'
 
 const Toaster = dynamic(() => import('@/components/ui/toaster').then(mod => ({ default: mod.Toaster })), {
   ssr: false,
@@ -35,15 +36,44 @@ export default async function RootLayout({
   const messages = await getMessages()
 
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('xfinds-theme');
+                  if (theme) {
+                    var parsed = JSON.parse(theme);
+                    var effectiveTheme = parsed.state?.theme || 'system';
+                    if (effectiveTheme === 'system') {
+                      effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                    }
+                    document.documentElement.classList.add(effectiveTheme);
+                  } else {
+                    var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                    document.documentElement.classList.add(systemTheme);
+                  }
+                } catch (e) {
+                  var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  document.documentElement.classList.add(systemTheme);
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body 
         className={`${spaceGrotesk.variable} ${plexMono.variable} font-sans`}
         suppressHydrationWarning
       >
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-        <Toaster />
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   )

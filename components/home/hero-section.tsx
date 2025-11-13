@@ -71,34 +71,71 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
               setBg(HERO_FALLBACK_BG)
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/20 to-transparent dark:from-black/35 dark:via-black/20" />
         </div>
       ) : (
-        <motion.div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-0"
-          initial={{ opacity: 0.4, scale: 0.9 }}
-          animate={
-            shouldReduceMotion
-              ? { opacity: 0.5 }
-              : {
-                  opacity: [0.4, 0.5, 0.4],
-                }
-          }
-          transition={
-            shouldReduceMotion
-              ? undefined
-              : {
-                  duration: 8,
-                  repeat: Infinity,
-                  repeatType: 'mirror',
-                }
-          }
-          style={{
-            background: currentBg.css,
-            filter: 'blur(30px)',
-          }}
-        />
+        <>
+          {/* 日间模式背景 */}
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-0 dark:hidden"
+            initial={{ opacity: 0.3, scale: 0.9 }}
+            animate={
+              shouldReduceMotion
+                ? { opacity: 0.4 }
+                : {
+                    opacity: [0.3, 0.4, 0.3],
+                  }
+            }
+            transition={
+              shouldReduceMotion
+                ? undefined
+                : {
+                    duration: 8,
+                    repeat: Infinity,
+                    repeatType: 'mirror',
+                  }
+            }
+            style={{
+              background: "radial-gradient(1200px 600px at 20% 20%, rgba(59,130,246,0.12), transparent 60%), radial-gradient(1000px 500px at 80% 30%, rgba(139,92,246,0.1), transparent 60%), linear-gradient(180deg, #f8fafc 0%, #f1f5f9 45%, #ffffff 100%)",
+              filter: 'blur(30px)',
+            }}
+          />
+          {/* 夜间模式背景 - 与页面背景融合 */}
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-0 hidden dark:block"
+            initial={{ opacity: 0.5, scale: 0.9 }}
+            animate={
+              shouldReduceMotion
+                ? { opacity: 0.6 }
+                : {
+                    opacity: [0.5, 0.6, 0.5],
+                  }
+            }
+            transition={
+              shouldReduceMotion
+                ? undefined
+                : {
+                    duration: 8,
+                    repeat: Infinity,
+                    repeatType: 'mirror',
+                  }
+            }
+            style={{
+              background: "radial-gradient(1200px 600px at 20% 20%, rgba(125,211,252,0.15), transparent 60%), radial-gradient(1000px 500px at 80% 30%, rgba(192,132,252,0.12), transparent 60%), linear-gradient(180deg, #02050a 0%, #050b16 45%, #02050a 100%)",
+              filter: 'blur(30px)',
+            }}
+          />
+          {/* 夜间模式额外融合层 */}
+          <div 
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-0 hidden dark:block"
+            style={{
+              background: "radial-gradient(circle at 50% 50%, rgba(125,211,252,0.08), transparent 70%)",
+            }}
+          />
+        </>
       )}
 
       <div className="container relative z-10 mx-auto text-center">
@@ -109,8 +146,8 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
           className="mx-auto max-w-6xl"
         >
           <h1 className="mb-4 text-4xl tracking-wider sm:mb-5 sm:text-5xl sm:tracking-[0.1em] md:mb-6 md:text-6xl md:tracking-[0.12em] lg:text-7xl lg:tracking-[0.15em] font-impact leading-tight relative" style={{ fontFamily: 'Impact, "Arial Black", Arial, sans-serif', fontWeight: 'normal' }}>
-            {/* Glow effect background */}
-            <div className="absolute inset-0 blur-2xl opacity-40 bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500" />
+            {/* Glow effect background - 日间模式 */}
+            <div className="absolute inset-0 blur-2xl opacity-20 dark:opacity-40 bg-gradient-to-r from-blue-400 via-blue-500 to-violet-400 dark:from-cyan-400 dark:via-blue-500 dark:to-violet-500" />
             
             {titleParts.length > 1 ? (
               <>
@@ -122,19 +159,17 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
                       style={{
                         fontFamily: 'Impact, "Arial Black", Arial, sans-serif',
                         fontWeight: 'normal',
-                        textShadow: '0 0 15px rgba(34,211,238,0.6), 0 0 30px rgba(59,130,246,0.5), 0 0 45px rgba(139,92,246,0.4)',
-                        WebkitTextStroke: '1px rgba(34,211,238,0.2)',
                       }}
                     >
                       <motion.span
                         variants={wordVariant}
-                        className="inline-block text-white drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]"
+                        className="inline-block bg-gradient-to-r from-blue-600 via-blue-500 to-violet-600 bg-clip-text text-transparent dark:text-white dark:[text-shadow:0_0_10px_rgba(125,211,252,0.5),0_0_20px_rgba(125,211,252,0.4),0_0_30px_rgba(192,132,252,0.25),0_0_40px_rgba(139,92,246,0.2)] drop-shadow-[0_2px_8px_rgba(59,130,246,0.3)]"
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                       >
                         {word}
                       </motion.span>
-                      {index < titleParts[0].split(' ').length - 1 ? '' : <span className="text-white drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]">,</span>}
+                      {index < titleParts[0].split(' ').length - 1 ? '' : <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-violet-600 bg-clip-text text-transparent dark:text-white dark:[text-shadow:0_0_10px_rgba(125,211,252,0.5),0_0_20px_rgba(125,211,252,0.4),0_0_30px_rgba(192,132,252,0.25),0_0_40px_rgba(139,92,246,0.2)]">,</span>}
                     </span>
                   ))}
                 </div>
@@ -146,13 +181,11 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
                       style={{
                         fontFamily: 'Impact, "Arial Black", Arial, sans-serif',
                         fontWeight: 'normal',
-                        textShadow: '0 0 15px rgba(34,211,238,0.6), 0 0 30px rgba(59,130,246,0.5), 0 0 45px rgba(139,92,246,0.4)',
-                        WebkitTextStroke: '1px rgba(34,211,238,0.2)',
                       }}
                     >
                       <motion.span
                         variants={wordVariant}
-                        className="inline-block text-white drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]"
+                        className="inline-block bg-gradient-to-r from-blue-600 via-blue-500 to-violet-600 bg-clip-text text-transparent dark:text-white dark:[text-shadow:0_0_10px_rgba(125,211,252,0.5),0_0_20px_rgba(125,211,252,0.4),0_0_30px_rgba(192,132,252,0.25),0_0_40px_rgba(139,92,246,0.2)] drop-shadow-[0_2px_8px_rgba(59,130,246,0.3)]"
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                       >
@@ -170,13 +203,11 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
                   style={{
                     fontFamily: 'Impact, "Arial Black", Arial, sans-serif',
                     fontWeight: 'normal',
-                    textShadow: '0 0 15px rgba(34,211,238,0.6), 0 0 30px rgba(59,130,246,0.5), 0 0 45px rgba(139,92,246,0.4)',
-                    WebkitTextStroke: '1px rgba(34,211,238,0.2)',
                   }}
                 >
                   <motion.span
                     variants={wordVariant}
-                    className="inline-block text-white drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]"
+                    className="inline-block bg-gradient-to-r from-blue-600 via-blue-500 to-violet-600 bg-clip-text text-transparent dark:text-white dark:[text-shadow:0_0_10px_rgba(125,211,252,0.5),0_0_20px_rgba(125,211,252,0.4),0_0_30px_rgba(192,132,252,0.25),0_0_40px_rgba(139,92,246,0.2)] drop-shadow-[0_2px_8px_rgba(59,130,246,0.3)]"
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
@@ -188,7 +219,7 @@ export function HeroSection({ title, subtitle }: HeroSectionProps) {
           </h1>
           <motion.p
             variants={wordVariant}
-            className="mx-auto mb-8 max-w-3xl text-pretty text-base text-slate-200 sm:mb-10 sm:text-lg md:mb-12 md:text-xl"
+            className="mx-auto mb-8 max-w-3xl text-pretty text-base text-gray-600 dark:text-slate-200 sm:mb-10 sm:text-lg md:mb-12 md:text-xl font-medium"
           >
             {displaySubtitle}
           </motion.p>

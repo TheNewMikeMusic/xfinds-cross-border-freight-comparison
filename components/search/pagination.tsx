@@ -38,7 +38,7 @@ export function Pagination({
         size="icon"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="glass border-blue-600/30 bg-gray-800/50 backdrop-blur-xl"
+        className="glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:bg-gray-800/50 backdrop-blur-xl"
       >
         <ChevronLeft className="h-4 w-4" />
         <span className="sr-only">{t('previous')}</span>
@@ -49,11 +49,11 @@ export function Pagination({
           <Button
             variant="outline"
             onClick={() => onPageChange(1)}
-            className="glass border-blue-600/30 bg-gray-800/50 backdrop-blur-xl"
+            className="glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:bg-gray-800/50 backdrop-blur-xl"
           >
             1
           </Button>
-          {start > 2 && <span className="text-gray-400">...</span>}
+          {start > 2 && <span className="text-muted-foreground dark:text-gray-400">...</span>}
         </>
       )}
 
@@ -74,11 +74,11 @@ export function Pagination({
 
       {end < totalPages && (
         <>
-          {end < totalPages - 1 && <span className="text-gray-400">...</span>}
+          {end < totalPages - 1 && <span className="text-muted-foreground dark:text-gray-400">...</span>}
           <Button
             variant="outline"
             onClick={() => onPageChange(totalPages)}
-            className="glass border-blue-600/30 bg-gray-800/50 backdrop-blur-xl"
+            className="glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:bg-gray-800/50 backdrop-blur-xl"
           >
             {totalPages}
           </Button>
@@ -90,7 +90,7 @@ export function Pagination({
         size="icon"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="glass border-blue-600/30 bg-gray-800/50 backdrop-blur-xl"
+        className="glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:bg-gray-800/50 backdrop-blur-xl"
       >
         <ChevronRight className="h-4 w-4" />
         <span className="sr-only">{t('next')}</span>

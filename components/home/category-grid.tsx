@@ -52,7 +52,7 @@ export function CategoryGrid({ categories, locale }: CategoryGridProps) {
             className="group relative block overflow-hidden rounded-3xl focus-ring touch-manipulation active:scale-[0.98]"
           >
             {/* Liquid Glass Background */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-white/[0.02] backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]" />
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-white/[0.02] dark:from-white/[0.08] dark:via-white/[0.04] dark:to-white/[0.02] backdrop-blur-xl border border-white/20 dark:border-white/20 border-gray-200/50 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]" />
             
             {/* Glass Reflection */}
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -92,11 +92,11 @@ export function CategoryGrid({ categories, locale }: CategoryGridProps) {
             )}
 
             {/* Category Info with Liquid Glass Effect */}
-            <div className="relative p-4 text-center bg-gradient-to-t from-black/60 via-black/40 to-transparent backdrop-blur-sm rounded-b-3xl">
+            <div className="relative p-4 text-center bg-gradient-to-t from-white/95 via-white/80 to-transparent dark:from-black/60 dark:via-black/40 dark:to-transparent backdrop-blur-sm rounded-b-3xl">
               {/* Glass Refraction Lines */}
               <div className="absolute inset-0 rounded-b-3xl bg-gradient-to-b from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <h3 className="text-sm font-bold relative z-10 text-white transition-colors duration-300 group-hover:text-blue-200">
+              <h3 className="text-sm font-bold relative z-10 text-gray-900 dark:text-white transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-200">
                 {category.name}
               </h3>
             </div>

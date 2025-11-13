@@ -78,9 +78,9 @@ export function FiltersPanel({
   const priceHint = priceError ? undefined : t('priceRangeHint')
 
   const filtersContent = (
-    <div className="space-y-4 text-white">
+    <div className="space-y-4 text-foreground dark:text-white">
         <div className="space-y-2">
-          <p className="text-sm text-gray-300">{t('category')}</p>
+          <p className="text-sm text-muted-foreground dark:text-gray-300">{t('category')}</p>
           <Select
             value={categoryId || 'all'}
             onValueChange={(value) => {
@@ -92,14 +92,14 @@ export function FiltersPanel({
             <SelectTrigger
               id="category"
               aria-label={t('category')}
-              className="glass w-full rounded-2xl border-blue-600/30 bg-gray-900/70 text-left text-white"
+              className="glass w-full rounded-2xl border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:bg-gray-900/70 text-left text-foreground dark:text-white"
             >
-              <SelectValue placeholder={t('selectCategory')} className="text-white" />
+              <SelectValue placeholder={t('selectCategory')} className="text-foreground dark:text-white" />
             </SelectTrigger>
-            <SelectContent className="glass border-blue-600/40 bg-gray-900/95 text-white">
-              <SelectItem value="all" className="text-white">{t('all')}</SelectItem>
+            <SelectContent className="glass border-blue-600/40 dark:border-blue-600/40 border-blue-500/30 bg-white dark:bg-gray-900/95 text-foreground dark:text-white">
+              <SelectItem value="all" className="text-foreground dark:text-white">{t('all')}</SelectItem>
               {categories.map((cat) => (
-                <SelectItem key={cat.id} value={cat.id} className="capitalize text-white">
+                <SelectItem key={cat.id} value={cat.id} className="capitalize text-foreground dark:text-white">
                   {cat.name}
                 </SelectItem>
               ))}
@@ -120,14 +120,14 @@ export function FiltersPanel({
             <SelectTrigger
               id="agent"
               aria-label={t('agent')}
-              className="glass w-full rounded-2xl border-blue-600/30 bg-gray-900/70 text-left text-white"
+              className="glass w-full rounded-2xl border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:bg-gray-900/70 text-left text-foreground dark:text-white"
             >
-              <SelectValue placeholder={t('selectAgent')} className="text-white" />
+              <SelectValue placeholder={t('selectAgent')} className="text-foreground dark:text-white" />
             </SelectTrigger>
-            <SelectContent className="glass border-blue-600/40 bg-gray-900/95 text-white">
-              <SelectItem value="all" className="text-white">{t('all')}</SelectItem>
-              {agents.map((agent) => (
-                <SelectItem key={agent.id} value={agent.id} className="text-white">
+            <SelectContent className="glass border-blue-600/40 dark:border-blue-600/40 border-blue-500/30 bg-white dark:bg-gray-900/95 text-foreground dark:text-white">
+              <SelectItem value="all" className="text-foreground dark:text-white">{t('all')}</SelectItem>
+                {agents.map((agent) => (
+                <SelectItem key={agent.id} value={agent.id} className="text-foreground dark:text-white">
                   {agent.name}
                 </SelectItem>
               ))}
@@ -136,7 +136,7 @@ export function FiltersPanel({
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm text-gray-300">{t('priceRange')}</p>
+          <p className="text-sm text-muted-foreground dark:text-gray-300">{t('priceRange')}</p>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <FloatingInput
               id="minPrice"
@@ -197,18 +197,18 @@ export function FiltersPanel({
     return (
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline" className="w-full glass border-blue-600/30 bg-gray-900/80 touch-manipulation">
+          <Button variant="outline" className="w-full glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:bg-gray-900/80 touch-manipulation">
             <Filter className="h-4 w-4 mr-2" />
             {t('filters')}
           </Button>
         </SheetTrigger>
         <SheetContent 
           side="left" 
-          className="!bg-[#0b1024] border-white/10 backdrop-blur-2xl w-[85vw] sm:w-[400px] overflow-y-auto"
+          className="!bg-white dark:!bg-[#0b1024] border-white/10 dark:border-white/10 border-gray-200/50 backdrop-blur-2xl w-[85vw] sm:w-[400px] overflow-y-auto"
         >
           <SheetHeader className="relative z-10 mb-6">
-            <SheetTitle className="text-white">{t('filters')}</SheetTitle>
-            <SheetDescription className="text-gray-400">
+            <SheetTitle className="text-foreground dark:text-white">{t('filters')}</SheetTitle>
+            <SheetDescription className="text-muted-foreground dark:text-gray-400">
               Filter products by category, agent, and price range
             </SheetDescription>
           </SheetHeader>
@@ -221,7 +221,7 @@ export function FiltersPanel({
   }
 
   return (
-    <Card className="glass border-blue-600/30 bg-gray-900/80 shadow-[0_20px_60px_rgba(2,6,23,0.45)]">
+    <Card className="glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:bg-gray-900/80 shadow-[0_20px_60px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_60px_rgba(2,6,23,0.45)]">
       <CardHeader>
         <CardTitle>{t('filters')}</CardTitle>
       </CardHeader>

@@ -57,12 +57,12 @@ export function FilterChips({
       {chips.map((chip, index) => (
         <div
           key={index}
-          className="flex items-center gap-2 px-3 py-1 rounded-full glass border-blue-600/30 bg-gray-800/50 backdrop-blur-xl"
+          className="flex items-center gap-2 px-3 py-1 rounded-full glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-xl"
         >
           <span className="text-sm">{chip.label}</span>
           <button
             onClick={() => onRemove(chip.type)}
-            className="hover:text-red-400 transition-colors"
+            className="hover:text-red-600 dark:hover:text-red-400 transition-colors"
             aria-label={`${t('remove')} ${chip.label}`}
           >
             <X className="h-3 w-3" />

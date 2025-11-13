@@ -16,7 +16,12 @@
     "userMenu": "用户菜单",
     "login": "登录",
     "register": "注册",
-    "logout": "登出"
+    "logout": "登出",
+    "theme": "主题",
+    "toggleTheme": "切换主题",
+    "lightMode": "日间模式",
+    "darkMode": "夜间模式",
+    "systemMode": "跟随系统"
   },
   "home": {
     "title": "发现最佳产品",

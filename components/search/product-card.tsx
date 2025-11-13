@@ -88,20 +88,20 @@ export function ProductCard({ product, locale, agents = [], priority = false }: 
             )}
           </div>
           <CardContent className="p-3 sm:p-6">
-            <h3 className="mb-1 line-clamp-2 text-sm font-semibold text-white transition-colors group-hover:text-blue-200 sm:text-lg">
+            <h3 className="mb-1 line-clamp-2 text-sm font-semibold text-foreground dark:text-white transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-200 sm:text-lg">
               {product.title}
             </h3>
-            <p className="mb-2 text-xs text-gray-400 sm:text-sm">{product.brand}</p>
+            <p className="mb-2 text-xs text-muted-foreground dark:text-gray-400 sm:text-sm">{product.brand}</p>
             <div className="flex items-baseline justify-between mb-2 gap-2">
-              <div className={cn('text-blue-300 text-base sm:text-xl', isDeal && 'animate-[priceFlash_1.8s_ease-in-out_infinite]')}>
+              <div className={cn('text-blue-600 dark:text-blue-300 text-base sm:text-xl', isDeal && 'animate-[priceFlash_1.8s_ease-in-out_infinite]')}>
                 <PriceDisplay amount={minPrice} originalCurrency={currency as any} size="lg" />
               </div>
-              <span className="text-xs text-gray-500 whitespace-nowrap">
+              <span className="text-xs text-muted-foreground dark:text-gray-500 whitespace-nowrap">
                 {t('offers', { count: product.offers.length })}
               </span>
             </div>
             {bestAgent && bestOffer && (
-              <div className="flex items-center gap-1.5 mb-2 p-1.5 sm:p-2 rounded-lg bg-gray-800/50 border border-blue-600/20">
+              <div className="flex items-center gap-1.5 mb-2 p-1.5 sm:p-2 rounded-lg bg-gray-100 dark:bg-gray-800/50 border border-blue-500/30 dark:border-blue-600/20">
                 {bestAgent.logo && (
                   <div className="relative w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
                     <Image
@@ -113,7 +113,7 @@ export function ProductCard({ product, locale, agents = [], priority = false }: 
                     />
                   </div>
                 )}
-                <span className="text-xs text-gray-400 flex-1 truncate">
+                <span className="text-xs text-muted-foreground dark:text-gray-400 flex-1 truncate">
                   {t('bestFrom', { agent: bestAgent.name })}
                 </span>
                 {bestOffer.link && (
@@ -131,7 +131,7 @@ export function ProductCard({ product, locale, agents = [], priority = false }: 
                         console.error('Failed to open link:', error)
                       }
                     }}
-                    className="text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
+                    className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors cursor-pointer"
                     title={t('viewOnAgent', { agent: bestAgent.name })}
                     aria-label={t('viewOnAgent', { agent: bestAgent.name })}
                   >
@@ -145,7 +145,7 @@ export function ProductCard({ product, locale, agents = [], priority = false }: 
                 {product.tags.slice(0, 3).map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-blue-500/30 px-2 py-0.5 text-xs text-blue-200"
+                    className="rounded-full border border-blue-500/30 dark:border-blue-500/30 border-blue-500/50 bg-blue-50 dark:bg-transparent px-2 py-0.5 text-xs text-blue-700 dark:text-blue-200 font-medium"
                   >
                     {tag}
                   </span>

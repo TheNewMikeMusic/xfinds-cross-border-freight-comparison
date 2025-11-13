@@ -5,16 +5,24 @@ import { cn } from "@/lib/utils"
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "glass rounded-2xl border border-blue-600/30 bg-gray-800/50 backdrop-blur-xl text-card-foreground transition-all duration-300 hover:border-blue-500/50 hover:shadow-[0_0_32px_rgba(59,130,246,0.35)]",
-      className
-    )}
-    {...props}
-  />
-))
+>(({ className, ...props }, ref) => {
+  // 检查是否是Agent Offers Card，如果是则移除默认背景和backdrop-blur
+  const isAgentOfferCard = className?.includes('agent-offer-card-parent')
+  
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "glass rounded-2xl border border-blue-600/30 text-card-foreground transition-all duration-300 hover:border-blue-500/50 hover:shadow-[0_0_32px_rgba(59,130,246,0.35)]",
+        !isAgentOfferCard && "bg-gray-800/50 backdrop-blur-xl",
+        isAgentOfferCard && "backdrop-blur-none",
+        className
+      )}
+      style={isAgentOfferCard ? { backdropFilter: 'none', WebkitBackdropFilter: 'none' } : undefined}
+      {...props}
+    />
+  )
+})
 Card.displayName = "Card"
 
 const CardHeader = React.forwardRef<

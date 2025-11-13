@@ -47,10 +47,10 @@ export function CurrencySelector({ className, variant = 'default' }: CurrencySel
       <Select value={selectedCurrency} onValueChange={(value) => setCurrency(value as CurrencyCode)}>
         <SelectTrigger className={`h-8 w-8 min-w-[32px] p-0 rounded-full border-0 bg-transparent hover:bg-white/5 transition-colors focus-ring !justify-center [&>svg]:hidden ${className || ''}`}>
           <SelectValue className="flex items-center justify-center w-full h-full">
-            <span className="font-semibold text-sm leading-none text-center text-slate-200">{currentCurrency.symbol}</span>
+            <span className="font-semibold text-sm leading-none text-center text-foreground">{currentCurrency.symbol}</span>
           </SelectValue>
         </SelectTrigger>
-        <SelectContent className="glass border-white/10 bg-[#0b1024]/95 backdrop-blur-2xl max-h-[300px]">
+        <SelectContent className="glass border-white/10 dark:border-white/10 border-gray-200/50 bg-white/95 dark:bg-[#0b1024]/95 backdrop-blur-2xl max-h-[300px]">
           {SUPPORTED_CURRENCIES.map((currency) => (
             <SelectItem key={currency.code} value={currency.code}>
               <div className="flex items-center gap-2">
@@ -73,10 +73,10 @@ export function CurrencySelector({ className, variant = 'default' }: CurrencySel
       <Select value={selectedCurrency} onValueChange={(value) => setCurrency(value as CurrencyCode)}>
         <SelectTrigger className={`h-8 ${hasSmallWidth ? 'w-12' : 'w-16'} sm:w-20 border-0 bg-transparent hover:bg-white/5 transition-colors ${hasSmallText ? 'text-[9px]' : 'text-[10px]'} sm:text-xs ${className || ''}`}>
           <SelectValue>
-            <span className={`font-semibold text-slate-200 ${hasSmallText ? 'text-[9px]' : 'text-[10px]'} sm:text-xs`}>{currentCurrency.symbol}</span>
+            <span className={`font-semibold text-foreground ${hasSmallText ? 'text-[9px]' : 'text-[10px]'} sm:text-xs`}>{currentCurrency.symbol}</span>
           </SelectValue>
         </SelectTrigger>
-        <SelectContent className="glass border-white/10 bg-[#0b1024]/95 backdrop-blur-2xl max-h-[300px]">
+        <SelectContent className="glass border-white/10 dark:border-white/10 border-gray-200/50 bg-white/95 dark:bg-[#0b1024]/95 backdrop-blur-2xl max-h-[300px]">
           {SUPPORTED_CURRENCIES.map((currency) => (
             <SelectItem key={currency.code} value={currency.code}>
               <div className="flex items-center gap-2">
@@ -92,7 +92,7 @@ export function CurrencySelector({ className, variant = 'default' }: CurrencySel
 
   return (
     <Select value={selectedCurrency} onValueChange={(value) => setCurrency(value as CurrencyCode)}>
-      <SelectTrigger className={`glass border-blue-600/30 bg-gray-800/50 ${className || ''}`}>
+      <SelectTrigger className={`glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white/50 dark:bg-gray-800/50 ${className || ''}`}>
         <SelectValue>
           <div className="flex items-center gap-2">
             <span className="font-semibold">{currentCurrency.code}</span>
@@ -100,7 +100,7 @@ export function CurrencySelector({ className, variant = 'default' }: CurrencySel
           </div>
         </SelectValue>
       </SelectTrigger>
-      <SelectContent className="glass border-blue-600/30 bg-gray-900/95 backdrop-blur-xl max-h-[400px]">
+      <SelectContent className="glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl max-h-[400px]">
         {SUPPORTED_CURRENCIES.map((currency) => (
           <SelectItem key={currency.code} value={currency.code}>
             <div className="flex items-center justify-between w-full">

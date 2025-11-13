@@ -5,10 +5,10 @@
     "title": "Adidas RETROPY E5 Classic Boost Running Shoes",
     "brand": "Adidas",
     "categoryId": "cat-1",
-    "cover": "/JQ0006.png",
+    "cover": "/images/jq0006.webp",
     "gallery": [
-      "/JQ0006-2.png",
-      "/JQ0006-3.png"
+      "/images/jq0006-2.webp",
+      "/images/jq0006-3.webp"
     ],
     "priceGuide": {
       "min": 450,
@@ -144,9 +144,9 @@
     "title": "Nike Men's Casual Comfortable Training Running Shoes Lightweight Sneakers 415445-103",
     "brand": "Nike",
     "categoryId": "cat-1",
-    "cover": "/images/nike-shoes-415445-103.png",
+    "cover": "/images/nike-shoes-415445-103.webp",
     "gallery": [
-      "/images/nike-shoes-415445-103-2.png"
+      "/images/nike-shoes-415445-103-2.webp"
     ],
     "priceGuide": {
       "min": 400,
@@ -265,10 +265,10 @@
     "title": "NASA STUSY Suede Cotton Jacket Men's Streetwear Winter Warm Coat Unisex Couple Outwear",
     "brand": "NASA STUSY",
     "categoryId": "cat-2",
-    "cover": "/Nasa stusy.png",
+    "cover": "/images/nasa-stusy.webp",
     "gallery": [
-      "/Nasa stusy2.png",
-      "/Nasa stusy3.png"
+      "/images/nasa-stusy-2.webp",
+      "/images/nasa-stusy-3.webp"
     ],
     "priceGuide": {
       "min": 244,
@@ -385,9 +385,9 @@
     "title": "Achock ACAC Series Streetwear Simple Patch Embroidery Hoodie American Style Pullover",
     "brand": "Achock",
     "categoryId": "cat-2",
-    "cover": "/images/achock-hoodie-acac.png",
+    "cover": "/images/achock-hoodie-acac.webp",
     "gallery": [
-      "/images/achock-hoodie-acac-2.png"
+      "/images/achock-hoodie-acac-2.webp"
     ],
     "priceGuide": {
       "min": 167,
@@ -500,10 +500,10 @@
     "title": "FINGERCROXX American Flight Leather Jacket Fake Two-Piece Men's Workwear 2025 Unisex Autumn Men's Coat",
     "brand": "FINGERCROXX",
     "categoryId": "cat-2",
-    "cover": "/images/fingercroxx-jacket-2025.png",
+    "cover": "/images/fingercroxx-jacket-2025.webp",
     "gallery": [
-      "/images/fingercroxx-jacket-2025-2.png",
-      "/images/fingercroxx-jacket-2025-3.png"
+      "/images/fingercroxx-jacket-2025-2.webp",
+      "/images/fingercroxx-jacket-2025-3.webp"
     ],
     "priceGuide": {
       "min": 212,
@@ -617,10 +617,10 @@
     "title": "American Retro Bear Embroidery Sport Sweatpants Men's Casual Wide Leg Cargo Pants",
     "brand": "Unbranded",
     "categoryId": "cat-2",
-    "cover": "/images/vintage-bear-sweatpants.png",
+    "cover": "/images/vintage-bear-sweatpants.webp",
     "gallery": [
-      "/images/vintage-bear-sweatpants-2.png",
-      "/images/vintage-bear-sweatpants-3.png"
+      "/images/vintage-bear-sweatpants-2.webp",
+      "/images/vintage-bear-sweatpants-3.webp"
     ],
     "priceGuide": {
       "min": 73.6,
@@ -733,9 +733,9 @@
     "title": "ASAPROCKY Aizhiheng Asen Same Style STK Necklace Hip Hop Style Small Brand Colorful Cross Chain",
     "brand": "ASAP Rocky",
     "categoryId": "cat-3",
-    "cover": "/images/asaprocky-stk-necklace.png",
+    "cover": "/images/asaprocky-stk-necklace.webp",
     "gallery": [
-      "/images/asaprocky-stk-necklace-2.png"
+      "/images/asaprocky-stk-necklace-2.webp"
     ],
     "priceGuide": {
       "min": 73.04,
@@ -848,9 +848,9 @@
     "title": "Ye Shu Original Custom \"Onion\" New Chinese Style National Wind IMD Double Layer iPhone Case for iPhone 17/14/15/16 Pro Max Matte Autumn Fun Phone Case",
     "brand": "Ye Shu",
     "categoryId": "cat-3",
-    "cover": "/images/chinese-style-iphone-case.png",
+    "cover": "/images/chinese-style-iphone-case.webp",
     "gallery": [
-      "/images/chinese-style-iphone-case-2.png"
+      "/images/chinese-style-iphone-case-2.webp"
     ],
     "priceGuide": {
       "min": 37.3,
@@ -966,9 +966,9 @@
     "title": "YOGMEDI Fleming MK870 Pro Mechanical Keyboard Wireless Bluetooth Triple Mode Gaming Keyboard with RGB Backlight",
     "brand": "YOGMEDI",
     "categoryId": "cat-5",
-    "cover": "/images/fuling-mk870pro-keyboard.png",
+    "cover": "/images/fuling-mk870pro-keyboard.webp",
     "gallery": [
-      "/images/fuling-mk870pro-keyboard-2.png"
+      "/images/fuling-mk870pro-keyboard-2.webp"
     ],
     "priceGuide": {
       "min": 229,
@@ -1098,10 +1098,10 @@
     "title": "Leaplight MagSafe Magnetic Phone Stand Foldable Rotating Aluminum Tripod Desktop Clamp Selfie Stick Multi-Function Portable",
     "brand": "Leaplight",
     "categoryId": "cat-3",
-    "cover": "/images/leaplight-magsafe-stand.png",
+    "cover": "/images/leaplight-magsafe-stand.webp",
     "gallery": [
-      "/images/leaplight-magsafe-stand-2.png",
-      "/images/leaplight-magsafe-stand-3.png"
+      "/images/leaplight-magsafe-stand-2.webp",
+      "/images/leaplight-magsafe-stand-3.webp"
     ],
     "priceGuide": {
       "min": 84,
@@ -1206,10 +1206,10 @@
     "title": "Cobra Tactical Belt Men's Nylon Canvas Belt Extended Strap Fashion Versatile Belt with Hook Buckle",
     "brand": "Canvas",
     "categoryId": "cat-3",
-    "cover": "/images/cobra-tactical-belt-1.png",
+    "cover": "/images/cobra-tactical-belt-1.webp",
     "gallery": [
-      "/images/cobra-tactical-belt-2.png",
-      "/images/cobra-tactical-belt-3.png"
+      "/images/cobra-tactical-belt-2.webp",
+      "/images/cobra-tactical-belt-3.webp"
     ],
     "priceGuide": {
       "min": 7.93,
@@ -1316,10 +1316,10 @@
     "title": "Kitchen Tools Set 5-Piece Home Peeler Fruit Knife Bottle Opener Whisk Scraper Scissors Combo",
     "brand": "Home Essentials",
     "categoryId": "cat-3",
-    "cover": "/images/kitchen-tools-set-1.png",
+    "cover": "/images/kitchen-tools-set-1.webp",
     "gallery": [
-      "/images/kitchen-tools-set-2.png",
-      "/images/kitchen-tools-set-3.png"
+      "/images/kitchen-tools-set-2.webp",
+      "/images/kitchen-tools-set-3.webp"
     ],
     "priceGuide": {
       "min": 33.87,
@@ -1424,9 +1424,9 @@
     "title": "Dog Toy Swaying Treat Ball Puzzle Interactive Pet Toy for Dogs and Cats Self-Entertainment Shaking Treat Dispenser",
     "brand": "Pet Toys",
     "categoryId": "cat-3",
-    "cover": "/images/dog-puzzle-toy.png",
+    "cover": "/images/dog-puzzle-toy.webp",
     "gallery": [
-      "/images/dog-puzzle-toy-2.png"
+      "/images/dog-puzzle-toy-2.webp"
     ],
     "priceGuide": {
       "min": 7.65,
@@ -1539,7 +1539,7 @@
     "title": "Keychron PBT Dye Sublimation Keycap Set OEM Height Low Profile ABS Backlit Mechanical Keyboard Replacement Full Set",
     "brand": "Keychron",
     "categoryId": "cat-5",
-    "cover": "/images/keychron-pbt-keycaps.png",
+    "cover": "/images/keychron-pbt-keycaps.webp",
     "gallery": [],
     "priceGuide": {
       "min": 81.34,
@@ -1629,6 +1629,260 @@
         "currency": "CNY",
         "link": "https://detail.tmall.com/item.htm?ali_refid=a3_420434_1006%3A1329700094%3AN%3A9Q6dFxV1gl7ybWO3eOFKlLb%2BDLHI60Ye%3A12b4c29da383da33e1d5a8ceb9a19bd9&ali_trackid=1_12b4c29da383da33e1d5a8ceb9a19bd9&id=717885528180&mi_id=0000bkCOGp4Ronbsp11FvpLSfMeUC0PGykYLkg3-hWf77bg&mm_sceneid=1_0_1299980157_0&priceTId=213e09bf17629174954091192e0e43&skuId=5007968296057&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%22e06962db055ec3a706f4a17ca79388ff%22%7D&xxc=ad_ztc",
         "inStock": true
+      }
+    ]
+  },
+  {
+    "id": "prod-25",
+    "slug": "gr-y29-noise-cancelling-bluetooth-earbuds-dolby-atmos-sleep",
+    "title": "GR Y29 Noise Cancelling Bluetooth Earbuds In-Ear Sleep Earbuds Dolby Atmos Ultra Long Battery Life Wireless",
+    "brand": "GR",
+    "categoryId": "cat-5",
+    "cover": "/images/gr-y29-earbuds.webp",
+    "gallery": [
+      "/images/gr-y29-earbuds-2.webp"
+    ],
+    "priceGuide": {
+      "min": 31.72,
+      "max": 42.3,
+      "currency": "CNY"
+    },
+    "tags": [
+      "GR",
+      "Bluetooth Earbuds",
+      "Noise Cancelling",
+      "Sleep Earbuds",
+      "Dolby Atmos",
+      "Wireless",
+      "Long Battery Life",
+      "In-Ear",
+      "Y29"
+    ],
+    "description": "GR Y29 noise cancelling Bluetooth earbuds with Dolby Atmos sound effect. Features cloud-like comfort design, side-sleep friendly, ultra-long battery life, and wireless connectivity. Perfect for sleep, travel, and daily use. Over 700+ sold, 200+ added to cart. 48-hour shipping guarantee with late shipment compensation. Free shipping available.",
+    "specs": {
+      "brand": "GR",
+      "model": "Y29",
+      "function": "Bass Stereo, Call Function",
+      "afterSales": "Return",
+      "origin": "Mainland China",
+      "province": "Guangdong Province",
+      "city": "Shenzhen",
+      "colorOptions": "Dark Night Black High-End Version, Soft Skin High-End Version, Ivory White High-End Version",
+      "waterproof": "IPX6",
+      "microphone": "Supported",
+      "transmissionRange": "10m (10 meters)",
+      "wireControl": "Not Supported",
+      "earType": "Bilateral Stereo",
+      "releaseDate": "2025-09-11",
+      "warranty": "12 months",
+      "connection": "Wireless (Bluetooth)",
+      "dustResistance": "IP6X"
+    },
+    "createdAt": "2024-12-21T00:00:00Z",
+    "offers": [
+      {
+        "agentId": "kakobuy",
+        "title": "GR Y29 Earbuds - Fast Delivery",
+        "price": 31.72,
+        "shipFee": 0,
+        "estDays": 5,
+        "currency": "CNY",
+        "link": "https://detail.tmall.com/item.htm",
+        "inStock": true
+      },
+      {
+        "agentId": "mulebuy",
+        "title": "GR Y29 Earbuds - App Available",
+        "price": 30.77,
+        "shipFee": 5,
+        "estDays": 6,
+        "currency": "CNY",
+        "link": "https://detail.tmall.com/item.htm",
+        "inStock": true
+      },
+      {
+        "agentId": "hipobuy",
+        "title": "GR Y29 Earbuds - Low Price Route",
+        "price": 33.31,
+        "shipFee": 0,
+        "estDays": 7,
+        "currency": "CNY",
+        "link": "https://detail.tmall.com/item.htm",
+        "inStock": true
+      },
+      {
+        "agentId": "rizzitgo",
+        "title": "GR Y29 Earbuds - Clean UX",
+        "price": 30.13,
+        "shipFee": 8,
+        "estDays": 6,
+        "currency": "CNY",
+        "link": "https://detail.tmall.com/item.htm",
+        "inStock": true
+      },
+      {
+        "agentId": "eastmallbuy",
+        "title": "GR Y29 Earbuds - Multiple Payments",
+        "price": 34.22,
+        "shipFee": 0,
+        "estDays": 8,
+        "currency": "CNY",
+        "link": "https://detail.tmall.com/item.htm",
+        "inStock": true
+      },
+      {
+        "agentId": "tigbuy",
+        "title": "GR Y29 Earbuds - Warehouse QA",
+        "price": 29.18,
+        "shipFee": 10,
+        "estDays": 9,
+        "currency": "CNY",
+        "link": "https://detail.tmall.com/item.htm",
+        "inStock": true
+      }
+    ],
+    "skuOptions": [
+      {
+        "name": "Color",
+        "values": [
+          "Dark Night Black High-End Version - Cloud Comfort ❤ Side-Sleep Friendly ❤ Dolby Atmos Surround",
+          "Soft Skin High-End Version - Cloud Comfort ❤ Side-Sleep Friendly ❤ Dolby Atmos Surround",
+          "Ivory White High-End Version - Cloud Comfort ❤ Side-Sleep Friendly ❤ Dolby Atmos Surround"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prod-26",
+    "slug": "fila-eschape-low-top-casual-shoes-gray-women",
+    "title": "FILA Eschape Low-Top Casual Shoes Gray Women's Comfortable Ballet Shoes",
+    "brand": "FILA",
+    "categoryId": "cat-1",
+    "cover": "/images/fila-eschape-gray.webp",
+    "gallery": [
+      "/images/fila-eschape-gray-2.webp"
+    ],
+    "priceGuide": {
+      "min": 344.92,
+      "max": 468,
+      "currency": "CNY"
+    },
+    "tags": [
+      "FILA",
+      "Eschape",
+      "Casual Shoes",
+      "Low-Top",
+      "Women's Shoes",
+      "Gray",
+      "Comfortable",
+      "Ballet Shoes",
+      "Lightweight",
+      "Korean Style"
+    ],
+    "description": "FILA Eschape Korean style comfortable low-top casual shoes in light gray. Features comfortable design, perfect for daily wear. Over 2000+ sold, 1000+ added to cart. Many reviews saying \"fits perfectly\". Official 15% discount saves ¥71, 88VIP 5% discount saves ¥18.4. Free shipping available. Shipped from Suzhou bonded warehouse.",
+    "specs": {
+      "brand": "FILA/斐乐",
+      "productName": "Eschape",
+      "color": "Light Gray 1XM02347H-920",
+      "size": "36, 36.5, 37.5, 38, 38.5, 39, 39.5, 40, 41, 42",
+      "releaseDate": "Spring 2024",
+      "soleMaterial": "Rubber",
+      "sportSeries": "Sport Fashion Shoes",
+      "heelHeight": "Low-Top",
+      "upperMaterial": "Fabric",
+      "storeVersion": "No",
+      "tagPrice": "559",
+      "closure": "Lace-Up",
+      "season": "All Seasons",
+      "gender": "Women",
+      "function": "Lightweight",
+      "target": "Women",
+      "scene": "Casual"
+    },
+    "createdAt": "2024-12-21T00:00:00Z",
+    "offers": [
+      {
+        "agentId": "kakobuy",
+        "title": "FILA Eschape Shoes - Fast Delivery",
+        "price": 344.92,
+        "shipFee": 0,
+        "estDays": 5,
+        "currency": "CNY",
+        "link": "https://detail.tmall.com/item.htm",
+        "inStock": true
+      },
+      {
+        "agentId": "mulebuy",
+        "title": "FILA Eschape Shoes - App Available",
+        "price": 334.57,
+        "shipFee": 10,
+        "estDays": 6,
+        "currency": "CNY",
+        "link": "https://detail.tmall.com/item.htm",
+        "inStock": true
+      },
+      {
+        "agentId": "hipobuy",
+        "title": "FILA Eschape Shoes - Low Price Route",
+        "price": 362.17,
+        "shipFee": 0,
+        "estDays": 7,
+        "currency": "CNY",
+        "link": "https://detail.tmall.com/item.htm",
+        "inStock": true
+      },
+      {
+        "agentId": "rizzitgo",
+        "title": "FILA Eschape Shoes - Clean UX",
+        "price": 327.67,
+        "shipFee": 15,
+        "estDays": 6,
+        "currency": "CNY",
+        "link": "https://detail.tmall.com/item.htm",
+        "inStock": true
+      },
+      {
+        "agentId": "eastmallbuy",
+        "title": "FILA Eschape Shoes - Multiple Payments",
+        "price": 372.51,
+        "shipFee": 0,
+        "estDays": 8,
+        "currency": "CNY",
+        "link": "https://detail.tmall.com/item.htm",
+        "inStock": true
+      },
+      {
+        "agentId": "tigbuy",
+        "title": "FILA Eschape Shoes - Warehouse QA",
+        "price": 317.33,
+        "shipFee": 20,
+        "estDays": 9,
+        "currency": "CNY",
+        "link": "https://detail.tmall.com/item.htm",
+        "inStock": true
+      }
+    ],
+    "skuOptions": [
+      {
+        "name": "Size",
+        "values": [
+          "36",
+          "36.5",
+          "37.5",
+          "38",
+          "38.5",
+          "39",
+          "39.5",
+          "40",
+          "41",
+          "42"
+        ]
+      },
+      {
+        "name": "Color",
+        "values": [
+          "Light Gray 1XM02347H-920"
+        ]
       }
     ]
   }

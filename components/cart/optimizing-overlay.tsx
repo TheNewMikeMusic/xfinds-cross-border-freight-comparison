@@ -24,7 +24,7 @@ export function OptimizingOverlay({ isVisible }: OptimizingOverlayProps) {
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="flex flex-col items-center gap-6 rounded-2xl border border-blue-600/30 bg-gray-900/95 p-12 backdrop-blur-xl"
+        className="flex flex-col items-center gap-6 rounded-2xl border border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:bg-gray-900/95 p-12 backdrop-blur-xl"
       >
         <motion.div
           animate={{ rotate: 360 }}
@@ -37,8 +37,8 @@ export function OptimizingOverlay({ isVisible }: OptimizingOverlayProps) {
           <Sparkles className="h-16 w-16 text-blue-400" />
         </motion.div>
         <div className="flex flex-col items-center gap-2">
-          <h3 className="text-2xl font-semibold text-white">{t('optimizing')}</h3>
-          <p className="text-gray-400">{t('analyzing')}</p>
+          <h3 className="text-2xl font-semibold text-foreground dark:text-white">{t('optimizing')}</h3>
+          <p className="text-muted-foreground dark:text-gray-400">{t('analyzing')}</p>
         </div>
         <div className="flex items-center gap-2">
           <Loader2 className="h-5 w-5 animate-spin text-blue-400" />

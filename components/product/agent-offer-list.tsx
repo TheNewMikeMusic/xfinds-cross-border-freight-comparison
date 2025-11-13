@@ -133,8 +133,8 @@ export function AgentOfferList({
   // Empty state
   if (offers.length === 0) {
     return (
-      <Card className="glass border-blue-600/30 bg-gray-900/75">
-        <CardContent className="p-8">
+      <Card className="glass agent-offer-card-parent border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:!bg-transparent overflow-visible" style={{ background: 'transparent', '--panel': 'transparent' } as React.CSSProperties & { '--panel': string }}>
+        <CardContent className="p-8 overflow-visible">
           <EmptyState
             title={t('noAgentsAvailable')}
             description={t('noAgentsDesc')}
@@ -153,15 +153,15 @@ export function AgentOfferList({
 
     return (
       <>
-        <Card className="glass border-blue-600/30 bg-gray-900/75">
+        <Card className="glass agent-offer-card-parent border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:!bg-transparent overflow-visible" style={{ background: 'transparent', '--panel': 'transparent' } as React.CSSProperties & { '--panel': string }}>
           <CardHeader className="pb-3 sm:pb-4">
             <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
               <CardTitle className="text-base sm:text-lg">{t('offers')}</CardTitle>
-              <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-400">
+              <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-muted-foreground dark:text-gray-400">
                 <span>{t('offerCount', { count: 1 })}</span>
                 {offer.inStock && (
                   <>
-                    <span className="text-gray-600">•</span>
+                    <span className="text-muted-foreground/50 dark:text-gray-600">•</span>
                     <span className="flex items-center gap-1 text-green-400">
                       <CheckCircle className="h-3 w-3" />
                       {t('inStock')}
@@ -170,17 +170,17 @@ export function AgentOfferList({
                 )}
                 {agent?.recommended && (
                   <>
-                    <span className="text-gray-600">•</span>
-                    <span className="text-blue-400">{t('recommended')}</span>
+                    <span className="text-muted-foreground/50 dark:text-gray-600">•</span>
+                    <span className="text-blue-600 dark:text-blue-400 font-medium">{t('recommended')}</span>
                   </>
                 )}
               </div>
             </div>
           </CardHeader>
-          <CardContent className="space-y-3 sm:space-y-4">
-            <div className="glass border border-blue-600/30 bg-gray-800/30 backdrop-blur-xl p-3 sm:p-4 md:p-6 rounded-xl space-y-2 sm:space-y-3 md:space-y-4 relative overflow-visible">
+          <CardContent className="space-y-3 sm:space-y-4 overflow-visible">
+            <div className="glass agent-offer-card border border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-gray-50 dark:!bg-transparent p-3 sm:p-4 md:p-6 rounded-xl space-y-2 sm:space-y-3 md:space-y-4 relative" style={{ background: 'transparent', overflow: 'visible', '--panel': 'transparent', backdropFilter: 'none' } as React.CSSProperties & { '--panel': string }}>
               {agent?.recommended && (
-                <div className="absolute top-0 right-0 sm:top-1 sm:right-1 z-20 overflow-visible">
+                <div className="absolute -top-2 -right-2 z-30 overflow-visible">
                   <RecommendRibbon />
                 </div>
               )}
@@ -199,9 +199,9 @@ export function AgentOfferList({
                   )}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1 sm:gap-2 mb-0.5 sm:mb-1 flex-wrap">
-                      <h4 className="font-semibold text-sm sm:text-base md:text-lg">{agent?.name || offer.agentId}</h4>
+                      <h4 className="font-semibold text-sm sm:text-base md:text-lg text-foreground dark:text-white">{agent?.name || offer.agentId}</h4>
                       {agent?.recommended && (
-                        <Badge className="bg-blue-600/20 text-blue-300 border-blue-600/30 text-xs">
+                        <Badge className="bg-blue-600/20 dark:bg-blue-600/20 bg-blue-100 text-blue-700 dark:text-blue-300 border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 text-xs">
                           {t('recommended')}
                         </Badge>
                       )}
@@ -211,7 +211,7 @@ export function AgentOfferList({
                         {agent.badges.slice(0, 2).map((badge) => (
                           <Badge
                             key={badge}
-                            className="text-xs bg-blue-600/20 text-blue-300 border-blue-600/30"
+                            className="text-xs bg-blue-600/20 dark:bg-blue-600/20 bg-blue-100 text-blue-700 dark:text-blue-300 border-blue-600/30 dark:border-blue-600/30 border-blue-500/50"
                           >
                             {badge}
                           </Badge>
@@ -235,30 +235,30 @@ export function AgentOfferList({
 
               <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm">
                 <div>
-                  <span className="text-gray-400">{t('price')}:</span>
+                  <span className="text-muted-foreground dark:text-gray-400">{t('price')}:</span>
                   <span className="ml-1 sm:ml-2">
                     <PriceDisplay amount={offer.price} originalCurrency={offer.currency as any} />
                   </span>
                 </div>
                 <div>
-                  <span className="text-gray-400">{t('shipping')}:</span>
+                  <span className="text-muted-foreground dark:text-gray-400">{t('shipping')}:</span>
                   <button
                     onClick={() => {
                       setSelectedShippingOffer(offer)
                       setShippingDetailOpen(true)
                     }}
-                    className="ml-1 sm:ml-2 text-blue-400 hover:text-blue-300 underline cursor-pointer transition-colors"
+                    className="ml-1 sm:ml-2 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline cursor-pointer transition-colors"
                     aria-label={t('viewShippingDetails')}
                   >
                     <PriceDisplay amount={offer.shipFee} originalCurrency={offer.currency as any} />
                   </button>
                 </div>
                 <div className="hidden sm:block">
-                  <span className="text-gray-400">{t('estimatedDays')}:</span>
+                  <span className="text-muted-foreground dark:text-gray-400">{t('estimatedDays')}:</span>
                   <span className="ml-1 sm:ml-2">{offer.estDays} {t('days')}</span>
                 </div>
                 <div>
-                  <span className="text-gray-400">{t('total')}:</span>
+                  <span className="text-muted-foreground dark:text-gray-400">{t('total')}:</span>
                   <span className="ml-1 sm:ml-2">
                     <PriceDisplay amount={total} originalCurrency={offer.currency as any} size="lg" />
                   </span>
@@ -266,8 +266,8 @@ export function AgentOfferList({
               </div>
 
               {agent?.promoText && (
-                <div className="bg-blue-600/20 border border-blue-600/30 rounded-lg p-2 sm:p-3">
-                  <p className="text-xs sm:text-sm text-blue-300 break-words">{agent.promoText}</p>
+                <div className="bg-blue-600/20 dark:bg-blue-600/20 bg-blue-50 border border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 rounded-lg p-2 sm:p-3">
+                  <p className="text-xs sm:text-sm text-blue-700 dark:text-blue-300 break-words">{agent.promoText}</p>
                 </div>
               )}
 
@@ -299,7 +299,7 @@ export function AgentOfferList({
                      !product.skuOptions.every((option) => selectedSKU[option.name]))
                   }
                   variant="outline"
-                  className="flex-1 glass border-blue-600/30 bg-gray-800/50 backdrop-blur-xl text-xs sm:text-sm py-2 sm:py-1.5"
+                  className="flex-1 glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-gray-100 dark:bg-transparent backdrop-blur-xl text-xs sm:text-sm py-2 sm:py-1.5"
                 >
                   {t('addToList')}
                 </Button>
@@ -331,16 +331,16 @@ export function AgentOfferList({
 
   return (
     <>
-      <Card className="glass border-blue-600/30 bg-gray-900/75">
+      <Card className="glass agent-offer-card-parent border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-white dark:!bg-transparent overflow-visible" style={{ background: 'transparent', '--panel': 'transparent' } as React.CSSProperties & { '--panel': string }}>
         <CardHeader className="pb-3 sm:pb-4">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
               <CardTitle className="text-base sm:text-lg">{t('offers')}</CardTitle>
-              <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-400">
+              <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-muted-foreground dark:text-gray-400">
                 <span>{t('offerCount', { count: rankedOffers.length })}</span>
                 {inStockCount > 0 && (
                   <>
-                    <span className="text-gray-600">•</span>
+                    <span className="text-muted-foreground/50 dark:text-gray-600">•</span>
                     <span className="flex items-center gap-1 text-green-400">
                       <CheckCircle className="h-3 w-3" />
                       {inStockCount} {t('inStock')}
@@ -349,8 +349,8 @@ export function AgentOfferList({
                 )}
                 {recommendedCount > 0 && (
                   <>
-                    <span className="text-gray-600">•</span>
-                    <span className="text-blue-400">{recommendedCount} {t('recommended')}</span>
+                    <span className="text-muted-foreground/50 dark:text-gray-600">•</span>
+                    <span className="text-blue-600 dark:text-blue-400 font-medium">{recommendedCount} {t('recommended')}</span>
                   </>
                 )}
               </div>
@@ -359,7 +359,7 @@ export function AgentOfferList({
               variant="ghost"
               size="sm"
               onClick={() => setIsComparisonExpanded(!isComparisonExpanded)}
-              className="text-blue-300 hover:text-blue-200 text-xs sm:text-sm self-start sm:self-auto"
+              className="text-blue-600 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-200 text-xs sm:text-sm self-start sm:self-auto"
             >
               {isComparisonExpanded ? (
                 <>
@@ -377,16 +377,17 @@ export function AgentOfferList({
             </Button>
           </div>
         </CardHeader>
-        <CardContent className="space-y-3 sm:space-y-4">
+        <CardContent className="space-y-3 sm:space-y-4 overflow-visible">
           {/* Default selected agent */}
           {selectedOffer && selectedAgent && (
             <motion.div
               initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
               animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              className="glass border border-blue-600/30 bg-gray-800/30 backdrop-blur-xl p-3 sm:p-4 md:p-6 rounded-xl space-y-2 sm:space-y-3 md:space-y-4 relative overflow-visible"
+              className="glass agent-offer-card border border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-gray-50 dark:!bg-transparent p-3 sm:p-4 md:p-6 rounded-xl space-y-2 sm:space-y-3 md:space-y-4 relative"
+              style={{ background: 'transparent', overflow: 'visible', '--panel': 'transparent', backdropFilter: 'none' } as React.CSSProperties & { '--panel': string }}
             >
               {selectedAgent.recommended && (
-                <div className="absolute top-0 right-0 sm:top-1 sm:right-1 z-20 overflow-visible">
+                <div className="absolute -top-2 -right-2 z-30 overflow-visible">
                   <RecommendRibbon />
                 </div>
               )}
@@ -405,20 +406,20 @@ export function AgentOfferList({
                   )}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1 sm:gap-2 mb-0.5 sm:mb-1 flex-wrap">
-                      <h4 className="font-semibold text-sm sm:text-base md:text-lg">{selectedAgent.name}</h4>
+                      <h4 className="font-semibold text-sm sm:text-base md:text-lg text-foreground dark:text-white">{selectedAgent.name}</h4>
                       {selectedAgent.recommended && (
-                        <Badge className="bg-blue-600/20 text-blue-300 border-blue-600/30 text-xs">
+                        <Badge className="bg-blue-600/20 dark:bg-blue-600/20 bg-blue-100 text-blue-700 dark:text-blue-300 border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 text-xs">
                           {t('recommended')}
                         </Badge>
                       )}
-                      <Badge className="bg-blue-600/20 text-blue-300 border-blue-600/30 text-xs hidden sm:inline-flex">
+                        <Badge className="bg-blue-600/20 dark:bg-blue-600/20 bg-blue-100 text-blue-700 dark:text-blue-300 border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 text-xs hidden sm:inline-flex">
                         #{selectedOffer.rank}
                       </Badge>
                       <Badge className="bg-green-600/20 text-green-300 border-green-600/30 text-xs hidden md:inline-flex">
                         {selectedOffer.score}/100
                       </Badge>
                     </div>
-                    <Badge variant="outline" className="text-xs border-blue-600/30 text-blue-300 hidden sm:inline-flex">
+                    <Badge variant="outline" className="text-xs border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 bg-blue-50 dark:bg-transparent text-blue-700 dark:text-blue-300 hidden sm:inline-flex">
                       {t(`scoreReasons.${selectedOffer.scoreReason}`)}
                     </Badge>
                     {selectedAgent.badges && selectedAgent.badges.length > 0 && (
@@ -426,7 +427,7 @@ export function AgentOfferList({
                         {selectedAgent.badges.slice(0, 2).map((badge) => (
                           <Badge
                             key={badge}
-                            className="text-xs bg-blue-600/20 text-blue-300 border-blue-600/30"
+                            className="text-xs bg-blue-600/20 dark:bg-blue-600/20 bg-blue-100 text-blue-700 dark:text-blue-300 border-blue-600/30 dark:border-blue-600/30 border-blue-500/50"
                           >
                             {badge}
                           </Badge>
@@ -450,31 +451,31 @@ export function AgentOfferList({
 
               <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm">
                 <div>
-                  <span className="text-gray-400">{t('price')}:</span>
+                  <span className="text-muted-foreground dark:text-gray-400">{t('price')}:</span>
                   <span className="ml-1 sm:ml-2">
                     <PriceDisplay amount={selectedOffer.price} originalCurrency={selectedOffer.currency as any} />
                   </span>
                 </div>
                 <div>
-                  <span className="text-gray-400">{t('shipping')}:</span>
+                  <span className="text-muted-foreground dark:text-gray-400">{t('shipping')}:</span>
                   <button
                     onClick={(e) => {
                       e.stopPropagation()
                       setSelectedShippingOffer(selectedOffer)
                       setShippingDetailOpen(true)
                     }}
-                    className="ml-1 sm:ml-2 text-blue-400 hover:text-blue-300 underline cursor-pointer transition-colors"
+                    className="ml-1 sm:ml-2 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline cursor-pointer transition-colors"
                     aria-label={t('viewShippingDetails')}
                   >
                     <PriceDisplay amount={selectedOffer.shipFee} originalCurrency={selectedOffer.currency as any} />
                   </button>
                 </div>
                 <div className="hidden sm:block">
-                  <span className="text-gray-400">{t('estimatedDays')}:</span>
+                  <span className="text-muted-foreground dark:text-gray-400">{t('estimatedDays')}:</span>
                   <span className="ml-1 sm:ml-2">{selectedOffer.estDays} {t('days')}</span>
                 </div>
                 <div>
-                  <span className="text-gray-400">{t('total')}:</span>
+                  <span className="text-muted-foreground dark:text-gray-400">{t('total')}:</span>
                   <span className="ml-1 sm:ml-2">
                     <PriceDisplay amount={total} originalCurrency={selectedOffer.currency as any} size="lg" />
                   </span>
@@ -482,8 +483,8 @@ export function AgentOfferList({
               </div>
 
               {selectedAgent.promoText && (
-                <div className="bg-blue-600/20 border border-blue-600/30 rounded-lg p-2 sm:p-3">
-                  <p className="text-xs sm:text-sm text-blue-300">{selectedAgent.promoText}</p>
+                <div className="bg-blue-600/20 dark:bg-blue-600/20 bg-blue-50 border border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 rounded-lg p-2 sm:p-3">
+                  <p className="text-xs sm:text-sm text-blue-700 dark:text-blue-300 break-words">{selectedAgent.promoText}</p>
                 </div>
               )}
 
@@ -515,7 +516,7 @@ export function AgentOfferList({
                      !product.skuOptions.every((option) => selectedSKU[option.name]))
                   }
                   variant="outline"
-                  className="flex-1 glass border-blue-600/30 bg-gray-800/50 backdrop-blur-xl text-xs sm:text-sm py-2 sm:py-1.5"
+                  className="flex-1 glass border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-gray-100 dark:bg-transparent backdrop-blur-xl text-xs sm:text-sm py-2 sm:py-1.5"
                 >
                   {t('addToList')}
                 </Button>
@@ -531,9 +532,9 @@ export function AgentOfferList({
                 animate={shouldReduceMotion ? undefined : { opacity: 1, height: 'auto' }}
                 exit={shouldReduceMotion ? undefined : { opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                className="space-y-3 overflow-hidden"
+                className="space-y-3 overflow-visible"
               >
-                <h3 className="text-lg font-semibold text-white mb-4">{t('compareAgents')}</h3>
+                <h3 className="text-lg font-semibold text-foreground dark:text-white mb-4">{t('compareAgents')}</h3>
                 {rankedOffers.map((offer) => {
                   const agent = agents.find((a) => a.id === offer.agentId)
                   const isSelected = offer.agentId === selectedAgentId
@@ -544,11 +545,12 @@ export function AgentOfferList({
                       key={offer.agentId}
                       initial={shouldReduceMotion ? undefined : { opacity: 0, x: -20 }}
                       animate={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
-                      className={`glass border ${
+                      className={`glass agent-offer-card border ${
                         isSelected
-                          ? 'border-blue-500 bg-blue-600/10'
-                          : 'border-blue-600/30 bg-gray-800/30'
-                      } backdrop-blur-xl p-4 rounded-xl space-y-3 cursor-pointer transition-all hover:border-blue-500/50`}
+                          ? 'border-blue-500 bg-blue-600/10 dark:bg-blue-600/10'
+                          : 'border-blue-600/30 dark:border-blue-600/30 border-blue-500/30 bg-gray-50 dark:bg-transparent'
+                      } p-4 rounded-xl space-y-3 cursor-pointer transition-all hover:border-blue-500/50 overflow-visible`}
+                      style={{ '--panel': 'transparent', backdropFilter: 'none' } as React.CSSProperties & { '--panel': string }}
                       onClick={() => setSelectedAgentId(offer.agentId)}
                     >
                       <div className="flex items-start justify-between">
@@ -567,14 +569,14 @@ export function AgentOfferList({
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
                               <h4 className="font-semibold">{agent?.name || offer.agentId}</h4>
-                              <Badge className="bg-blue-600/20 text-blue-300 border-blue-600/30">
+                              <Badge className="bg-blue-600/20 dark:bg-blue-600/20 bg-blue-100 text-blue-700 dark:text-blue-300 border-blue-600/30 dark:border-blue-600/30 border-blue-500/50">
                                 #{offer.rank}
                               </Badge>
                               <Badge className="bg-green-600/20 text-green-300 border-green-600/30">
                                 {offer.score}/100
                               </Badge>
                             </div>
-                            <Badge variant="outline" className="text-xs border-blue-600/30 text-blue-300">
+                            <Badge variant="outline" className="text-xs border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 bg-blue-50 dark:bg-transparent text-blue-700 dark:text-blue-300">
                               {t(`scoreReasons.${offer.scoreReason}`)}
                             </Badge>
                           </div>
@@ -588,30 +590,30 @@ export function AgentOfferList({
 
                       <div className="grid grid-cols-2 gap-3 text-sm">
                         <div>
-                          <span className="text-gray-400">{t('price')}:</span>
+                          <span className="text-muted-foreground dark:text-gray-400">{t('price')}:</span>
                           <span className="ml-2">
                             <PriceDisplay amount={offer.price} originalCurrency={offer.currency as any} />
                           </span>
                         </div>
                         <div>
-                          <span className="text-gray-400">{t('shipping')}:</span>
+                          <span className="text-muted-foreground dark:text-gray-400">{t('shipping')}:</span>
                           <button
                             onClick={() => {
                               setSelectedShippingOffer(offer)
                               setShippingDetailOpen(true)
                             }}
-                            className="ml-2 text-blue-400 hover:text-blue-300 underline cursor-pointer transition-colors"
+                            className="ml-2 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline cursor-pointer transition-colors"
                             aria-label={t('viewShippingDetails')}
                           >
                             <PriceDisplay amount={offer.shipFee} originalCurrency={offer.currency as any} />
                           </button>
                         </div>
                         <div>
-                          <span className="text-gray-400">{t('estimatedDays')}:</span>
+                          <span className="text-muted-foreground dark:text-gray-400">{t('estimatedDays')}:</span>
                           <span className="ml-2">{offer.estDays} {t('days')}</span>
                         </div>
                         <div>
-                          <span className="text-gray-400">{t('total')}:</span>
+                          <span className="text-muted-foreground dark:text-gray-400">{t('total')}:</span>
                           <span className="ml-2">
                             <PriceDisplay amount={offerTotal} originalCurrency={offer.currency as any} />
                           </span>
@@ -619,8 +621,8 @@ export function AgentOfferList({
                       </div>
 
                       {agent?.promoText && (
-                        <div className="bg-blue-600/20 border border-blue-600/30 rounded-lg p-2">
-                          <p className="text-xs text-blue-300">{agent.promoText}</p>
+                        <div className="bg-blue-600/20 dark:bg-blue-600/20 bg-blue-50 border border-blue-600/30 dark:border-blue-600/30 border-blue-500/50 rounded-lg p-2">
+                          <p className="text-xs text-blue-700 dark:text-blue-300 break-words">{agent.promoText}</p>
                         </div>
                       )}
                     </motion.div>

@@ -44,10 +44,10 @@ export function SKUSelector({ options, value = {}, onChange, className }: SKUSel
         
         return (
           <div key={option.name} className="space-y-2">
-            <label className="text-sm font-medium text-gray-300">
+            <label className="text-sm font-medium text-foreground dark:text-gray-300">
               {option.name}:
               {selectedValue && (
-                <span className="ml-2 text-blue-400">{selectedValue}</span>
+                <span className="ml-2 text-blue-600 dark:text-blue-400">{selectedValue}</span>
               )}
             </label>
             <div className="flex flex-wrap gap-2">
@@ -64,7 +64,7 @@ export function SKUSelector({ options, value = {}, onChange, className }: SKUSel
                       'transition-all',
                       isSelected
                         ? 'bg-blue-600 hover:bg-blue-500 border-blue-500'
-                        : 'border-gray-600 hover:border-gray-500 bg-gray-800/50'
+                        : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 bg-gray-100 dark:bg-gray-800/50'
                     )}
                   >
                     {val}
@@ -76,7 +76,7 @@ export function SKUSelector({ options, value = {}, onChange, className }: SKUSel
         )
       })}
       {!isComplete && (
-        <p className="text-sm text-yellow-400">
+        <p className="text-sm text-yellow-600 dark:text-yellow-400">
           {t('pleaseSelectAllOptions')}
         </p>
       )}
