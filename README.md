@@ -20,7 +20,7 @@
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison/main/public/ScreenShot/ScreenShot_2025-12-30_110255_958.webp" alt="Xfinds Homepage" width="100%" />
+  <img src="https://raw.githubusercontent.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison/main/public/ScreenShot/ScreenShot_2025-12-30_110255_958.png" alt="Xfinds Homepage" width="100%" />
   <p><em>Homepage - Modern glassmorphic design with intuitive navigation</em></p>
 </div>
 
@@ -28,21 +28,21 @@
   <table>
     <tr>
       <td width="50%">
-        <img src="https://raw.githubusercontent.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison/main/public/ScreenShot/ScreenShot_2025-12-30_114122_459.webp" alt="Search Results" width="100%" />
+        <img src="https://raw.githubusercontent.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison/main/public/ScreenShot/ScreenShot_2025-12-30_114122_459.png" alt="Search Results" width="100%" />
         <p align="center"><em>Search & Filter Products</em></p>
       </td>
       <td width="50%">
-        <img src="https://raw.githubusercontent.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison/main/public/ScreenShot/ScreenShot_2025-12-30_124445_841.webp" alt="Product Details" width="100%" />
+        <img src="https://raw.githubusercontent.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison/main/public/ScreenShot/ScreenShot_2025-12-30_124445_841.png" alt="Product Details" width="100%" />
         <p align="center"><em>Product Details Page</em></p>
       </td>
     </tr>
     <tr>
       <td width="50%">
-        <img src="https://raw.githubusercontent.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison/main/public/ScreenShot/ScreenShot_2025-12-30_124517_559.webp" alt="Agent Comparison" width="100%" />
+        <img src="https://raw.githubusercontent.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison/main/public/ScreenShot/ScreenShot_2025-12-30_124517_559.png" alt="Agent Comparison" width="100%" />
         <p align="center"><em>Agent Price Comparison</em></p>
       </td>
       <td width="50%">
-        <img src="https://raw.githubusercontent.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison/main/public/ScreenShot/ScreenShot_2025-12-30_124531_340.webp" alt="Shopping Cart" width="100%" />
+        <img src="https://raw.githubusercontent.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison/main/public/ScreenShot/ScreenShot_2025-12-30_124531_340.png" alt="Shopping Cart" width="100%" />
         <p align="center"><em>Smart Shopping Cart</em></p>
       </td>
     </tr>
