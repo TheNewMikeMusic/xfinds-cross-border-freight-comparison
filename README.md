@@ -1,7 +1,7 @@
 <div align="center">
 
-<!-- Use raw GitHub URLs to avoid broken previews -->
-<img src="https://raw.githubusercontent.com/TheNewMikeMusic/Xfinds/main/public/Xfinds%20logo.png" alt="Xfinds" width="80" />
+<!-- Use repository-relative paths (GitHub renders these reliably, even on private repos) -->
+<img src="./public/Xfinds%20logo.png" alt="Xfinds" width="80" />
 
 # Xfinds
 
@@ -18,7 +18,7 @@ Modern product search and agent comparison with a fast glassmorphic UI. Built fo
 
 <br />
 <!-- Homepage hero -->
-<img src="https://raw.githubusercontent.com/TheNewMikeMusic/Xfinds/main/public/ScreenShot/ScreenShot_2025-12-30_110255_958.png" alt="Xfinds homepage" width="900" />
+<img src="./public/ScreenShot/ScreenShot_2025-12-30_110255_958.png" alt="Xfinds homepage" width="900" />
 
 </div>
 
@@ -48,16 +48,16 @@ Modern product search and agent comparison with a fast glassmorphic UI. Built fo
 ## Screenshots
 <div align="center">
   <!-- Homepage hero -->
-  <img src="https://raw.githubusercontent.com/TheNewMikeMusic/Xfinds/main/public/ScreenShot/ScreenShot_2025-12-30_110255_958.png" alt="Homepage search hero" width="88%" />
+  <img src="./public/ScreenShot/ScreenShot_2025-12-30_110255_958.png" alt="Homepage search hero" width="88%" />
   <br /><br />
   <!-- Product detail -->
-  <img src="https://raw.githubusercontent.com/TheNewMikeMusic/Xfinds/main/public/ScreenShot/ScreenShot_2025-12-30_114122_459.png" alt="Product detail with agent offers" width="88%" />
+  <img src="./public/ScreenShot/ScreenShot_2025-12-30_114122_459.png" alt="Product detail with agent offers" width="88%" />
   <br /><br />
   <!-- Agent comparison -->
-  <img src="https://raw.githubusercontent.com/TheNewMikeMusic/Xfinds/main/public/ScreenShot/ScreenShot_2025-12-30_124445_841.png" alt="Agent comparison table" width="88%" />
+  <img src="./public/ScreenShot/ScreenShot_2025-12-30_124445_841.png" alt="Agent comparison table" width="88%" />
   <br /><br />
   <!-- Featured products grid -->
-  <img src="https://raw.githubusercontent.com/TheNewMikeMusic/Xfinds/main/public/ScreenShot/ScreenShot_2025-12-30_124517_559.png" alt="Featured products grid" width="88%" />
+  <img src="./public/ScreenShot/ScreenShot_2025-12-30_124517_559.png" alt="Featured products grid" width="88%" />
 </div>
 
 ## Quick Start
