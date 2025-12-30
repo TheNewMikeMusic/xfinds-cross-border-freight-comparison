@@ -1,230 +1,134 @@
+# Xfinds
+
+### 专业级跨境购物代理聚合与比价平台
+
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+
+Xfinds 是一个现代化的开源跨境购物代理聚合平台。它通过整合多个货运代理的实时数据，为用户提供一站式的价格比对、库存查询及物流估算服务。项目采用先进的 Next.js 14 App Router 架构，结合毛玻璃设计语言（Glassmorphism），打造极致的跨端交互体验。
+
+[官方演示](https://xfinds.cc) · [反馈问题](https://github.com/TheNewMikeMusic/Xfinds/issues) · [功能请求](https://github.com/TheNewMikeMusic/Xfinds/issues)
+
+---
+
+## 项目展示
+
 <div align="center">
-
-# 🌐 Xfinds
-
-### Cross-Border Freight Comparison Platform
-
-[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
-
-**A modern, open-source platform for comparing shipping rates across multiple cross-border freight agents.**
-
-[Live Demo](https://xfinds.cc) · [Report Bug](https://github.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison/issues) · [Request Feature](https://github.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison/issues)
-
-<img src="https://pub-b2cc1d944b2d43e88716eeaa7d223086.r2.dev/ScreenShot_2025-12-30_110255_958.png" alt="Xfinds Homepage" width="100%" />
-
+  <img src="https://pub-b2cc1d944b2d43e88716eeaa7d223086.r2.dev/ScreenShot_2025-12-30_110255_958.png" alt="Xfinds 首页 - 夜间模式" width="100%" style="border-radius: 8px; margin-bottom: 20px;" />
 </div>
 
----
+| 首页商品网格（日间模式） | 商品详情与变体选择 |
+| :---: | :---: |
+| <img src="https://pub-b2cc1d944b2d43e88716eeaa7d223086.r2.dev/ScreenShot_2025-12-30_124517_559.png" width="100%" /> | <img src="https://pub-b2cc1d944b2d43e88716eeaa7d223086.r2.dev/ScreenShot_2025-12-30_114122_459.png" width="100%" /> |
 
-## 📸 Screenshots
-
-<div align="center">
-<table>
-<tr>
-<td width="50%">
-<img src="https://pub-b2cc1d944b2d43e88716eeaa7d223086.r2.dev/ScreenShot_2025-12-30_114122_459.png" alt="Search Results" width="100%" />
-<p align="center"><em>Search & Filter Products</em></p>
-</td>
-<td width="50%">
-<img src="https://pub-b2cc1d944b2d43e88716eeaa7d223086.r2.dev/ScreenShot_2025-12-30_124445_841.png" alt="Product Details" width="100%" />
-<p align="center"><em>Product Details Page</em></p>
-</td>
-</tr>
-<tr>
-<td width="50%">
-<img src="https://pub-b2cc1d944b2d43e88716eeaa7d223086.r2.dev/ScreenShot_2025-12-30_124517_559.png" alt="Agent Comparison" width="100%" />
-<p align="center"><em>Agent Price Comparison</em></p>
-</td>
-<td width="50%">
-<img src="https://pub-b2cc1d944b2d43e88716eeaa7d223086.r2.dev/ScreenShot_2025-12-30_124531_340.png" alt="Shopping Cart" width="100%" />
-<p align="center"><em>Smart Shopping Cart</em></p>
-</td>
-</tr>
-</table>
-</div>
+| 代理商价格比对 | 智能购物车结算 |
+| :---: | :---: |
+| <img src="https://pub-b2cc1d944b2d43e88716eeaa7d223086.r2.dev/ScreenShot_2025-12-30_124445_841.png" width="100%" /> | <img src="https://pub-b2cc1d944b2d43e88716eeaa7d223086.r2.dev/ScreenShot_2025-12-30_124531_340.png" width="100%" /> |
 
 ---
 
-## ✨ Features
+## 核心特性
 
-### 🔍 Smart Product Search
-- **Fuzzy Search** - Find products even with typos or partial names using Fuse.js
-- **Advanced Filters** - Filter by category, price range, agent, and more
-- **Real-time Results** - Instant search results as you type
-
-### 💰 Price Comparison Engine
-- **Multi-Agent Support** - Compare prices across 6+ shipping agents
-- **Currency Conversion** - Real-time exchange rates for CNY, USD, EUR, GBP, JPY, KRW
-- **Total Cost Calculator** - See the full cost including shipping and fees
-
-### 🛒 Shopping Cart Management
-- **Multi-Agent Cart** - Add products from different agents in one cart
-- **Cart Optimization** - AI-powered suggestions to optimize your shipping costs
-- **Save for Later** - Bookmark products for future purchases
-
-### 📊 Agent Comparison
-- **Side-by-Side View** - Compare up to 4 agents at once
-- **Service Ratings** - See reliability scores and user reviews
-- **Shipping Methods** - Compare delivery times and shipping options
-
-### 🌐 Internationalization
-- **Multi-language** - Full support for English and Chinese
-- **Locale-aware** - Currency and date formatting based on user location
-
-### 🎨 Modern UI/UX
-- **Glassmorphic Design** - Beautiful frosted glass effects
-- **Dark/Light Theme** - Automatic and manual theme switching
-- **Responsive Layout** - Perfect on desktop, tablet, and mobile
-- **Smooth Animations** - Delightful micro-interactions with Framer Motion
+- **多代理比价引擎**：支持 Kakobuy, Mulebuy, TigBuy, HippoBuy 等多家主流代理商，实时对比商品价格与运费。
+- **智能模糊搜索**：基于 Fuse.js 实现的高性能模糊搜索，即使输入存在拼写错误也能精准匹配。
+- **动态汇率系统**：实时更新 CNY, USD, EUR, GBP, JPY, KRW 等主流货币汇率，自动完成价格转换。
+- **极致响应式 UI**：采用 Radix UI 与 shadcn/ui 组件库，在移动端、平板与桌面端均有出色表现。
+- **深色模式支持**：深度适配深浅色主题，提供符合人眼工程学的视觉体验。
+- **国际化架构**：原生支持中英双语，灵活的本地化配置。
 
 ---
 
-## 🛠️ Tech Stack
+## 技术栈
 
-| Category | Technologies |
-|----------|-------------|
-| **Framework** | Next.js 14 (App Router) |
-| **Language** | TypeScript 5.4 |
-| **Styling** | Tailwind CSS 3.4 |
-| **UI Components** | Radix UI, shadcn/ui |
-| **State Management** | Zustand |
-| **Search** | Fuse.js |
-| **Animations** | Framer Motion |
-| **i18n** | next-intl |
-| **Image Processing** | Sharp |
-| **Testing** | Vitest, Playwright |
-| **Auth** | JWT (jose), bcryptjs |
+| 领域 | 技术选型 |
+| :--- | :--- |
+| **基础框架** | Next.js 14 (App Router), React 18 |
+| **开发语言** | TypeScript 5.4 (Strict Mode) |
+| **样式方案** | Tailwind CSS 3.4, Framer Motion (动画) |
+| **组件库** | shadcn/ui, Radix UI |
+| **状态管理** | Zustand |
+| **数据处理** | Fuse.js (搜索), Sharp (图像优化) |
+| **国际化** | next-intl |
+| **身份认证** | JWT (jose), bcryptjs |
+| **测试** | Vitest, Playwright |
 
 ---
 
-## 🚀 Getting Started
+## 快速开始
 
-### Prerequisites
+### 环境准备
 
-- **Node.js** 18.0 or higher
-- **npm** 9.0+ or **yarn** 1.22+
+- Node.js 18.0 或更高版本
+- npm 9.0+ 或 yarn 1.22+
 
-### Installation
+### 安装步骤
 
-1. **Clone the repository**
+1. **克隆仓库**
+   ```bash
+   git clone https://github.com/TheNewMikeMusic/Xfinds.git
+   cd Xfinds
+   ```
 
-```bash
-git clone https://github.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison.git
-cd xfinds-cross-border-freight-comparison
-```
+2. **安装依赖**
+   ```bash
+   npm install
+   ```
 
-2. **Install dependencies**
+3. **配置环境变量**
+   ```bash
+   cp .env.example .env.local
+   ```
 
-```bash
-npm install
-```
+4. **启动开发服务器**
+   ```bash
+   npm run dev
+   ```
 
-3. **Set up environment variables**
-
-```bash
-cp .env.example .env.local
-```
-
-4. **Start the development server**
-
-```bash
-npm run dev
-```
-
-5. **Open your browser**
-
-Navigate to [http://localhost:3000](http://localhost:3000)
+5. **访问项目**
+   在浏览器中打开 [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 📁 Project Structure
+## 项目结构
 
-```
-xfinds/
-├── app/                      # Next.js App Router
-│   ├── [locale]/             # Internationalized routes
-│   │   ├── page.tsx          # Homepage
-│   │   ├── search/           # Search results page
-│   │   ├── product/          # Product details
-│   │   ├── cart/             # Shopping cart
-│   │   ├── compare/          # Agent comparison
-│   │   ├── agents/           # Agent listings
-│   │   ├── dashboard/        # User dashboard
-│   │   └── auth/             # Authentication pages
-│   └── api/                  # API routes
-├── components/               # React components
-│   ├── ui/                   # Base UI components (shadcn)
-│   ├── shared/               # Shared components
-│   └── ...                   # Feature-specific components
-├── lib/                      # Utility functions
-├── store/                    # Zustand stores
-├── messages/                 # i18n translations
-├── data/                     # Static JSON data
-├── public/                   # Static assets
-└── tests/                    # Test files
+```text
+Xfinds/
+├── app/                  # Next.js App Router (路由与页面)
+│   ├── [locale]/         # 国际化路由
+│   └── api/              # 后端接口
+├── components/           # React 业务组件
+│   ├── ui/               # 基础 UI 组件 (shadcn)
+│   └── shared/           # 公共组件
+├── lib/                  # 工具函数与业务逻辑
+├── store/                # Zustand 全局状态
+├── messages/             # i18n 语言包
+├── data/                 # 静态数据文件 (JSON)
+└── public/               # 静态资源 (图片、图标)
 ```
 
 ---
 
-## 📦 Available Scripts
+## 贡献指南
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint |
-| `npm run type-check` | Run TypeScript compiler check |
-| `npm run test` | Run unit tests |
-| `npm run test:e2e` | Run E2E tests |
+我们非常欢迎开发者参与贡献。请在提交 PR 前阅读 [贡献文档](CONTRIBUTING.md)。
+
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 发起 Pull Request
 
 ---
 
-## 🌍 Supported Agents
+## 开源协议
 
-| Agent | Status | Features |
-|-------|--------|----------|
-| KakoBuy | ✅ Active | Full integration |
-| MuleBuy | ✅ Active | Full integration |
-| TigBuy | ✅ Active | Full integration |
-| HippoBuy | ✅ Active | Full integration |
-| EastMallBuy | ✅ Active | Full integration |
-| RizzitGo | ✅ Active | Full integration |
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 📞 Contact & Support
-
-- **Website**: [xfinds.cc](https://xfinds.cc)
-- **Issues**: [GitHub Issues](https://github.com/TheNewMikeMusic/xfinds-cross-border-freight-comparison/issues)
+本项目基于 **MIT License** 协议开源。详情请参阅 [LICENSE](LICENSE) 文件。
 
 ---
 
 <div align="center">
-
-**⭐ Star this repo if you find it helpful!**
-
-Made with ❤️ by the Xfinds Team
-
+  <p>如果您觉得这个项目对您有帮助，欢迎给一个 ⭐️ Star！</p>
+  <p>Made with Love by Xfinds Team</p>
 </div>
