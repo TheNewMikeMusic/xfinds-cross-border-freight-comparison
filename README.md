@@ -1,7 +1,7 @@
 <div align="center">
 
-<!-- Use repository-relative paths (GitHub renders these reliably, even on private repos) -->
-<img src="./public/Xfinds%20logo.png" alt="Xfinds" width="80" />
+<!-- Use a space-free filename to avoid URL encoding issues on GitHub -->
+<img src="./public/logo.png" alt="Xfinds" width="80" />
 
 # Xfinds
 
