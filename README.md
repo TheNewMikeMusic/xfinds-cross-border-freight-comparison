@@ -8,7 +8,7 @@
     <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js" alt="Next.js" /></a>
     <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.x-blue?style=flat-square&logo=typescript" alt="TypeScript" /></a>
     <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/TailwindCSS-3.x-38B2AC?style=flat-square&logo=tailwind-css" alt="TailwindCSS" /></a>
-    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT License" /></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue?style=flat-square" alt="Apache 2.0 License" /></a>
   </p>
 
   <p>
@@ -140,8 +140,8 @@ messages/       # Localization dictionaries
 
 ### License | 开源协议
 
-Xfinds is released under the [MIT License](LICENSE).  
-基于 MIT 协议开源。
+Xfinds is released under the [Apache License 2.0](LICENSE).  
+基于 Apache 2.0 协议开源。
 
 <div align="center">
   <p>Built for clarity. Designed for the global shopping community.</p>
